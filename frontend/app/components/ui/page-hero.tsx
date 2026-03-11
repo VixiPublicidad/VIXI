@@ -33,24 +33,24 @@ type PageHeroProps = {
 
 const heroVariantCopy: Record<HeroVariant, { badge: string; caption: string }> = {
   signature: {
-    badge: "Ciencia, experiencia y cercania",
-    caption: "Fertilidad asistida con tecnologia avanzada, trato calido y acompanamiento personalizado.",
+    badge: "Ciencia, experiencia y cercanía",
+    caption: "Fertilidad asistida con tecnología avanzada, trato cálido y acompañamiento personalizado.",
   },
   editorial: {
-    badge: "Base medica solida",
-    caption: "Informacion clara para explicar especialidad, trayectoria y decisiones medicas con confianza.",
+    badge: "Base médica sólida",
+    caption: "Información clara para explicar especialidad, trayectoria y decisiones médicas con confianza.",
   },
   gallery: {
     badge: "Experiencia VIXI",
-    caption: "Un entorno moderno, sereno y acogedor para vivir cada etapa con mas tranquilidad.",
+    caption: "Un entorno moderno, sereno y acogedor para vivir cada etapa con más tranquilidad.",
   },
   process: {
     badge: "Ruta clara",
-    caption: "Cada etapa del tratamiento se explica con claridad, contexto clinico y acompanamiento cercano.",
+    caption: "Cada etapa del tratamiento se explica con claridad, contexto clínico y acompañamiento cercano.",
   },
   concierge: {
-    badge: "Acompanamiento coordinado",
-    caption: "Contacto directo, consulta en linea y orientacion cercana para facilitar cada siguiente paso.",
+    badge: "Acompañamiento coordinado",
+    caption: "Contacto directo, consulta en línea y orientación cercana para facilitar cada siguiente paso.",
   },
 };
 

@@ -7,18 +7,18 @@ export function ProcessPage() {
   return (
     <>
       <PageHero
-        description="El proceso inicia con una primera consulta, avanza hacia un diagnostico definitivo y permite definir el tratamiento adecuado para cada caso."
-        eyebrow="Como funciona tu tratamiento"
+        description="El proceso inicia con una primera consulta, avanza hacia un diagnóstico definitivo y permite definir el tratamiento adecuado para cada caso."
+        eyebrow="Cómo funciona tu tratamiento"
         image={{
           alt: "Paciente conversando con su especialista en una consulta privada y serena.",
           src: "https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=1200&q=80",
         }}
-        imageBadge="Recorrido clinico"
-        imageCaption="Consulta, diagnostico, definicion del factor y propuesta de tratamiento en una ruta clara y acompanada."
+        imageBadge="Recorrido clínico"
+        imageCaption="Consulta, diagnóstico, definición del factor y propuesta de tratamiento en una ruta clara y acompañada."
         stats={[
           { value: "1", label: "primera consulta estructurada" },
           { value: "6", label: "etapas explicadas con claridad" },
-          { value: "100%", label: "preparacion individualizada" },
+          { value: "100%", label: "preparación individualizada" },
         ]}
         variant="process"
         title="Un proceso explicado paso a paso para tomar decisiones con menos incertidumbre."
@@ -27,9 +27,9 @@ export function ProcessPage() {
 
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
-          description="Cada etapa ayuda a entender que estudios se requieren, cual es el factor que impide el embarazo y que sigue despues."
-          eyebrow="Ruta clinica"
-          title="Del diagnostico al procedimiento, sin zonas grises"
+          description="Cada etapa ayuda a entender qué estudios se requieren, cuál es el factor que impide el embarazo y qué sigue después."
+          eyebrow="Ruta clínica"
+          title="Del diagnóstico al procedimiento, sin zonas grises"
           variant="editorial"
         />
         <div className="mt-8 grid gap-5">
@@ -54,8 +54,8 @@ export function ProcessPage() {
       <section className="mx-auto max-w-[90vw] px-4 py-6 sm:px-6 lg:px-8">
         <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
           <SectionHeading
-            description="El tratamiento puede involucrar distintas especialidades medicas segun las necesidades clinicas de cada paciente."
-            eyebrow="Apoyo clinico"
+            description="El tratamiento puede involucrar distintas especialidades médicas según las necesidades clínicas de cada paciente."
+            eyebrow="Apoyo clínico"
             tone="light"
             title="Especialidades que sostienen el recorrido completo"
             variant="accent"
@@ -72,9 +72,9 @@ export function ProcessPage() {
       </section>
 
       <CTABanner
-        description="En consulta se explican costos, tiempos, estudios previos y preparacion de manera individualizada segun el procedimiento."
+        description="En consulta se explican costos, tiempos, estudios previos y preparación de manera individualizada según el procedimiento."
         eyebrow="Siguiente paso"
-        title="Un tratamiento claro empieza con una conversacion bien guiada."
+        title="Un tratamiento claro empieza con una conversación bien guiada."
       />
     </>
   );

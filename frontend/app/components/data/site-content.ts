@@ -42,15 +42,15 @@ export type TreatmentCategory = {
 export const siteName = "VIXI";
 export const siteTagline = "Ciencia y experiencia dando vida.";
 export const siteDescription =
-  "Clinica de fertilidad con un enfoque calido, personalizado y respaldado por tecnologia avanzada dentro de un hospital de prestigio.";
+  "Clínica de fertilidad con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
 
 export const siteNavigation: NavItem[] = [
   { label: "Inicio", to: "/" },
-  { label: "Quienes somos", to: "/quienes-somos" },
+  { label: "Quiénes somos", to: "/quienes-somos" },
   { label: "Experiencia", to: "/nuestra-experiencia" },
   { label: "Tratamientos", to: "/tratamientos" },
   { label: "Proceso", to: "/como-funciona-tu-tratamiento" },
-  { label: "Foraneos", to: "/pacientes-foraneos" },
+  { label: "Foráneos", to: "/pacientes-foraneos" },
   { label: "FAQ", to: "/preguntas-frecuentes" },
   { label: "Contacto", to: "/contacto" },
 ];
@@ -63,12 +63,12 @@ export const contactDetails = {
   email: "pacientes.vixi@gmail.com",
   emailHref: "mailto:pacientes.vixi@gmail.com",
   hours: "Lunes a viernes · 8:30 a 18:00 h",
-  address: "Av. Cerro Gordo, Lomas del Campestre, 37150 Leon de los Aldama, Guanajuato",
+  address: "Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato",
 };
 
 export const heroImage: ImageAsset = {
   src: "/heroes/home-hero-bg.avif",
-  alt: "Especialista en consulta de fertilidad atendiendo a una paciente en un entorno clinico elegante.",
+  alt: "Especialista en consulta de fertilidad atendiendo a una paciente en un entorno clínico elegante.",
 };
 
 export const galleryImages: ImageAsset[] = [
@@ -78,7 +78,7 @@ export const galleryImages: ImageAsset[] = [
   },
   {
     src: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1000&q=80",
-    alt: "Equipo medico moderno y profesional.",
+    alt: "Equipo médico moderno y profesional.",
   },
   {
     src: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1000&q=80",
@@ -86,7 +86,7 @@ export const galleryImages: ImageAsset[] = [
   },
   {
     src: "/gallery/consultation_empathy.png",
-    alt: "Consulta medica calida y profesional enfocada en el trato humano.",
+    alt: "Consulta médica cálida y profesional enfocada en el trato humano.",
   },
 ];
 
@@ -106,29 +106,29 @@ export const experienceImages: ImageAsset[] = [
 ];
 
 export const homeStats: Stat[] = [
-  { value: "12 anos", label: "de experiencia clinica" },
+  { value: "12 años", label: "de experiencia clínica" },
   { value: "1 equipo", label: "multidisciplinario para cada caso" },
   { value: "Hospital", label: "de prestigio como respaldo" },
 ];
 
 export const homeActions: Action[] = [
-  { label: "Agendar valoracion", to: contactDetails.whatsappHref, external: true },
+  { label: "Agendar valoración", to: contactDetails.whatsappHref, external: true },
   { label: "Conocer tratamientos", to: "/tratamientos" },
 ];
 
 export const valueProposition = [
   {
-    title: "Fertilidad asistida con criterio medico",
+    title: "Fertilidad asistida con criterio médico",
     description:
-      "Valoramos cada historia con un plan clinico claro, humano y disenado para la etapa reproductiva de cada paciente.",
+      "Valoramos cada historia con un plan clínico claro, humano y diseñado para la etapa reproductiva de cada paciente.",
   },
   {
-    title: "Tecnologia avanzada con acompanamiento cercano",
+    title: "Tecnología avanzada con acompañamiento cercano",
     description:
-      "La experiencia de VIXI combina diagnostico, procedimientos y seguimiento en un ambiente sereno y altamente profesional.",
+      "La experiencia de VIXI combina diagnóstico, procedimientos y seguimiento en un ambiente sereno y altamente profesional.",
   },
   {
-    title: "Atencion para distintos modelos de familia",
+    title: "Atención para distintos modelos de familia",
     description:
       "Atendemos parejas, maternidad o paternidad independiente y tratamientos que requieren decisiones personalizadas.",
   },
@@ -137,136 +137,136 @@ export const valueProposition = [
 export const brandPillars = [
   {
     title: "Ciencia",
-    description: "Diagnostico preciso, protocolos individualizados y respaldo hospitalario.",
-    image: { src: "/pillars/ciencia.avif", alt: "Laboratorio medico moderno y analisis clinico" }
+    description: "Diagnóstico preciso, protocolos individualizados y respaldo hospitalario.",
+    image: { src: "/pillars/ciencia.avif", alt: "Laboratorio médico moderno y análisis clínico" }
   },
   {
     title: "Experiencia",
-    description: "Equipo con formacion en biologia de la reproduccion humana y cirugia de minima invasion.",
-    image: { src: "/pillars/experiencia.avif", alt: "Equipo de especialistas medicos profesionales y experimentados" }
+    description: "Equipo con formación en biología de la reproducción humana y cirugía de mínima invasión.",
+    image: { src: "/pillars/experiencia.avif", alt: "Equipo de especialistas médicos profesionales y experimentados" }
   },
   {
-    title: "Cercania",
-    description: "Un proceso emocionalmente acompanado, claro y respetuoso en cada etapa.",
-    image: { src: "/pillars/cercania.avif", alt: "Consulta medica calida, empatica y de confianza" }
+    title: "Cercanía",
+    description: "Un proceso emocionalmente acompañado, claro y respetuoso en cada etapa.",
+    image: { src: "/pillars/cercania.avif", alt: "Consulta médica cálida, empática y de confianza" }
   },
 ];
 
 export const differentiator =
-  "VIXI es el unico centro de fertilizacion asistida de la region ubicado dentro de un hospital de prestigio.";
+  "VIXI es el único centro de fertilización asistida de la región ubicado dentro de un hospital de prestigio.";
 
 export const audienceCards = [
   {
     title: "Parejas que llevan tiempo buscando embarazo",
     description:
-      "Procesos clinicos claros para quienes necesitan una solucion segura, moderna y cercana.",
+      "Procesos clínicos claros para quienes necesitan una solución segura, moderna y cercana.",
   },
   {
     title: "Familias con hijos que desean crecer",
     description:
-      "Acompanamiento calido para pacientes que quieren tener un hijo mas sin perder confianza en el proceso.",
+      "Acompañamiento cálido para pacientes que quieren tener un hijo más sin perder confianza en el proceso.",
   },
   {
-    title: "Pacientes de +45 anos",
+    title: "Pacientes de +45 años",
     description:
-      "Alternativas personalizadas para quienes buscan opciones reproductivas en etapas mas avanzadas.",
+      "Alternativas personalizadas para quienes buscan opciones reproductivas en etapas más avanzadas.",
   },
 ];
 
 export const experienceHighlights = [
   {
-    title: "Atencion integral",
-    description: "Atencion integral desde el diagnostico hasta el embarazo y el seguimiento.",
+    title: "Atención integral",
+    description: "Atención integral desde el diagnóstico hasta el embarazo y el seguimiento.",
   },
   {
     title: "Ambiente moderno",
     description: "Ambiente moderno, minimalista y tranquilo con calidez humana.",
   },
   {
-    title: "Acompanamiento personalizado",
-    description: "Acompanamiento personalizado en cada decision clinica y emocional.",
+    title: "Acompañamiento personalizado",
+    description: "Acompañamiento personalizado en cada decisión clínica y emocional.",
   },
 ];
 
 export const teamProfiles: DoctorProfile[] = [
   {
-    name: "Dra. Liliana Elizabeth Hernandez Lara",
-    role: "Ginecologia, obstetricia y biologia de la reproduccion humana",
+    name: "Dra. Liliana Elizabeth Hernández Lara",
+    role: "Ginecología, obstetricia y biología de la reproducción humana",
     specialties: [
-      "Ginecologia y obstetricia",
-      "Biologia de la reproduccion humana",
-      "Cirugia de minima invasion",
+      "Ginecología y obstetricia",
+      "Biología de la reproducción humana",
+      "Cirugía de mínima invasión",
     ],
     education: [
-      "Medicina · Universidad de San Luis Potosi",
-      "Ginecologia y obstetricia · Universidad de Guanajuato",
-      "Biologia de la reproduccion humana · Universidad de Valencia",
+      "Medicina · Universidad de San Luis Potosí",
+      "Ginecología y obstetricia · Universidad de Guanajuato",
+      "Biología de la reproducción humana · Universidad de Valencia",
     ],
     summary:
-      "Enfoca cada tratamiento desde una perspectiva medica rigurosa con sensibilidad por el contexto emocional de cada paciente.",
+      "Enfoca cada tratamiento desde una perspectiva médica rigurosa con sensibilidad por el contexto emocional de cada paciente.",
     image: {
       src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80",
-      alt: "Medica especialista sonriendo en un consultorio contemporaneo.",
+      alt: "Médica especialista sonriendo en un consultorio contemporáneo.",
     },
   },
   {
     name: "Dr. Francisco Ulises Estrada Ontiveros",
-    role: "Ginecologia, reproduccion humana y endoscopia ginecologica",
+    role: "Ginecología, reproducción humana y endoscopia ginecológica",
     specialties: [
-      "Ginecologia y obstetricia",
-      "Biologia de la reproduccion humana",
-      "Cirugia de minima invasion",
+      "Ginecología y obstetricia",
+      "Biología de la reproducción humana",
+      "Cirugía de mínima invasión",
     ],
     education: [
-      "Medicina y ginecologia · Universidad de Guanajuato",
-      "Biologia de la reproduccion humana · Universidad de Valencia",
-      "Endoscopia ginecologica · Universidad Catolica de Valencia",
+      "Medicina y ginecología · Universidad de Guanajuato",
+      "Biología de la reproducción humana · Universidad de Valencia",
+      "Endoscopia ginecológica · Universidad Católica de Valencia",
     ],
     summary:
-      "Integra experiencia quirurgica y fertilidad avanzada para construir estrategias individualizadas y realistas.",
+      "Integra experiencia quirúrgica y fertilidad avanzada para construir estrategias individualizadas y realistas.",
     image: {
       src: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=900&q=80",
-      alt: "Especialista medico en un pasillo clinico con luz natural.",
+      alt: "Especialista médico en un pasillo clínico con luz natural.",
     },
   },
 ];
 
 export const multidisciplinaryTeam = [
   {
-    title: "Ginecologia",
-    description: "Valoracion y manejo del sistema reproductivo femenino como base del proceso clinico.",
+    title: "Ginecología",
+    description: "Valoración y manejo del sistema reproductivo femenino como base del proceso clínico.",
   },
   {
-    title: "Biologia de la reproduccion",
-    description: "Especialidad central de VIXI, enfocada en el diagnostico y tratamiento del factor infertil.",
+    title: "Biología de la reproducción",
+    description: "Especialidad central de VIXI, enfocada en el diagnóstico y tratamiento del factor infértil.",
   },
   {
-    title: "Endocrinologia",
-    description: "Regulacion hormonal que impacta directamente en la ovulacion y la respuesta al tratamiento.",
+    title: "Endocrinología",
+    description: "Regulación hormonal que impacta directamente en la ovulación y la respuesta al tratamiento.",
   },
   {
-    title: "Andrologia",
-    description: "Estudio y tratamiento del factor masculino, incluyendo calidad y funcion del esperma.",
+    title: "Andrología",
+    description: "Estudio y tratamiento del factor masculino, incluyendo calidad y función del esperma.",
   },
   {
-    title: "Medicina materno fetal",
+    title: "Medicina materno-fetal",
     description: "Seguimiento especializado de embarazos de alto riesgo surgidos tras tratamiento de fertilidad.",
   },
   {
-    title: "Genetica",
-    description: "Deteccion de alteraciones cromosomicas que pueden afectar la viabilidad del embrion.",
+    title: "Genética",
+    description: "Detección de alteraciones cromosómicas que pueden afectar la viabilidad del embrión.",
   },
   {
-    title: "Cirugia de minima invasion",
-    description: "Procedimientos laparoscopicos e histeroscopicos con menor recuperacion y mayor precision.",
+    title: "Cirugía de mínima invasión",
+    description: "Procedimientos laparoscópicos e histeroscópicos con menor recuperación y mayor precisión.",
   },
 ];
 
 export const treatmentCategories: TreatmentCategory[] = [
   {
-    title: "Evaluacion y diagnostico",
+    title: "Evaluación y diagnóstico",
     description:
-      "El proceso inicia con valoracion clinica completa para entender el origen del factor que dificulta el embarazo.",
+      "El proceso inicia con valoración clínica completa para entender el origen del factor que dificulta el embarazo.",
     items: [
       "Consulta de fertilidad",
       "Estudios hormonales",
@@ -275,31 +275,31 @@ export const treatmentCategories: TreatmentCategory[] = [
     ],
   },
   {
-    title: "Reproduccion asistida",
+    title: "Reproducción asistida",
     description:
-      "Opciones de baja y alta complejidad seleccionadas segun diagnostico, edad reproductiva y objetivos del tratamiento.",
+      "Opciones de baja y alta complejidad seleccionadas según diagnóstico, edad reproductiva y objetivos del tratamiento.",
     items: [
-      "Inseminacion intrauterina (IIU)",
-      "Fertilizacion in vitro (FIV)",
+      "Inseminación intrauterina (IIU)",
+      "Fertilización in vitro (FIV)",
       "ICSI",
     ],
   },
   {
-    title: "Preservacion de fertilidad",
+    title: "Preservación de fertilidad",
     description:
-      "Protocolos para preservar ovulos, esperma o embriones cuando el tiempo reproductivo requiere planeacion.",
-    items: ["Preservacion de fertilidad (ovulos, esperma y embriones)"],
+      "Protocolos para preservar óvulos, esperma o embriones cuando el tiempo reproductivo requiere planeación.",
+    items: ["Preservación de fertilidad (óvulos, esperma y embriones)"],
   },
   {
-    title: "Donacion",
+    title: "Donación",
     description:
-      "Alternativas clinicas para casos que requieren apoyo reproductivo complementario bajo valoracion medica.",
-    items: ["Donacion de ovulos", "Donacion de esperma"],
+      "Alternativas clínicas para casos que requieren apoyo reproductivo complementario bajo valoración médica.",
+    items: ["Donación de óvulos", "Donación de esperma"],
   },
   {
     title: "Modelos de familia",
     description:
-      "Acompanamiento respetuoso para pacientes y parejas que buscan construir familia desde distintos contextos.",
+      "Acompañamiento respetuoso para pacientes y parejas que buscan construir familia desde distintos contextos.",
     items: [
       "Tratamientos para parejas del mismo sexo",
       "Tratamientos para maternidad o paternidad independiente",
@@ -312,25 +312,25 @@ export const treatmentJourney = [
     step: "01",
     title: "Primera consulta",
     description:
-      "La valoracion inicia como una consulta clinica completa con tu especialista tratante.",
+      "La valoración inicia como una consulta clínica completa con tu especialista tratante.",
   },
   {
     step: "02",
-    title: "Diagnostico definitivo",
+    title: "Diagnóstico definitivo",
     description:
-      "Se integran antecedentes, estudios y hallazgos para entender con precision el caso.",
+      "Se integran antecedentes, estudios y hallazgos para entender con precisión el caso.",
   },
   {
     step: "03",
-    title: "Definicion del factor",
+    title: "Definición del factor",
     description:
-      "Identificamos que elemento esta interfiriendo con el embarazo para tomar decisiones con fundamento.",
+      "Identificamos qué elemento está interfiriendo con el embarazo para tomar decisiones con fundamento.",
   },
   {
     step: "04",
     title: "Propuesta de tratamiento",
     description:
-      "El plan se individualiza segun edad, diagnostico, antecedentes y objetivos reproductivos.",
+      "El plan se individualiza según edad, diagnóstico, antecedentes y objetivos reproductivos.",
   },
   {
     step: "05",
@@ -340,60 +340,60 @@ export const treatmentJourney = [
   },
   {
     step: "06",
-    title: "Preparacion y seguimiento",
+    title: "Preparación y seguimiento",
     description:
-      "Costos, tiempos y preparacion se explican de forma personalizada segun el procedimiento elegido.",
+      "Costos, tiempos y preparación se explican de forma personalizada según el procedimiento elegido.",
   },
 ];
 
 export const outOfTownHighlights = [
   {
-    title: "Valoracion inicial en linea",
+    title: "Valoración inicial en línea",
     description:
       "La consulta virtual permite revisar antecedentes y preparar estudios antes de tu visita presencial.",
   },
   {
-    title: "Planeacion de tiempos",
+    title: "Planeación de tiempos",
     description:
-      "Organizamos el calendario clinico para concentrar valoraciones y procedimientos cuando el caso lo permite.",
+      "Organizamos el calendario clínico para concentrar valoraciones y procedimientos cuando el caso lo permite.",
   },
   {
     title: "Seguimiento a distancia",
     description:
-      "El acompanamiento continua por canales remotos para dar claridad entre citas y resolver dudas puntuales.",
+      "El acompañamiento continúa por canales remotos para dar claridad entre citas y resolver dudas puntuales.",
   },
 ];
 
 export const faqItems: FAQItem[] = [
   {
-    question: "Cuanto cuesta un tratamiento de fertilidad?",
+    question: "¿Cuánto cuesta un tratamiento de fertilidad?",
     answer:
-      "No existe un costo unico. El presupuesto depende del diagnostico, estudios necesarios, medicamentos y procedimiento indicado. En consulta se explica con claridad que incluye cada etapa.",
+      "No existe un costo único. El presupuesto depende del diagnóstico, estudios necesarios, medicamentos y procedimiento indicado. En consulta se explica con claridad qué incluye cada etapa.",
   },
   {
-    question: "Cuanto dura cada proceso?",
+    question: "¿Cuánto dura cada proceso?",
     answer:
-      "El tiempo cambia segun el tipo de tratamiento. Algunas valoraciones se resuelven en pocas semanas y otros protocolos requieren varias fases. El plan se agenda con tiempos realistas desde el inicio.",
+      "El tiempo cambia según el tipo de tratamiento. Algunas valoraciones se resuelven en pocas semanas y otros protocolos requieren varias fases. El plan se agenda con tiempos realistas desde el inicio.",
   },
   {
-    question: "Que probabilidad de exito tiene mi caso?",
+    question: "¿Qué probabilidad de éxito tiene mi caso?",
     answer:
-      "La probabilidad depende de factores como edad, reserva ovarica, diagnostico y antecedentes. En VIXI se revisa cada caso de manera individual para hablar con expectativas medicas responsables.",
+      "La probabilidad depende de factores como edad, reserva ovárica, diagnóstico y antecedentes. En VIXI se revisa cada caso de manera individual para hablar con expectativas médicas responsables.",
   },
   {
-    question: "Atienden pacientes de otros estados o paises?",
+    question: "¿Atienden pacientes de otros estados o países?",
     answer:
-      "Si. VIXI contempla atencion para pacientes foraneos con orientacion previa, coordinacion de visitas y seguimiento remoto cuando es pertinente.",
+      "Sí. VIXI contempla atención para pacientes foráneos con orientación previa, coordinación de visitas y seguimiento remoto cuando es pertinente.",
   },
   {
-    question: "Puedo iniciar con consulta en linea?",
+    question: "¿Puedo iniciar con consulta en línea?",
     answer:
-      "Si. La consulta en linea puede servir para una valoracion inicial, revision de estudios previos y planeacion del siguiente paso clinico.",
+      "Sí. La consulta en línea puede servir para una valoración inicial, revisión de estudios previos y planeación del siguiente paso clínico.",
   },
   {
-    question: "Atienden distintos modelos de familia?",
+    question: "¿Atienden distintos modelos de familia?",
     answer:
-      "Si. VIXI acompana de forma inclusiva a parejas y pacientes que buscan maternidad o paternidad desde contextos y necesidades diferentes.",
+      "Sí. VIXI acompaña de forma inclusiva a parejas y pacientes que buscan maternidad o paternidad desde contextos y necesidades diferentes.",
   },
 ];
 
@@ -402,7 +402,7 @@ export const footerLinks = [
     title: "Explora",
     links: [
       { label: "Inicio", to: "/" },
-      { label: "Quienes somos", to: "/quienes-somos" },
+      { label: "Quiénes somos", to: "/quienes-somos" },
       { label: "Experiencia", to: "/nuestra-experiencia" },
       { label: "Tratamientos", to: "/tratamientos" },
     ],
@@ -411,7 +411,7 @@ export const footerLinks = [
     title: "Servicios",
     links: [
       { label: "Proceso", to: "/como-funciona-tu-tratamiento" },
-      { label: "Foraneos", to: "/pacientes-foraneos" },
+      { label: "Foráneos", to: "/pacientes-foraneos" },
       { label: "FAQ", to: "/preguntas-frecuentes" },
       { label: "Contacto", to: "/contacto" },
     ],

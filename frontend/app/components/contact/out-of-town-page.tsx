@@ -4,8 +4,8 @@ import { PageHero } from "~/components/ui/page-hero";
 import { SectionHeading } from "~/components/ui/section-heading";
 
 const supportMoments = [
-  "Orientacion previa sobre estudios, tiempos y preparacion.",
-  "Planeacion de visitas para pacientes de otros estados o paises.",
+  "Orientación previa sobre estudios, tiempos y preparación.",
+  "Planeación de visitas para pacientes de otros estados o países.",
   "Seguimiento remoto para resolver dudas entre citas.",
 ];
 
@@ -13,28 +13,28 @@ export function OutOfTownPage() {
   return (
     <>
       <PageHero
-        description="VIXI atiende pacientes de otros estados y paises, con orientacion previa, consulta en linea y seguimiento a distancia cuando es posible."
-        eyebrow="Pacientes foraneos"
+        description="VIXI atiende pacientes de otros estados y países, con orientación previa, consulta en línea y seguimiento a distancia cuando es posible."
+        eyebrow="Pacientes foráneos"
         image={{
-          alt: "Paciente revisando agenda de viaje y consulta medica.",
+          alt: "Paciente revisando agenda de viaje y consulta médica.",
           src: "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=80",
         }}
-        imageBadge="Logistica cuidada"
-        imageCaption="Acompanamiento claro para organizar consultas, estudios y tiempos de viaje con mayor tranquilidad."
+        imageBadge="Logística cuidada"
+        imageCaption="Acompañamiento claro para organizar consultas, estudios y tiempos de viaje con mayor tranquilidad."
         stats={[
-          { value: "Si", label: "atencion a otros estados o paises" },
-          { value: "En linea", label: "valoracion y seguimiento posible" },
-          { value: "Coordinado", label: "calendario clinico por etapas" },
+          { value: "Sí", label: "atención a otros estados o países" },
+          { value: "En línea", label: "valoración y seguimiento posible" },
+          { value: "Coordinado", label: "calendario clínico por etapas" },
         ]}
         variant="gallery"
-        title="Cuando viajas para atender tu fertilidad, la claridad logistica tambien importa."
+        title="Cuando viajas para atender tu fertilidad, la claridad logística también importa."
         height="screen"
       />
 
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
-          description="La atencion para pacientes foraneos busca dar claridad antes del viaje y acompanamiento durante cada etapa del tratamiento."
-          eyebrow="Acompanamiento"
+          description="La atención para pacientes foráneos busca dar claridad antes del viaje y acompañamiento durante cada etapa del tratamiento."
+          eyebrow="Acompañamiento"
           title="Un proceso pensado para pacientes que no viven cerca"
           variant="accent"
         />
@@ -54,9 +54,9 @@ export function OutOfTownPage() {
       <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="rounded-[32px] bg-accent-100 p-8 shadow-[0_20px_50px_rgba(244,166,183,0.22)]">
           <SectionHeading
-            description="Consulta previa, planeacion de visitas y seguimiento remoto ayudan a que el tratamiento sea mas ordenado para quienes viajan."
+            description="Consulta previa, planeación de visitas y seguimiento remoto ayudan a que el tratamiento sea más ordenado para quienes viajan."
             eyebrow="Lo que resolvemos"
-            title="Menos friccion logistica, mas foco en tu tratamiento"
+            title="Menos fricción logística, más foco en tu tratamiento"
             variant="highlight"
           />
         </div>
@@ -77,9 +77,9 @@ export function OutOfTownPage() {
       </section>
 
       <CTABanner
-        description="Si vienes de otra ciudad, podemos ayudarte a organizar el siguiente paso clinico con la mayor claridad posible desde el inicio."
+        description="Si vienes de otra ciudad, podemos ayudarte a organizar el siguiente paso clínico con la mayor claridad posible desde el inicio."
         eyebrow="Consulta previa"
-        title="Viajar para tu tratamiento no deberia sentirse desordenado."
+        title="Viajar para tu tratamiento no debería sentirse desordenado."
       />
     </>
   );

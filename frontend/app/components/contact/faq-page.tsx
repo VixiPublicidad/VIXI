@@ -7,29 +7,29 @@ export function FAQPage() {
   return (
     <>
       <PageHero
-        description="Las preguntas frecuentes concentran inquietudes previas a la valoracion: costos, tiempos, probabilidad de exito y acompanamiento remoto."
+        description="Las preguntas frecuentes concentran inquietudes previas a la valoración: costos, tiempos, probabilidad de éxito y acompañamiento remoto."
         eyebrow="Preguntas frecuentes"
         image={{
-          alt: "Recepcion clinica con paciente resolviendo dudas antes de consulta.",
+          alt: "Recepción clínica con paciente resolviendo dudas antes de consulta.",
           src: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=1200&q=80",
         }}
-        imageBadge="Informacion esencial"
-        imageCaption="Respuestas claras para entender costos, tiempos, probabilidades y opciones de atencion."
+        imageBadge="Información esencial"
+        imageCaption="Respuestas claras para entender costos, tiempos, probabilidades y opciones de atención."
         stats={[
           { value: "Costos", label: "explicados por etapa" },
-          { value: "Tiempos", label: "segun cada procedimiento" },
-          { value: "Expectativas", label: "desde criterios medicos responsables" },
+          { value: "Tiempos", label: "según cada procedimiento" },
+          { value: "Expectativas", label: "desde criterios médicos responsables" },
         ]}
         variant="editorial"
-        title="Respuestas claras para las dudas mas comunes antes de empezar."
+        title="Respuestas claras para las dudas más comunes antes de empezar."
       />
 
       <section className="mx-auto max-w-[80vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
           align="center"
-          description="Aqui resolvemos dudas frecuentes con informacion util, cercana y medicamente responsable para una mejor decision."
+          description="Aquí resolvemos dudas frecuentes con información útil, cercana y médicamente responsable para una mejor decisión."
           eyebrow="FAQ"
-          title="Informacion util sin ruido ni sobrepromesas"
+          title="Información útil sin ruido ni sobrepromesas"
           variant="minimal"
         />
         <div className="mt-8 grid gap-4">
@@ -51,9 +51,9 @@ export function FAQPage() {
       </section>
 
       <CTABanner
-        description="Si tu duda requiere contexto medico, agenda una valoracion para recibir una respuesta ajustada a tu caso."
+        description="Si tu duda requiere contexto médico, agenda una valoración para recibir una respuesta ajustada a tu caso."
         eyebrow="Resuelve tus dudas"
-        title="La mejor respuesta siempre parte de tu diagnostico."
+        title="La mejor respuesta siempre parte de tu diagnóstico."
       />
     </>
   );

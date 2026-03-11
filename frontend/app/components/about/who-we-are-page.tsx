@@ -12,26 +12,26 @@ import { ImageCard } from "~/components/ui/image-card";
 import { PageHero } from "~/components/ui/page-hero";
 import { SectionHeading } from "~/components/ui/section-heading";
 
-const values = ["Confiable", "Segura", "Vanguardista", "Inclusiva", "Calida"];
-const subSpecialties = ["Cirugia de minima invasion", "Endocrinologia", "Andrologia"];
+const values = ["Confiable", "Segura", "Vanguardista", "Inclusiva", "Cálida"];
+const subSpecialties = ["Cirugía de mínima invasión", "Endocrinología", "Andrología"];
 
 export function WhoWeArePage() {
   return (
     <>
       <PageHero
         actions={homeActions}
-        description="VIXI es una clinica de fertilidad especializada en biologia de la reproduccion humana, con un enfoque calido, personalizado y respaldado por tecnologia avanzada."
-        eyebrow="Quienes somos"
+        description="VIXI es una clínica de fertilidad especializada en biología de la reproducción humana, con un enfoque cálido, personalizado y respaldado por tecnología avanzada."
+        eyebrow="Quiénes somos"
         image={galleryImages[1]}
         imageBadge="Base institucional"
-        imageCaption="Especialidad medica, experiencia clinica y un entorno hospitalario confiable para acompanar cada decision."
+        imageCaption="Especialidad médica, experiencia clínica y un entorno hospitalario confiable para acompañar cada decisión."
         stats={[
-          { value: "Clinica", label: "especializada en fertilidad" },
-          { value: "12 anos", label: "de operacion clinica" },
+          { value: "Clínica", label: "especializada en fertilidad" },
+          { value: "12 años", label: "de operación clínica" },
           { value: "Hospital", label: "como respaldo institucional" },
         ]}
         variant="editorial"
-        title="Una clinica que combina rigor medico, sensibilidad humana y tecnologia avanzada."
+        title="Una clínica que combina rigor médico, sensibilidad humana y tecnología avanzada."
         height="screen"
       />
 
@@ -39,9 +39,9 @@ export function WhoWeArePage() {
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)]">
             <SectionHeading
-              description="Clinica de fertilidad con especialidad en biologia de la reproduccion humana y subespecialidades que fortalecen el abordaje integral."
-              eyebrow="Perfil clinico"
-              title="Biologia de la reproduccion humana con vision integral"
+              description="Clínica de fertilidad con especialidad en biología de la reproducción humana y subespecialidades que fortalecen el abordaje integral."
+              eyebrow="Perfil clínico"
+              title="Biología de la reproducción humana con visión integral"
               variant="editorial"
             />
             <div className="mt-8 grid gap-4">
@@ -69,9 +69,9 @@ export function WhoWeArePage() {
       <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div>
           <SectionHeading
-            description="Cada caso se atiende con un enfoque personalizado, calido y humano, entendiendo que la fertilidad es una decision emocional y medica."
-            eyebrow="Filosofia de atencion"
-            title="Tratamientos personalizados para una decision profundamente humana"
+            description="Cada caso se atiende con un enfoque personalizado, cálido y humano, entendiendo que la fertilidad es una decisión emocional y médica."
+            eyebrow="Filosofía de atención"
+            title="Tratamientos personalizados para una decisión profundamente humana"
             variant="accent"
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -96,9 +96,9 @@ export function WhoWeArePage() {
 
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
-          description="El equipo medico combina formacion especializada en fertilidad, ginecologia y cirugia de minima invasion."
-          eyebrow="Equipo medico"
-          title="Perfiles clinicos con credenciales claras y trato humano"
+          description="El equipo médico combina formación especializada en fertilidad, ginecología y cirugía de mínima invasión."
+          eyebrow="Equipo médico"
+          title="Perfiles clínicos con credenciales claras y trato humano"
           variant="editorial"
         />
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -148,7 +148,7 @@ export function WhoWeArePage() {
 
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
-          description="Cada caso puede apoyarse en distintas especialidades para construir un tratamiento mas preciso y completo."
+          description="Cada caso puede apoyarse en distintas especialidades para construir un tratamiento más preciso y completo."
           eyebrow="Equipo multidisciplinario"
           title="Especialidades que trabajan en conjunto, no en silos"
           variant="minimal"
@@ -182,9 +182,9 @@ export function WhoWeArePage() {
       </section>
 
       <CTABanner
-        description="Si quieres conocer el enfoque completo de VIXI, agenda una consulta y revisa con el equipo cual es el mejor siguiente paso para tu caso."
+        description="Si quieres conocer el enfoque completo de VIXI, agenda una consulta y revisa con el equipo cuál es el mejor siguiente paso para tu caso."
         eyebrow="Conoce VIXI"
-        title="Una clinica especializada, calida y preparada para acompanarte."
+        title="Una clínica especializada, cálida y preparada para acompañarte."
       />
     </>
   );

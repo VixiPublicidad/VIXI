@@ -7,8 +7,8 @@ import { SectionHeading } from "~/components/ui/section-heading";
 
 const principles = [
   {
-    title: "Atencion integral",
-    description: "Desde el diagnostico hasta el embarazo y mas alla, el acompanamiento se mantiene durante todo el proceso.",
+    title: "Atención integral",
+    description: "Desde el diagnóstico hasta el embarazo y más allá, el acompañamiento se mantiene durante todo el proceso.",
   },
   {
     title: "Ambiente moderno y tranquilo",
@@ -16,7 +16,7 @@ const principles = [
   },
   {
     title: "Enfoque personalizado",
-    description: "Cada paciente debe sentir que su tratamiento es unico y disenado para su historia clinica y emocional.",
+    description: "Cada paciente debe sentir que su tratamiento es único y diseñado para su historia clínica y emocional.",
   },
 ];
 
@@ -24,27 +24,27 @@ export function ExperiencePage() {
   return (
     <>
       <PageHero
-        description="La experiencia en VIXI combina tecnologia avanzada con una sensacion acogedora y relajante, para acompanarte con claridad en cada etapa."
+        description="La experiencia en VIXI combina tecnología avanzada con una sensación acogedora y relajante, para acompañarte con claridad en cada etapa."
         eyebrow="Nuestra experiencia"
         image={galleryImages[2]}
         imageBadge="Experiencia sensorial"
-        imageCaption="Un ambiente moderno, tranquilo y humano que acompana decisiones medicas importantes."
+        imageCaption="Un ambiente moderno, tranquilo y humano que acompaña decisiones médicas importantes."
         stats={[
-          { value: "Integral", label: "desde diagnostico hasta seguimiento" },
-          { value: "Serena", label: "tecnologia avanzada con calma" },
-          { value: "Personal", label: "acompanamiento en cada etapa" },
+          { value: "Integral", label: "desde diagnóstico hasta seguimiento" },
+          { value: "Serena", label: "tecnología avanzada con calma" },
+          { value: "Personal", label: "acompañamiento en cada etapa" },
         ]}
         variant="process"
-        title="Tecnologia avanzada con una sensacion acogedora y relajante."
+        title="Tecnología avanzada con una sensación acogedora y relajante."
         height="screen"
       />
 
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
           align="center"
-          description="Atencion integral, trato cercano y una sensacion de calma que ayuda a vivir el proceso con mayor confianza."
+          description="Atención integral, trato cercano y una sensación de calma que ayuda a vivir el proceso con mayor confianza."
           eyebrow="Lo que se siente"
-          title="Una clinica minimalista con un toque calido y profundamente humano"
+          title="Una clínica minimalista con un toque cálido y profundamente humano"
           variant="highlight"
         />
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -73,10 +73,10 @@ export function ExperiencePage() {
 
         <div className="rounded-[44px] bg-brand-950 p-10 text-white shadow-[0_30px_90px_rgba(11,31,59,0.22)] lg:p-14">
           <SectionHeading
-            description="Cada paciente merece sentir que su tratamiento es unico, personalizado y acompanado con cercania."
-            eyebrow="Acompanamiento"
+            description="Cada paciente merece sentir que su tratamiento es único, personalizado y acompañado con cercanía."
+            eyebrow="Acompañamiento"
             tone="light"
-            title="Fertilizacion empatica, no comunicacion fria"
+            title="Fertilización empática, no comunicación fría"
             variant="accent"
           />
           <div className="mt-8 grid gap-4">
@@ -94,7 +94,7 @@ export function ExperiencePage() {
       </section>
 
       <CTABanner
-        description="La experiencia empieza desde la primera conversacion. Agenda una valoracion para conocer el proceso completo en VIXI."
+        description="La experiencia empieza desde la primera conversación. Agenda una valoración para conocer el proceso completo en VIXI."
         eyebrow="Primera consulta"
         title="Un espacio moderno y sereno para tomar decisiones con claridad."
       />

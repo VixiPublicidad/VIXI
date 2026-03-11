@@ -24,21 +24,21 @@ export function HomePage() {
     <>
       <PageHero
         actions={homeActions}
-        description="VIXI es una clinica especializada en fertilizacion asistida que combina tecnologia avanzada, trato cercano y decisiones clinicas individualizadas dentro de un entorno hospitalario de prestigio."
-        eyebrow="Clinica de fertilidad"
+        description="VIXI es una clínica especializada en fertilización asistida que combina tecnología avanzada, trato cercano y decisiones clínicas individualizadas dentro de un entorno hospitalario de prestigio."
+        eyebrow="Clínica de fertilidad"
         image={heroImage}
         imageBadge="Fertilidad con criterio"
         imageCaption="Medicina avanzada, conversaciones claras y una experiencia pensada para sostener decisiones complejas."
         stats={homeStats}
         variant="signature"
-        title="La fertilidad es mas que un tratamiento."
-        subtitle="Es una decision emocional, medica y profundamente humana."
+        title="La fertilidad es más que un tratamiento."
+        subtitle="Es una decisión emocional, médica y profundamente humana."
         height="screen"
       />
 
       <section className="mx-auto max-w-[90vw] py-16 sm:px-6 lg:px-8">
         <SectionHeading
-          description="Fertilizacion asistida, enfoque personalizado, tecnologia avanzada y tratamientos de alta y baja complejidad."
+          description="Fertilización asistida, enfoque personalizado, tecnología avanzada y tratamientos de alta y baja complejidad."
           eyebrow="Propuesta de valor"
           title="Tres razones por las que VIXI se siente distinta desde la primera consulta"
           variant="accent"
@@ -73,9 +73,9 @@ export function HomePage() {
       <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-200">Pilares de marca</p>
-          <h2 className="mt-4 font-display text-4xl leading-none">Ciencia, experiencia y cercania en equilibrio.</h2>
+          <h2 className="mt-4 font-display text-4xl leading-none">Ciencia, experiencia y cercanía en equilibrio.</h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-white/76">
-            Estos pilares definen la atencion de VIXI: rigor medico, experiencia clinica y un trato humano y cercano en cada etapa.
+            Estos pilares definen la atención de VIXI: rigor médico, experiencia clínica y un trato humano y cercano en cada etapa.
           </p>
           <div className="mt-8 grid gap-4">
             {brandPillars.map((pillar) => (
@@ -94,7 +94,7 @@ export function HomePage() {
           <article className="rounded-[32px] border border-brand-950/10 bg-white/90 p-7 shadow-[0_18px_50px_rgba(11,31,59,0.08)] md:col-span-3">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-700">Diferenciador</p>
             <h3 className="mt-3 text-3xl font-semibold text-brand-950">
-              Atencion especializada dentro de un hospital.
+              Atención especializada dentro de un hospital.
             </h3>
             <p className="mt-4 max-w-2xl text-base leading-7 text-brand-950/74">{differentiator}</p>
           </article>
@@ -127,9 +127,9 @@ export function HomePage() {
 
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
-          description="Desde evaluacion y diagnostico hasta reproduccion asistida, preservacion de fertilidad y donacion."
+          description="Desde evaluación y diagnóstico hasta reproducción asistida, preservación de fertilidad y donación."
           eyebrow="Tratamientos"
-          title="Un portafolio clinico pensado para decisiones bien informadas"
+          title="Un portafolio clínico pensado para decisiones bien informadas"
           variant="editorial"
         />
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -155,9 +155,9 @@ export function HomePage() {
       <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:px-8">
         <div>
           <SectionHeading
-            description="Atencion integral, ambiente moderno y tranquilo, y acompanamiento personalizado para que cada paciente se sienta en buenas manos."
+            description="Atención integral, ambiente moderno y tranquilo, y acompañamiento personalizado para que cada paciente se sienta en buenas manos."
             eyebrow="Experiencia VIXI"
-            title="Cada detalle esta pensado para que la medicina avanzada tambien se sienta acompanada"
+            title="Cada detalle está pensado para que la medicina avanzada también se sienta acompañada"
             variant="accent"
           />
           <div className="mt-8 grid gap-4">
@@ -188,7 +188,7 @@ export function HomePage() {
       <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
         <SectionHeading
           align="center"
-          description="VIXI acompana a parejas con dificultades para lograr embarazo, familias que desean crecer y pacientes que buscan opciones reproductivas despues de los 45."
+          description="VIXI acompaña a parejas con dificultades para lograr embarazo, familias que desean crecer y pacientes que buscan opciones reproductivas después de los 45."
           eyebrow="Audiencias principales"
           title="Un sitio que habla con distintos momentos de vida"
           variant="highlight"
@@ -208,7 +208,7 @@ export function HomePage() {
       <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)]">
           <SectionHeading
-            description="Respondemos dudas frecuentes sobre costos, tiempos de proceso y probabilidad de exito desde una perspectiva medica responsable."
+            description="Respondemos dudas frecuentes sobre costos, tiempos de proceso y probabilidad de éxito desde una perspectiva médica responsable."
             eyebrow="FAQ destacadas"
             title="Claridad antes de empezar"
             variant="minimal"
@@ -224,8 +224,8 @@ export function HomePage() {
         </div>
 
         <div className="rounded-[32px] bg-accent-100 p-8 text-brand-950 shadow-[0_20px_50px_rgba(244,166,183,0.22)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-700">Contacto rapido</p>
-          <h2 className="mt-4 font-display text-4xl leading-none">Agenda tu primera conversacion con el equipo.</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-700">Contacto rápido</p>
+          <h2 className="mt-4 font-display text-4xl leading-none">Agenda tu primera conversación con el equipo.</h2>
           <div className="mt-8 grid gap-4 text-sm leading-6">
             <a className="rounded-[24px] bg-white/72 px-5 py-4" href={contactDetails.phoneHref}>
               {contactDetails.phoneDisplay}
@@ -242,9 +242,9 @@ export function HomePage() {
       </section>
 
       <CTABanner
-        description="Agenda una valoracion para revisar tu caso con un equipo que entiende la fertilidad desde la medicina, la experiencia y la cercania."
+        description="Agenda una valoración para revisar tu caso con un equipo que entiende la fertilidad desde la medicina, la experiencia y la cercanía."
         eyebrow="Siguiente paso"
-        title="Tratamientos de alta y baja complejidad con acompanamiento real."
+        title="Tratamientos de alta y baja complejidad con acompañamiento real."
       />
     </>
   );

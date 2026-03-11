@@ -5,7 +5,7 @@ import type { Route } from "./+types/contacto";
 export function meta() {
   return buildMeta(
     "Contacto",
-    "Ubicacion, horario, telefono, WhatsApp, correo y consulta en linea de VIXI.",
+    "Ubicación, horario, teléfono, WhatsApp, correo y consulta en línea de VIXI.",
   );
 }
 
@@ -42,11 +42,11 @@ export async function action({ request }: Route.ActionArgs) {
 
   const errors: ContactActionData["errors"] = {};
 
-  if (values.name.length < 3) errors.name = "Ingresa un nombre valido.";
-  if (!isValidEmail(values.email)) errors.email = "Ingresa un correo valido.";
-  if (values.phone.length < 8) errors.phone = "Ingresa un telefono o WhatsApp valido.";
+  if (values.name.length < 3) errors.name = "Ingresa un nombre válido.";
+  if (!isValidEmail(values.email)) errors.email = "Ingresa un correo válido.";
+  if (values.phone.length < 8) errors.phone = "Ingresa un teléfono o WhatsApp válido.";
   if (!values.reason) errors.reason = "Selecciona el motivo de contacto.";
-  if (values.message.length < 20) errors.message = "Comparte un poco mas de contexto.";
+  if (values.message.length < 20) errors.message = "Comparte un poco más de contexto.";
   if (values.message.length > MAX_MESSAGE_LENGTH) {
     errors.message = `Tu mensaje no debe exceder ${MAX_MESSAGE_LENGTH} caracteres.`;
   }
@@ -110,7 +110,7 @@ function buildTextEmail(values: ContactFormValues) {
     "",
     `Nombre: ${values.name}`,
     `Correo: ${values.email}`,
-    `Telefono: ${values.phone}`,
+    `Teléfono: ${values.phone}`,
     `Motivo: ${values.reason}`,
     "",
     "Mensaje:",
@@ -122,7 +122,7 @@ function buildHtmlEmail(values: ContactFormValues) {
   const rows = [
     ["Nombre", values.name],
     ["Correo", values.email],
-    ["Telefono", values.phone],
+    ["Teléfono", values.phone],
     ["Motivo", values.reason],
   ]
     .map(
