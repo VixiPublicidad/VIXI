@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Corbel";
+  src:
+    url("../fonts/corbel.woff2") format("woff2"),
+    url("../fonts/corbel.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/glancyr.woff2") format("woff2"),
+    url("../fonts/glancyr.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Corbel", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display: "Glancyr", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-950: #0b1f3b;
+  --color-brand-700: #1e3a5f;
+  --color-brand-200: #dbe8f4;
+  --color-accent-100: #f7d6de;
+  --color-accent-200: #f9e7ec;
+  --color-accent-300: #f8b9c8;
+  --color-accent-400: #f4a6b7;
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #f5f7fa;
+}
+
+@layer base {
+  html {
+    background-color: #f5f7fa;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(247, 214, 222, 0.62), transparent 38%),
+      radial-gradient(circle at top right, rgba(219, 232, 244, 0.82), transparent 34%),
+      linear-gradient(180deg, #f8fafc 0%, #ffffff 48%, #f5f7fa 100%);
+    color: #0b1f3b;
+  }
+
+  ::selection {
+    background: rgba(244, 166, 183, 0.45);
+    color: #0b1f3b;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer utilities {
+  .page-glow {
+    position: fixed;
+    z-index: -1;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 9999px;
+    filter: blur(85px);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .page-glow-left {
+    top: 12rem;
+    left: -8rem;
+    background: rgba(247, 214, 222, 0.72);
+  }
+
+  .page-glow-right {
+    top: 24rem;
+    right: -10rem;
+    background: rgba(219, 232, 244, 0.9);
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+}
