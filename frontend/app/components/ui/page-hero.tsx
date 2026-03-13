@@ -23,6 +23,8 @@ type PageHeroProps = {
   image: {
     alt: string;
     src: string;
+    width?: number;
+    height?: number;
   };
   imageBadge?: string;
   imageCaption?: string;
@@ -108,7 +110,16 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img alt={image.alt} className="h-full w-full object-cover" src={image.src} />
+        <img
+          alt={image.alt}
+          className="h-full w-full object-cover"
+          decoding="async"
+          fetchPriority="high"
+          height={image.height}
+          loading="eager"
+          src={image.src}
+          width={image.width}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-950/75 via-brand-950/40 to-brand-950/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-brand-950/20" />
       </div>
@@ -168,7 +179,7 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img alt={image.alt} className="h-full w-full object-cover grayscale-[30%]" src={image.src} />
+        <img alt={image.alt} className="h-full w-full object-cover grayscale-[30%]" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#fafaf9]/98 via-[#fafaf9]/85 to-[#fafaf9]/40" />
       </div>
 
@@ -218,7 +229,7 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img alt={image.alt} className="h-full w-full object-cover" src={image.src} />
+        <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#faf7f2]/88 via-[#faf7f2]/38 to-brand-950/12" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/30" />
       </div>
@@ -272,7 +283,7 @@ function ProcessHero({ actions, badge, caption, description, eyebrow, heightClas
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img alt={image.alt} className="h-full w-full object-cover" src={image.src} />
+        <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-950/20 to-brand-950/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-brand-950/30 to-brand-950/50" />
       </div>
@@ -318,7 +329,7 @@ function ConciergeHero({ actions, badge, caption, description, eyebrow, heightCl
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img alt={image.alt} className="h-full w-full object-cover" src={image.src} />
+        <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/50 to-white/20" />
         <div className="absolute inset-0 bg-accent-100/20" />
       </div>

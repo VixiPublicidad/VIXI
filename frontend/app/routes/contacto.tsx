@@ -4,8 +4,13 @@ import type { Route } from "./+types/contacto";
 
 export function meta() {
   return buildMeta(
-    "Contacto",
-    "Ubicación, horario, teléfono, WhatsApp, correo y consulta en línea de VIXI.",
+    "Contacto y citas en León, Guanajuato",
+    "Ubicación, horario, teléfono, WhatsApp, correo y consulta en línea de VIXI para agendar tu valoración en León, Guanajuato.",
+    {
+      path: "/contacto",
+      image: "/og/og-1.png",
+      keywords: ["contacto vixi", "citas fertilidad leon", "whatsapp clinica fertilidad"],
+    },
   );
 }
 

@@ -6,6 +6,8 @@ export type NavItem = {
 export type ImageAsset = {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 };
 
 export type Action = {
@@ -41,8 +43,18 @@ export type TreatmentCategory = {
 
 export const siteName = "VIXI";
 export const siteTagline = "Ciencia y experiencia dando vida.";
+const configuredSiteUrl =
+  typeof process !== "undefined" && process.env?.SITE_URL
+    ? process.env.SITE_URL
+    : undefined;
+
+export const siteUrl = configuredSiteUrl?.replace(/\/+$/, "") ?? "https://vixireproduccion.mx";
+export const defaultOgImage = "/og/og-1.png";
+export const siteLocale = "es_MX";
+export const siteLanguage = "es-MX";
 export const siteDescription =
   "Clínica de fertilidad con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
+export const organizationName = "VIXI Reproducción";
 
 export const siteNavigation: NavItem[] = [
   { label: "Inicio", to: "/" },
@@ -64,11 +76,25 @@ export const contactDetails = {
   emailHref: "mailto:pacientes.vixi@gmail.com",
   hours: "Lunes a viernes · 8:30 a 18:00 h",
   address: "Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato",
+  streetAddress: "Av. Cerro Gordo, Lomas del Campestre",
+  postalCode: "37150",
+  locality: "León de los Aldama",
+  region: "Guanajuato",
+  countryCode: "MX",
+  latitude: 21.1574,
+  longitude: -101.6942,
+  openingHours: {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:30",
+    closes: "18:00",
+  },
 };
 
 export const heroImage: ImageAsset = {
   src: "/heroes/home-hero-bg.avif",
   alt: "Especialista en consulta de fertilidad atendiendo a una paciente en un entorno clínico elegante.",
+  width: 1536,
+  height: 1024,
 };
 
 export const galleryImages: ImageAsset[] = [
@@ -436,4 +462,3 @@ export const footerLinks = [
     ],
   },
 ];
-

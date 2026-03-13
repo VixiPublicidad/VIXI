@@ -11,7 +11,10 @@ export function SiteFooter() {
           <img
             alt={siteName}
             className="h-14 w-auto"
+            decoding="async"
+            height="56"
             src="/logos/vixi_logo_white.webp"
+            width="168"
           />
           <p className="mt-4 text-sm uppercase tracking-[0.24em] text-accent-200">{siteTagline}</p>
           <p className="mt-6 text-base leading-7 text-white/74">

@@ -9,26 +9,105 @@ import {
 
 import type { ReactNode } from "react";
 
-import { siteDescription, siteName } from "~/components/data/site-content";
+import {
+  contactDetails,
+  organizationName,
+  siteDescription,
+  siteLanguage,
+  siteName,
+  siteTagline,
+  siteUrl,
+} from "~/components/data/site-content";
 import { MarketingLayout } from "~/components/layout/marketing-layout";
 
 import "./app.css";
 
-export const links = () => [] as { rel: string; href: string }[];
+export const links = () =>
+  [
+    { rel: "icon", href: "/favicon.ico", sizes: "any" },
+    { rel: "shortcut icon", href: "/favicon.ico" },
+  ] as { rel: string; href: string; sizes?: string }[];
 
 export function meta() {
   return [
     { title: siteName },
-    { name: "description", content: siteDescription },
+    { name: "application-name", content: siteName },
+    { name: "format-detection", content: "telephone=no" },
+    { name: "theme-color", content: "#f5efe6" },
+    { httpEquiv: "content-language", content: siteLanguage },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "@id": `${siteUrl}/#medical-clinic`,
+        name: organizationName,
+        description: siteDescription,
+        url: siteUrl,
+        image: `${siteUrl}/og/og-1.png`,
+        slogan: siteTagline,
+        inLanguage: siteLanguage,
+        telephone: contactDetails.phoneHref.replace("tel:", ""),
+        email: contactDetails.email,
+        priceRange: "$$",
+        availableLanguage: ["es-MX"],
+        areaServed: {
+          "@type": "Country",
+          name: "México",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: contactDetails.latitude,
+          longitude: contactDetails.longitude,
+        },
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: contactDetails.openingHours.days,
+          opens: contactDetails.openingHours.opens,
+          closes: contactDetails.openingHours.closes,
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: contactDetails.streetAddress,
+          postalCode: contactDetails.postalCode,
+          addressLocality: contactDetails.locality,
+          addressRegion: contactDetails.region,
+          addressCountry: contactDetails.countryCode,
+        },
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            telephone: contactDetails.phoneHref.replace("tel:", ""),
+            email: contactDetails.email,
+            availableLanguage: ["es-MX"],
+            areaServed: "MX",
+          },
+        ],
+      },
+    },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: siteName,
+        description: siteDescription,
+        inLanguage: siteLanguage,
+        publisher: {
+          "@id": `${siteUrl}/#medical-clinic`,
+        },
+      },
+    },
   ];
 }
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang={siteLanguage}>
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <Meta />
         <Links />
       </head>

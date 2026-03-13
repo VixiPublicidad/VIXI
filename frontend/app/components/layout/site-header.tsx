@@ -60,7 +60,11 @@ export function SiteHeader() {
           <img
             alt="VIXI"
             className="h-16 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
+            decoding="async"
+            fetchPriority="high"
+            height="64"
             src={useWhiteLogo ? "/logos/vixi_logo_white.webp" : "/logos/vixi_logo.webp"}
+            width="192"
           />
         </Link>
 
@@ -167,7 +171,10 @@ export function SiteHeader() {
               <img
                 alt="VIXI"
                 className="h-11 w-auto"
+                decoding="async"
+                height="44"
                 src="/logos/vixi_logo.webp"
+                width="132"
               />
             </Link>
 

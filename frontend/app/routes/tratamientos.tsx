@@ -3,8 +3,13 @@ import { TreatmentsPage } from "~/components/services/treatments-page";
 
 export function meta() {
   return buildMeta(
-    "Tratamientos",
-    "Explora evaluación, reproducción asistida, preservación de fertilidad, donación y opciones inclusivas.",
+    "Tratamientos de fertilidad y reproducción asistida",
+    "Explora tratamientos de fertilidad en VIXI: evaluación, reproducción asistida, preservación de fertilidad, donación y opciones inclusivas.",
+    {
+      path: "/tratamientos",
+      image: "/og/og-4.png",
+      keywords: ["tratamientos de fertilidad", "reproduccion asistida", "inseminacion intrauterina", "fertilizacion in vitro"],
+    },
   );
 }
 
