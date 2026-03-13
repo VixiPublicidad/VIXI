@@ -1,7 +1,9 @@
+import type { ReactNode } from "react";
+
 import { ButtonLink } from "~/components/ui/button-link";
 
 type HeroAction = {
-  label: string;
+  label: ReactNode;
   to: string;
   external?: boolean;
 };

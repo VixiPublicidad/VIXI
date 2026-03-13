@@ -1,3 +1,5 @@
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaWhatsapp } from "react-icons/fa";
+
 import {
   audienceCards,
   brandPillars,
@@ -70,7 +72,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+      <section className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-200">Pilares de marca</p>
           <h2 className="mt-4 font-display text-4xl leading-none">Ciencia, experiencia y cercanía en equilibrio.</h2>
@@ -125,7 +127,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           description="Desde evaluación y diagnóstico hasta reproducción asistida, preservación de fertilidad y donación."
           eyebrow="Tratamientos"
@@ -152,7 +154,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:px-8">
+      <section className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[1fr_0.95fr] lg:px-8">
         <div>
           <SectionHeading
             description="Atención integral, ambiente moderno y tranquilo, y acompañamiento personalizado para que cada paciente se sienta en buenas manos."
@@ -185,7 +187,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           align="center"
           description="VIXI acompaña a parejas con dificultades para lograr embarazo, familias que desean crecer y pacientes que buscan opciones reproductivas después de los 45."
@@ -205,7 +207,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <section className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)]">
           <SectionHeading
             description="Respondemos dudas frecuentes sobre costos, tiempos de proceso y probabilidad de éxito desde una perspectiva médica responsable."
@@ -227,16 +229,27 @@ export function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-700">Contacto rápido</p>
           <h2 className="mt-4 font-display text-4xl leading-none">Agenda tu primera conversación con el equipo.</h2>
           <div className="mt-8 grid gap-4 text-sm leading-6">
-            <a className="rounded-[24px] bg-white/72 px-5 py-4" href={contactDetails.phoneHref}>
+            <a className="inline-flex items-center gap-3 rounded-[24px] bg-white/72 px-5 py-4" href={contactDetails.phoneHref}>
+              <FaPhone aria-hidden="true" className="h-4 w-4 text-brand-700" />
               {contactDetails.phoneDisplay}
             </a>
-            <a className="rounded-[24px] bg-white/72 px-5 py-4" href={contactDetails.whatsappHref} rel="noreferrer" target="_blank">
+            <a
+              className="inline-flex items-center gap-3 rounded-[24px] bg-white/72 px-5 py-4"
+              href={contactDetails.whatsappHref}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FaWhatsapp aria-hidden="true" className="h-4 w-4 text-brand-700" />
               {contactDetails.whatsappDisplay}
             </a>
-            <a className="rounded-[24px] bg-white/72 px-5 py-4" href={contactDetails.emailHref}>
+            <a className="inline-flex items-center gap-3 rounded-[24px] bg-white/72 px-5 py-4" href={contactDetails.emailHref}>
+              <FaEnvelope aria-hidden="true" className="h-4 w-4 text-brand-700" />
               {contactDetails.email}
             </a>
-            <div className="rounded-[24px] bg-white/72 px-5 py-4">{contactDetails.address}</div>
+            <div className="inline-flex items-center gap-3 rounded-[24px] bg-white/72 px-5 py-4">
+              <FaMapMarkerAlt aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-700" />
+              {contactDetails.address}
+            </div>
           </div>
         </div>
       </section>

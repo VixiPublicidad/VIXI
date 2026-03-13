@@ -25,7 +25,7 @@ export function ProcessPage() {
         height="screen"
       />
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           description="Cada etapa ayuda a entender qué estudios se requieren, cuál es el factor que impide el embarazo y qué sigue después."
           eyebrow="Ruta clínica"
@@ -51,7 +51,7 @@ export function ProcessPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[90vw] px-4 py-6 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-6 lg:px-8">
         <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
           <SectionHeading
             description="El tratamiento puede involucrar distintas especialidades médicas según las necesidades clínicas de cada paciente."

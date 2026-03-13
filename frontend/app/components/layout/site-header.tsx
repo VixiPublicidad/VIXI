@@ -11,7 +11,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const whiteLogoRoutes = new Set(["/", "/nuestra-experiencia", "/como-funciona-tu-tratamiento"]);
   const desktopNavigation = siteNavigation.filter((item) => item.to !== "/contacto");
-  const mobileNavigation = siteNavigation.filter((item) => item.to !== "/contacto");
+  const mobileNavigation = siteNavigation;
   const heroHeader = whiteLogoRoutes.has(location.pathname) && !scrolled && !menuOpen;
   const useWhiteLogo = heroHeader;
 

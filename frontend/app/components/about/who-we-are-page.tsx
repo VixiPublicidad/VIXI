@@ -35,7 +35,7 @@ export function WhoWeArePage() {
         height="screen"
       />
 
-      <section className="mx-auto max-w-[90vw] space-y-8 px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] space-y-8 py-16 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)]">
             <SectionHeading
@@ -66,7 +66,7 @@ export function WhoWeArePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <section className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div>
           <SectionHeading
             description="Cada caso se atiende con un enfoque personalizado, cálido y humano, entendiendo que la fertilidad es una decisión emocional y médica."
@@ -94,7 +94,7 @@ export function WhoWeArePage() {
         />
       </section>
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           description="El equipo médico combina formación especializada en fertilidad, ginecología y cirugía de mínima invasión."
           eyebrow="Equipo médico"
@@ -108,7 +108,7 @@ export function WhoWeArePage() {
               className="group relative overflow-hidden rounded-[2.5rem] border border-brand-950/5 bg-white shadow-[0_12px_45px_rgba(11,31,59,0.06)] transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_25px_65px_rgba(11,31,59,0.12)]"
             >
               <div className="flex flex-col p-8 sm:p-10">
-                <p className="inline-flex w-max items-center rounded-full bg-accent-100/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-accent-400">
+                <p className="inline-flex max-w-full items-center rounded-full bg-accent-100/60 px-6 py-2 text-[10px] font-bold uppercase leading-relaxed tracking-[0.25em] text-accent-400 whitespace-normal break-words sm:w-max">
                   {doctor.role}
                 </p>
                 <h3 className="mt-4 text-3xl font-display font-medium leading-tight text-brand-950 sm:text-4xl">
@@ -146,7 +146,7 @@ export function WhoWeArePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           description="Cada caso puede apoyarse en distintas especialidades para construir un tratamiento más preciso y completo."
           eyebrow="Equipo multidisciplinario"

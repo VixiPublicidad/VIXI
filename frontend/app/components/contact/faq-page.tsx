@@ -24,7 +24,7 @@ export function FAQPage() {
         title="Respuestas claras para las dudas más comunes antes de empezar."
       />
 
-      <section className="mx-auto max-w-[80vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
         <SectionHeading
           align="center"
           description="Aquí resolvemos dudas frecuentes con información útil, cercana y médicamente responsable para una mejor decisión."

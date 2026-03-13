@@ -31,7 +31,7 @@ export function OutOfTownPage() {
         height="screen"
       />
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           description="La atención para pacientes foráneos busca dar claridad antes del viaje y acompañamiento durante cada etapa del tratamiento."
           eyebrow="Acompañamiento"
@@ -51,7 +51,7 @@ export function OutOfTownPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[90vw] gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+      <section className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="rounded-[32px] bg-accent-100 p-8 shadow-[0_20px_50px_rgba(244,166,183,0.22)]">
           <SectionHeading
             description="Consulta previa, planeación de visitas y seguimiento remoto ayudan a que el tratamiento sea más ordenado para quienes viajan."

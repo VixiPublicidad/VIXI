@@ -1,3 +1,4 @@
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router";
 
 import { contactDetails, footerLinks, siteName, siteTagline } from "~/components/data/site-content";
@@ -34,10 +35,28 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-4 py-6 text-sm text-white/66 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <p>{contactDetails.address}</p>
-          <div className="flex flex-col gap-1 sm:flex-row sm:gap-5">
-            <a href={contactDetails.phoneHref}>{contactDetails.phoneDisplay}</a>
-            <a href={contactDetails.emailHref}>{contactDetails.email}</a>
+          <p className="inline-flex items-center gap-2">
+            <FaMapMarkerAlt aria-hidden="true" className="h-4 w-4 shrink-0 text-accent-200" />
+            {contactDetails.address}
+          </p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-5">
+            <a className="inline-flex items-center gap-2" href={contactDetails.phoneHref}>
+              <FaPhone aria-hidden="true" className="h-4 w-4 text-accent-200" />
+              {contactDetails.phoneDisplay}
+            </a>
+            <a
+              className="inline-flex items-center gap-2"
+              href={contactDetails.whatsappHref}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FaWhatsapp aria-hidden="true" className="h-4 w-4 text-accent-200" />
+              {contactDetails.whatsappDisplay}
+            </a>
+            <a className="inline-flex items-center gap-2" href={contactDetails.emailHref}>
+              <FaEnvelope aria-hidden="true" className="h-4 w-4 text-accent-200" />
+              {contactDetails.email}
+            </a>
           </div>
         </div>
       </div>

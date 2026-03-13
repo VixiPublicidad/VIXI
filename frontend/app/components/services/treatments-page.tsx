@@ -25,7 +25,7 @@ export function TreatmentsPage() {
         height="60vh"
       />
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           description="Incluye evaluación y diagnóstico, reproducción asistida, preservación de fertilidad, donación y opciones para distintos modelos de familia."
           eyebrow="Portafolio clínico"

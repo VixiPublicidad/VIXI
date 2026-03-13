@@ -39,7 +39,7 @@ export function ExperiencePage() {
         height="screen"
       />
 
-      <section className="mx-auto max-w-[90vw] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
           align="center"
           description="Atención integral, trato cercano y una sensación de calma que ayuda a vivir el proceso con mayor confianza."
@@ -59,7 +59,7 @@ export function ExperiencePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[90vw] items-center gap-12 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <section className="mx-auto grid max-w-[90vw] items-center gap-12 py-12 lg:grid-cols-2 lg:px-8">
         <div className="grid gap-5 sm:grid-cols-2">
           {galleryImages.map((image) => (
             <ImageCard
