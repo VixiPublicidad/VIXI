@@ -192,10 +192,6 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
             ) : null}
 
             <div className="flex flex-col gap-4 border-t border-brand-950/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-xl text-sm leading-6 text-brand-950/65">
-                Este formulario usa variables de entorno para enviar el mensaje por Resend.
-                Configura <code className="font-mono text-[0.95em]">RESEND_API_KEY</code>, <code className="font-mono text-[0.95em]">CONTACT_FORM_TO_EMAIL</code> y opcionalmente <code className="font-mono text-[0.95em]">CONTACT_FORM_FROM_EMAIL</code>.
-              </p>
               <button
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-brand-950 px-6 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:bg-brand-950/55"
                 disabled={isSubmitting}
