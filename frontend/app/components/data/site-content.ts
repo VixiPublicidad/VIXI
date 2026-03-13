@@ -87,6 +87,25 @@ export const galleryImages: ImageAsset[] = [
   {
     src: "/gallery/consultation_empathy.png",
     alt: "Consulta médica cálida y profesional enfocada en el trato humano.",
+  }
+];
+
+export const empathyGalleryImages: ImageAsset[] = [
+  {
+    src: "/gallery/ferti_1.avif",
+    alt: "Manos agarradas de familiares en señal de apoyo.",
+  },
+  {
+    src: "/gallery/ferti_2.avif",
+    alt: "Equipo médico moderno y profesional.",
+  },
+  {
+    src: "/gallery/ferti_3.avif",
+    alt: "Doctor operando de manera profesional y empática.",
+  },
+  {
+    src: "/gallery/consultation_empathy.png",
+    alt: "Consulta médica cálida y profesional enfocada en el trato humano.",
   },
 ];
 

@@ -1,17 +1,1 @@
-import sharp from 'sharp';
-
-async function convert() {
-  await sharp('C:/Users/dario/.gemini/antigravity/brain/841fdd18-c7e1-42c8-b3c3-4e80093516ff/ciencia_pillar_1773262259084.png')
-    .avif()
-    .toFile('c:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/public/pillars/ciencia.avif');
-    
-  await sharp('C:/Users/dario/.gemini/antigravity/brain/841fdd18-c7e1-42c8-b3c3-4e80093516ff/experiencia_pillar_1773262272140.png')
-    .avif()
-    .toFile('c:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/public/pillars/experiencia.avif');
-    
-  await sharp('C:/Users/dario/.gemini/antigravity/brain/841fdd18-c7e1-42c8-b3c3-4e80093516ff/cercania_pillar_1773262286517.png')
-    .avif()
-    .toFile('c:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/public/pillars/cercania.avif');
-}
-
-convert().catch(console.error);
+import sharp from 'sharp'; Promise.all([sharp('C:/Users/dario/.gemini/antigravity/brain/656baa69-a119-4a24-96c8-1f4f0c5d08dc/family_support_hands_1773420154284.png').avif().toFile('./public/gallery/ferti_1.avif'), sharp('C:/Users/dario/.gemini/antigravity/brain/656baa69-a119-4a24-96c8-1f4f0c5d08dc/modern_medical_team_1773420168026.png').avif().toFile('./public/gallery/ferti_2.avif'), sharp('C:/Users/dario/.gemini/antigravity/brain/656baa69-a119-4a24-96c8-1f4f0c5d08dc/caring_doctor_operating_1773420183830.png').avif().toFile('./public/gallery/ferti_3.avif')]).then(() => console.log('done')).catch(console.error);

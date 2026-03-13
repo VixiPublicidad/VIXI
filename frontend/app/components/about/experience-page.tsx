@@ -1,4 +1,4 @@
-import { experienceHighlights, galleryImages } from "~/components/data/site-content";
+import { experienceHighlights, empathyGalleryImages } from "~/components/data/site-content";
 import { CTABanner } from "~/components/shared/cta-banner";
 import { FeatureCard } from "~/components/ui/feature-card";
 import { ImageCard } from "~/components/ui/image-card";
@@ -26,7 +26,10 @@ export function ExperiencePage() {
       <PageHero
         description="La experiencia en VIXI combina tecnología avanzada con una sensación acogedora y relajante, para acompañarte con claridad en cada etapa."
         eyebrow="Nuestra experiencia"
-        image={galleryImages[2]}
+        image={{
+          alt: "Clinica de fertilidad VIXI.",
+          src: "/heroes/experience-hero-bg.avif",
+        }}
         imageBadge="Experiencia sensorial"
         imageCaption="Un ambiente moderno, tranquilo y humano que acompaña decisiones médicas importantes."
         stats={[
@@ -61,7 +64,7 @@ export function ExperiencePage() {
 
       <section className="mx-auto grid max-w-[90vw] items-center gap-12 py-12 lg:grid-cols-2 lg:px-8">
         <div className="grid gap-5 sm:grid-cols-2">
-          {galleryImages.map((image) => (
+          {empathyGalleryImages.map((image) => (
             <ImageCard
               key={image.src}
               src={image.src}
