@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Form, useNavigation } from "react-router";
-import { FaPhone, FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaWhatsapp } from "react-icons/fa";
 
 import { contactDetails } from "~/components/data/site-content";
 import { CTABanner } from "~/components/shared/cta-banner";
@@ -25,6 +25,7 @@ const contactCards = [
   {
     label: "Correo",
     href: contactDetails.emailHref,
+    icon: FaEnvelope,
     value: contactDetails.email,
   },
 ];
