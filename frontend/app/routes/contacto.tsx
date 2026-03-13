@@ -146,9 +146,6 @@ function buildHtmlEmail(values: ContactFormValues) {
           <h1 style="margin:0;font-family:Glancyr,Corbel,Arial,sans-serif;font-size:28px;line-height:1.15;color:#ffffff;font-weight:700;">Solicitud recibida desde el formulario de VIXI</h1>
         </div>
         <div style="background:#ffffff;border:1px solid #dbe8f4;border-top:none;border-radius:0 0 28px 28px;padding:28px;box-shadow:0 20px 60px rgba(11,31,59,0.08);">
-          <div style="margin:0 0 24px;padding:16px 18px;border:1px solid #f7d6de;border-radius:18px;background:#fff6f8;color:#7f1730;font-size:14px;line-height:1.6;">
-            Este correo resume una nueva solicitud de contacto enviada desde <strong>vixireproduccion.mx</strong>.
-          </div>
           <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#1e3a5f;">Datos de contacto</p>
           <table style="width:100%;border-collapse:separate;border-spacing:0;margin:0 0 24px;border:1px solid #dbe8f4;border-radius:20px;overflow:hidden;">${rows}</table>
           <p style="margin:0 0 10px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#1e3a5f;">Mensaje</p>
@@ -171,7 +168,7 @@ function buildReplyMailto(values: ContactFormValues) {
   const subject = "Re: Tu solicitud de contacto en VIXI";
   const body = `Hola ${values.name},\n\nGracias por contactarnos.\n\nSaludos,\nVIXI`;
 
-  return `mailto:${encodeURIComponent(values.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${values.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 function escapeHtml(value: string) {
