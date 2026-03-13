@@ -57,7 +57,7 @@ export async function action({ request }: Route.ActionArgs) {
 
   const resendApiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_FORM_TO_EMAIL;
-  const from = process.env.CONTACT_FORM_FROM_EMAIL ?? "VIXI Contacto <onboarding@resend.dev>";
+  const from = process.env.CONTACT_FORM_FROM_EMAIL ?? "VIXI Contacto <noreply@vixireproduccion.mx>";
 
   if (!resendApiKey || !to) {
     return {
