@@ -27,7 +27,7 @@ export function ExperiencePage() {
         description="La experiencia en VIXI combina tecnología avanzada con una sensación acogedora y relajante, para acompañarte con claridad en cada etapa."
         eyebrow="Nuestra experiencia"
         image={{
-          alt: "Clinica de fertilidad VIXI.",
+          alt: "Clínica de fertilidad VIXI.",
           src: "/heroes/experience-hero-bg.avif",
         }}
         imageBadge="Experiencia sensorial"

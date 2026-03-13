@@ -8,7 +8,7 @@ export function meta() {
     {
       path: "/quienes-somos",
       image: "/og/og-2.png",
-      keywords: ["especialistas en fertilidad", "equipo medico fertilidad", "reproduccion asistida leon"],
+      keywords: ["especialistas en fertilidad", "equipo médico fertilidad", "reproducción asistida León"],
     },
   );
 }

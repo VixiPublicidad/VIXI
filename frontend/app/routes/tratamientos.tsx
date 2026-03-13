@@ -8,7 +8,7 @@ export function meta() {
     {
       path: "/tratamientos",
       image: "/og/og-4.png",
-      keywords: ["tratamientos de fertilidad", "reproduccion asistida", "inseminacion intrauterina", "fertilizacion in vitro"],
+      keywords: ["tratamientos de fertilidad", "reproducción asistida", "inseminación intrauterina", "fertilización in vitro"],
     },
   );
 }

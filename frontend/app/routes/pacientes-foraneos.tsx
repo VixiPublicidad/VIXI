@@ -8,7 +8,7 @@ export function meta() {
     {
       path: "/pacientes-foraneos",
       image: "/og/og-6.png",
-      keywords: ["pacientes foraneos fertilidad", "consulta en linea fertilidad", "clinica fertilidad mexico"],
+      keywords: ["pacientes foráneos fertilidad", "consulta en línea fertilidad", "clínica fertilidad méxico"],
     },
   );
 }

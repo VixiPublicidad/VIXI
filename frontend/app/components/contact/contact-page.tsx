@@ -11,7 +11,7 @@ import { SectionHeading } from "~/components/ui/section-heading";
 
 const contactCards = [
   {
-    label: "Telefono",
+    label: "Teléfono",
     href: contactDetails.phoneHref,
     icon: FaPhone,
     value: contactDetails.phoneDisplay,
@@ -45,10 +45,10 @@ type ContactFormState = {
 };
 
 const contactReasons = [
-  "Primera valoracion",
+  "Primera valoración",
   "Tratamientos de fertilidad",
-  "Consulta en linea",
-  "Pacientes foraneos",
+  "Consulta en línea",
+  "Pacientes foráneos",
   "Otra consulta",
 ];
 
@@ -83,18 +83,18 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
             external: true,
           },
         ]}
-        description="Encuentra aqui direccion, horario, telefono, WhatsApp, correo y la opcion de consulta en linea para iniciar tu atencion en VIXI."
+        description="Encuentra aquí dirección, horario, teléfono, WhatsApp, correo y la opción de consulta en línea para iniciar tu atención en VIXI."
         eyebrow="Contacto"
         image={{
-          alt: "Fachada contemporanea de un hospital con luz calida.",
+          alt: "Fachada contemporánea de un hospital con luz cálida.",
           src: "/heroes/contact-hero-bg.avif",
         }}
         imageBadge="Canales directos"
-        imageCaption="WhatsApp, llamada, correo y ubicacion clara para facilitar tu primer contacto con la clinica."
+        imageCaption="WhatsApp, llamada, correo y ubicación clara para facilitar tu primer contacto con la clínica."
         stats={[
-          { value: "Leon, Gto.", label: "ubicacion de la clinica" },
-          { value: "8:30 a 18:00 h", label: "horario de atencion" },
-          { value: "Consulta en linea", label: "disponible" },
+          { value: "León, Gto.", label: "ubicación de la clínica" },
+          { value: "8:30 a 18:00 h", label: "horario de atención" },
+          { value: "Consulta en línea", label: "disponible" },
         ]}
         title="Tu viaje a la fertilidad comienza con nosotros."
         variant="concierge"
@@ -102,9 +102,9 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
 
       <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
         <SectionHeading
-          description="Toda la informacion esencial para comunicarte con VIXI y programar tu primera valoracion."
+          description="Toda la información esencial para comunicarte con VIXI y programar tu primera valoración."
           eyebrow="Datos generales"
-          title="Canales rapidos para iniciar tu valoracion"
+          title="Canales rápidos para iniciar tu valoración"
           variant="accent"
         />
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -134,7 +134,7 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
           <SectionHeading
             description="Escribe tus datos y contexto general. El formulario queda listo para enviar correos con Resend mediante variables de entorno del servidor."
             eyebrow="Formulario de contacto"
-            title="Cuentanos en que etapa estas"
+            title="Cuéntanos en qué etapa estás"
             variant="accent"
           />
 
@@ -159,7 +159,7 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
               <FormField
                 defaultValue={values.email}
                 error={errors?.email}
-                label="Correo electronico"
+                label="Correo electrónico"
                 name="email"
                 placeholder="nombre@correo.com"
                 type="email"
@@ -170,7 +170,7 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
               <FormField
                 defaultValue={values.phone}
                 error={errors?.phone}
-                label="Telefono o WhatsApp"
+                label="Teléfono o WhatsApp"
                 name="phone"
                 placeholder="477 000 0000"
                 type="tel"
@@ -187,7 +187,7 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
                 defaultValue={values.message}
                 id="message"
                 name="message"
-                placeholder="Comparte brevemente tu situacion o la duda principal."
+                placeholder="Comparte brevemente tu situación o la duda principal."
               />
               {errors?.message ? <p className="text-sm text-[#9f1d35]">{errors.message}</p> : null}
             </div>
@@ -200,7 +200,7 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
 
             {formState?.success ? (
               <div className="rounded-[22px] border border-emerald-300/60 bg-emerald-50 px-5 py-4 text-sm leading-6 text-emerald-900">
-                Gracias. Recibimos tu mensaje y el equipo de VIXI podra responderte por correo o WhatsApp.
+                Gracias. Recibimos tu mensaje y el equipo de VIXI podrá responderte por correo o WhatsApp.
               </div>
             ) : null}
 
@@ -219,8 +219,8 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
         <div className="grid gap-8">
           <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
             <SectionHeading
-              description="VIXI esta ubicado dentro de un entorno hospitalario confiable y ofrece consulta en linea para valoracion inicial."
-              eyebrow="Ubicacion"
+              description="VIXI está ubicado dentro de un entorno hospitalario confiable y ofrece consulta en línea para valoración inicial."
+              eyebrow="Ubicación"
               title="Dentro de un entorno hospitalario moderno y confiable"
               tone="light"
               variant="editorial"
@@ -228,7 +228,7 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
             <div className="mt-8 grid gap-4 text-sm leading-7 text-white/78">
               <p>{contactDetails.address}</p>
               <p>{contactDetails.hours}</p>
-              <p>Consulta en linea disponible para valoracion inicial y seguimiento.</p>
+              <p>Consulta en línea disponible para valoración inicial y seguimiento.</p>
             </div>
           </div>
 
@@ -238,17 +238,17 @@ export function ContactPage({ formState }: { formState?: ContactFormState }) {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps?q=Av%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Gto.&output=embed"
-              title="Ubicacion de VIXI"
+              title="Ubicación de VIXI"
             />
           </div>
         </div>
       </section>
 
       <CTABanner
-        description="El equipo de VIXI puede orientarte por telefono, correo o WhatsApp para programar tu primera consulta."
+        description="El equipo de VIXI puede orientarte por teléfono, correo o WhatsApp para programar tu primera consulta."
         eyebrow="Agenda hoy"
         secondaryAction={{ label: "Llamar ahora", to: contactDetails.phoneHref, external: true }}
-        title="La conversacion inicial puede empezar ahora."
+        title="La conversación inicial puede empezar ahora."
       />
     </>
   );
@@ -311,7 +311,7 @@ function ContactReasonField({
     };
   }, [isOpen]);
 
-  const currentLabel = selectedReason || "Selecciona una opcion";
+  const currentLabel = selectedReason || "Selecciona una opción";
 
   return (
     <div ref={fieldRef} className="space-y-2">
@@ -380,7 +380,7 @@ function ContactReasonField({
                   <div className="grid gap-1">
                     <DropdownOption
                       isActive={selectedReason === ""}
-                      label="Selecciona una opcion"
+                      label="Selecciona una opción"
                       onSelect={() => {
                         setSelectedReason("");
                         setIsOpen(false);

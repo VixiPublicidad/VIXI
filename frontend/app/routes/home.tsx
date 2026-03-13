@@ -8,7 +8,7 @@ export function meta() {
     {
       path: "/",
       image: "/og/og-1.png",
-      keywords: ["clinica de fertilidad en leon", "fertilidad en guanajuato", "reproduccion asistida", "fiv", "vixi"],
+      keywords: ["clínica de fertilidad en León", "fertilidad en Guanajuato", "reproducción asistida", "fiv", "vixi"],
     },
   );
 }

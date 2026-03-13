@@ -26,7 +26,7 @@ export function buildMeta(
     { title: `${title} | ${siteName}` },
     { name: "description", content: description },
     { name: "language", content: siteLanguage },
-    { name: "keywords", content: options.keywords?.join(", ") ?? "clinica de fertilidad, reproduccion asistida, fertilidad en Leon, FIV, inseminacion intrauterina" },
+    { name: "keywords", content: options.keywords?.join(", ") ?? "clínica de fertilidad, reproducción asistida, fertilidad en León, FIV, inseminación intrauterina" },
     { name: "robots", content: options.noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large" },
     { property: "og:type", content: options.type ?? "website" },
     { property: "og:site_name", content: siteName },

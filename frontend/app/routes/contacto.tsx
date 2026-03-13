@@ -9,7 +9,7 @@ export function meta() {
     {
       path: "/contacto",
       image: "/og/og-1.png",
-      keywords: ["contacto vixi", "citas fertilidad leon", "whatsapp clinica fertilidad"],
+      keywords: ["contacto vixi", "citas fertilidad León", "whatsapp clínica fertilidad"],
     },
   );
 }
@@ -141,7 +141,7 @@ function buildHtmlEmail(values: ContactFormValues) {
     <div style="margin:0;padding:32px 16px;background:#f5f7fa;background-image:radial-gradient(circle at top left, rgba(247,214,222,0.72), transparent 34%),radial-gradient(circle at top right, rgba(219,232,244,0.9), transparent 32%),linear-gradient(180deg, #f8fafc 0%, #ffffff 48%, #f5f7fa 100%);font-family:Corbel,Arial,sans-serif;color:#0b1f3b;">
       <div style="max-width:680px;margin:0 auto;">
         <div style="background:#0b1f3b;border-radius:28px 28px 0 0;padding:28px 28px 24px;background-image:linear-gradient(135deg, #0b1f3b 0%, #183457 100%);">
-          <img src="https://www.vixireproduccion.mx/logos/vixi_logo_white.webp" alt="VIXI" width="148" style="display:block;width:148px;max-width:100%;height:auto;margin:0 0 18px;" />
+          <img src="https://www.vixireproduccion.mx/logos/vixi_logo_email.png" alt="VIXI" width="148" style="display:block;width:148px;max-width:100%;height:auto;margin:0 0 18px;" />
           <p style="margin:0 0 10px;font-size:11px;line-height:1;letter-spacing:0.28em;text-transform:uppercase;color:#f8b9c8;">Nuevo contacto</p>
           <h1 style="margin:0;font-family:Glancyr,Corbel,Arial,sans-serif;font-size:28px;line-height:1.15;color:#ffffff;font-weight:700;">Solicitud recibida desde el formulario de VIXI</h1>
         </div>
