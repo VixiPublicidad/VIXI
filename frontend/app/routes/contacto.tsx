@@ -124,6 +124,7 @@ function buildTextEmail(values: ContactFormValues) {
 }
 
 function buildHtmlEmail(values: ContactFormValues) {
+  const replyMailto = buildReplyMailto(values);
   const rows = [
     ["Nombre", values.name],
     ["Correo", values.email],
@@ -132,20 +133,45 @@ function buildHtmlEmail(values: ContactFormValues) {
   ]
     .map(
       ([label, value]) =>
-        `<tr><td style="padding:8px 12px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;">${escapeHtml(label)}</td><td style="padding:8px 12px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;">${escapeHtml(value)}</td></tr>`,
+        `<tr><td style="padding:14px 16px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;width:34%;background:#f8fafc;">${escapeHtml(label)}</td><td style="padding:14px 16px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;background:#ffffff;">${escapeHtml(value)}</td></tr>`,
     )
     .join("");
 
   return `
-    <div style="font-family:Arial,sans-serif;background:#f5f7fa;padding:24px;color:#0b1f3b;">
-      <div style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:24px;padding:24px;border:1px solid #dbe8f4;">
-        <p style="margin:0 0 16px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#1e3a5f;">Nuevo contacto VIXI</p>
-        <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">${rows}</table>
-        <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#1e3a5f;">Mensaje</p>
-        <div style="font-size:16px;line-height:1.7;color:#0b1f3b;white-space:pre-wrap;">${escapeHtml(values.message)}</div>
+    <div style="margin:0;padding:32px 16px;background:#f5f7fa;background-image:radial-gradient(circle at top left, rgba(247,214,222,0.72), transparent 34%),radial-gradient(circle at top right, rgba(219,232,244,0.9), transparent 32%),linear-gradient(180deg, #f8fafc 0%, #ffffff 48%, #f5f7fa 100%);font-family:Corbel,Arial,sans-serif;color:#0b1f3b;">
+      <div style="max-width:680px;margin:0 auto;">
+        <div style="background:#0b1f3b;border-radius:28px 28px 0 0;padding:28px 28px 24px;background-image:linear-gradient(135deg, #0b1f3b 0%, #183457 100%);">
+          <img src="https://www.vixireproduccion.mx/logos/vixi_logo_white.webp" alt="VIXI" width="148" style="display:block;width:148px;max-width:100%;height:auto;margin:0 0 18px;" />
+          <p style="margin:0 0 10px;font-size:11px;line-height:1;letter-spacing:0.28em;text-transform:uppercase;color:#f8b9c8;">Nuevo contacto</p>
+          <h1 style="margin:0;font-family:Glancyr,Corbel,Arial,sans-serif;font-size:28px;line-height:1.15;color:#ffffff;font-weight:700;">Solicitud recibida desde el formulario de VIXI</h1>
+        </div>
+        <div style="background:#ffffff;border:1px solid #dbe8f4;border-top:none;border-radius:0 0 28px 28px;padding:28px;box-shadow:0 20px 60px rgba(11,31,59,0.08);">
+          <div style="margin:0 0 24px;padding:16px 18px;border:1px solid #f7d6de;border-radius:18px;background:#fff6f8;color:#7f1730;font-size:14px;line-height:1.6;">
+            Este correo resume una nueva solicitud de contacto enviada desde <strong>vixireproduccion.mx</strong>.
+          </div>
+          <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#1e3a5f;">Datos de contacto</p>
+          <table style="width:100%;border-collapse:separate;border-spacing:0;margin:0 0 24px;border:1px solid #dbe8f4;border-radius:20px;overflow:hidden;">${rows}</table>
+          <p style="margin:0 0 10px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#1e3a5f;">Mensaje</p>
+          <div style="padding:20px 22px;border-radius:20px;background:#f8fafc;border:1px solid #dbe8f4;font-size:16px;line-height:1.8;color:#0b1f3b;white-space:pre-wrap;">${escapeHtml(values.message)}</div>
+          <div style="margin-top:24px;padding-top:18px;border-top:1px solid #dbe8f4;font-size:13px;line-height:1.6;color:#51627c;">
+            Responde directamente a este correo para continuar la conversación con <strong>${escapeHtml(values.name)}</strong>.
+          </div>
+          <div style="margin:24px 0 0;">
+            <a href="${replyMailto}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#0b1f3b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:0.02em;">
+              Responder por correo
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   `.trim();
+}
+
+function buildReplyMailto(values: ContactFormValues) {
+  const subject = "Re: Tu solicitud de contacto en VIXI";
+  const body = `Hola ${values.name},\n\nGracias por contactarnos.\n\nSaludos,\nVIXI`;
+
+  return `mailto:${encodeURIComponent(values.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 function escapeHtml(value: string) {
