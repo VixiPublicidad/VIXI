@@ -1,4 +1,4 @@
-import { faqItems } from "~/components/data/site-content";
+import { faqItems } from "~/components/data";
 import { FAQPage } from "~/components/contact/faq-page";
 import { buildMeta } from "~/components/lib/meta";
 

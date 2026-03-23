@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
-import { contactDetails, siteNavigation } from "~/components/data/site-content";
+import { contactDetails, siteNavigation } from "~/components/data";
 import { cn } from "~/components/lib/utils";
 import { ButtonLink } from "~/components/ui/button-link";
 

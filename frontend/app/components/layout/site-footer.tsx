@@ -1,7 +1,7 @@
 import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router";
 
-import { contactDetails, footerLinks, siteName, siteTagline } from "~/components/data/site-content";
+import { contactDetails, footerLinks, siteName, siteTagline } from "~/components/data";
 
 export function SiteFooter() {
   return (

@@ -1,6 +1,6 @@
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
 
-import { contactDetails } from "~/components/data/site-content";
+import { contactDetails } from "~/components/data";
 import { ButtonLink } from "~/components/ui/button-link";
 
 type CTABannerProps = {

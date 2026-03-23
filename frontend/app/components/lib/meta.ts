@@ -1,4 +1,4 @@
-import { defaultOgImage, siteDescription, siteLanguage, siteLocale, siteName, siteUrl } from "~/components/data/site-content";
+import { defaultOgImage, siteDescription, siteLanguage, siteLocale, siteName, siteUrl } from "~/components/data";
 
 type BuildMetaOptions = {
   path?: string;

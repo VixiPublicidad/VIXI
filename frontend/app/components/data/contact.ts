@@ -1,0 +1,22 @@
+export const contactDetails = {
+  phoneDisplay: "477 672 5136",
+  phoneHref: "tel:+524776725136",
+  whatsappDisplay: "WhatsApp 477 672 5136",
+  whatsappHref: "https://wa.me/524776725136",
+  email: "pacientes.vixi@gmail.com",
+  emailHref: "mailto:pacientes.vixi@gmail.com",
+  hours: "Lunes a viernes · 8:30 a 18:00 h",
+  address: "Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato",
+  streetAddress: "Av. Cerro Gordo, Lomas del Campestre",
+  postalCode: "37150",
+  locality: "León de los Aldama",
+  region: "Guanajuato",
+  countryCode: "MX",
+  latitude: 21.1574,
+  longitude: -101.6942,
+  openingHours: {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:30",
+    closes: "18:00",
+  },
+};

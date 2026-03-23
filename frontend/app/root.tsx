@@ -17,7 +17,7 @@ import {
   siteName,
   siteTagline,
   siteUrl,
-} from "~/components/data/site-content";
+} from "~/components/data";
 import { MarketingLayout } from "~/components/layout/marketing-layout";
 
 import "./app.css";
