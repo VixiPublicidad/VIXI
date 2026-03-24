@@ -6,7 +6,7 @@ const subSpecialties = ["Cirugía de mínima invasión", "Endocrinología", "And
 
 export function AboutClinicalProfile() {
   return (
-    <section className="mx-auto max-w-[90vw] space-y-8 py-16 lg:px-8">
+    <section className="mx-auto max-w-[80vw] space-y-8 py-16 lg:px-8">
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)]">
           <SectionHeading
@@ -15,9 +15,9 @@ export function AboutClinicalProfile() {
             title="Biología de la reproducción humana con visión integral"
             variant="editorial"
           />
-          <div className="mt-8 grid gap-4">
+          <div className="mt-8 flex flex-wrap gap-4">
             {subSpecialties.map((item) => (
-              <div key={item} className="rounded-[24px] bg-brand-950/4 px-5 py-4 text-brand-950">
+              <div key={item} className="flex-1 basis-[calc(50%-1rem)] whitespace-nowrap rounded-[24px] bg-brand-950/4 px-6 py-5 text-center text-[1.05rem] font-medium text-brand-950">
                 {item}
               </div>
             ))}

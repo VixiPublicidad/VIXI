@@ -45,7 +45,7 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
       {eyebrow ? (
         <p
           className={cn(
-            "mb-3 text-[11px] font-bold uppercase tracking-[0.3em]",
+            "eyebrow-label mb-3 text-brand-700/80",
             tone === "light" ? "text-accent-200/90" : "text-brand-700/80",
           )}
         >
@@ -54,7 +54,7 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
       ) : null}
       <h2
         className={cn(
-          "font-display text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl",
+          "display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] sm:text-4xl lg:text-5xl",
           tone === "light" ? "text-white" : "text-brand-950",
         )}
       >
@@ -64,9 +64,9 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
         <div className={cn("mt-6", isCenter && "flex justify-center")}>
           <p
             className={cn(
-              "text-base leading-relaxed sm:text-lg",
+              "text-base leading-8 sm:text-lg",
               isCenter && "max-w-2xl",
-              tone === "light" ? "font-light text-white/80" : "text-brand-950/70",
+              tone === "light" ? "text-white/78" : "text-brand-950/68",
             )}
           >
             {description}
@@ -96,13 +96,13 @@ function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComp
           <svg className={cn("h-3.5 w-3.5", tone === "light" ? "text-accent-100" : "text-accent-400")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] pt-[1px]">{eyebrow}</span>
+          <span className="eyebrow-label pt-[1px] text-[10px]">{eyebrow}</span>
         </div>
       ) : null}
 
       <h2
         className={cn(
-          "font-display text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl",
+          "display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] sm:text-4xl lg:text-5xl",
           tone === "light" ? "text-white" : "bg-clip-text text-transparent bg-gradient-to-br from-brand-950 via-[#183457] to-[#3a5d8c]",
         )}
       >
@@ -112,9 +112,9 @@ function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComp
       {description ? (
         <p
           className={cn(
-            "mt-5 max-w-2xl text-base leading-relaxed sm:text-lg",
+            "mt-5 max-w-2xl text-base leading-8 sm:text-lg",
             isCenter && "mx-auto",
-            tone === "light" ? "text-white/70" : "text-brand-950/65",
+            tone === "light" ? "text-white/72" : "text-brand-950/66",
           )}
         >
           {description}
@@ -157,7 +157,7 @@ function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingC
           {eyebrow ? (
             <p
               className={cn(
-                "mb-4 text-[10px] font-bold uppercase tracking-[0.4em]",
+                "eyebrow-label mb-4 text-[10px]",
                 tone === "light" ? "text-accent-200" : "text-brand-700",
               )}
             >
@@ -167,7 +167,7 @@ function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingC
 
           <h2
             className={cn(
-              "font-display text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl",
+              "display-balance font-display text-4xl leading-[0.96] tracking-[-0.05em] sm:text-5xl lg:text-6xl",
               tone === "light" ? "text-white" : "text-brand-950",
             )}
             style={{ textShadow: tone === "light" ? "0 4px 40px rgba(0,0,0,0.15)" : "none" }}
@@ -185,9 +185,9 @@ function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingC
           {description ? (
             <p
               className={cn(
-                "mt-6 text-base font-light leading-relaxed sm:text-lg",
+                "mt-6 text-base leading-8 sm:text-lg",
                 isCenter ? "mx-auto max-w-2xl" : "max-w-3xl pr-4 sm:ml-4",
-                tone === "light" ? "text-white/85" : "text-brand-950/80",
+                tone === "light" ? "text-white/82" : "text-brand-950/74",
               )}
             >
               {description}
@@ -231,7 +231,7 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
         {eyebrow ? (
           <p
             className={cn(
-              "mb-4 text-xs font-bold uppercase tracking-[0.3em]",
+              "eyebrow-label mb-4",
               tone === "light" ? "text-accent-200 shadow-sm" : "text-brand-700",
             )}
           >
@@ -241,7 +241,7 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
 
         <h2
           className={cn(
-            "font-display text-3xl leading-tight tracking-tight sm:text-4xl lg:text-5xl",
+            "display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] sm:text-4xl lg:text-5xl",
             tone === "light" ? "text-white" : "text-brand-950",
           )}
           style={{ textShadow: "0 10px 30px rgba(0,0,0,0.05)" }}
@@ -252,9 +252,9 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
         {description ? (
           <p
             className={cn(
-              "mt-5 text-base leading-relaxed sm:text-lg",
+              "mt-5 text-base leading-8 sm:text-lg",
               isCenter && "mx-auto max-w-2xl",
-              tone === "light" ? "text-white/80" : "text-brand-950/70",
+              tone === "light" ? "text-white/78" : "text-brand-950/68",
             )}
           >
             {description}
@@ -277,7 +277,7 @@ function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingCom
           <div className={cn("h-[1px] w-8", tone === "light" ? "bg-white/30" : "bg-brand-950/20")} />
           <p
             className={cn(
-              "text-[9px] font-bold uppercase tracking-[0.5em]",
+              "eyebrow-label text-[9px]",
               tone === "light" ? "text-white/50" : "text-brand-950/40",
             )}
           >
@@ -289,7 +289,7 @@ function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingCom
 
       <h2
         className={cn(
-          "font-display text-2xl font-light leading-tight tracking-wide sm:text-3xl lg:text-4xl",
+          "display-balance font-display text-2xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-3xl lg:text-4xl",
           tone === "light" ? "text-white" : "text-brand-950",
         )}
       >
@@ -299,9 +299,9 @@ function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingCom
       {description ? (
         <p
           className={cn(
-            "mt-4 max-w-xl text-base font-light leading-relaxed",
+            "mt-4 max-w-xl text-base leading-8",
             isCenter && "mx-auto",
-            tone === "light" ? "text-white/50" : "text-brand-950/50",
+            tone === "light" ? "text-white/56" : "text-brand-950/56",
           )}
         >
           {description}

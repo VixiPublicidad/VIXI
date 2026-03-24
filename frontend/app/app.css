@@ -5,16 +5,148 @@
   src:
     url("../fonts/corbel.woff2") format("woff2"),
     url("../fonts/corbel.woff") format("woff");
-  font-weight: 100 900;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Corbel";
+  src:
+    url("../fonts/Corbel-Italic.woff2") format("woff2"),
+    url("../fonts/Corbel-Italic.woff") format("woff");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Corbel";
+  src:
+    url("../fonts/Corbel-Bold.woff2") format("woff2"),
+    url("../fonts/Corbel-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Corbel";
+  src:
+    url("../fonts/Corbel-BoldItalic.woff2") format("woff2"),
+    url("../fonts/Corbel-BoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Glancyr";
   src:
-    url("../fonts/glancyr.woff2") format("woff2"),
-    url("../fonts/glancyr.woff") format("woff");
-  font-weight: 100 900;
+    url("../fonts/Glancyr-Thin.woff2") format("woff2"),
+    url("../fonts/Glancyr-Thin.woff") format("woff");
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-ExtraLight.woff2") format("woff2"),
+    url("../fonts/Glancyr-ExtraLight.woff") format("woff");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-Light.woff2") format("woff2"),
+    url("../fonts/Glancyr-Light.woff") format("woff");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-Regular.woff2") format("woff2"),
+    url("../fonts/Glancyr-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-Medium.woff2") format("woff2"),
+    url("../fonts/Glancyr-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-SemiBold.woff2") format("woff2"),
+    url("../fonts/Glancyr-SemiBold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-Bold.woff2") format("woff2"),
+    url("../fonts/Glancyr-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-Italic.woff2") format("woff2"),
+    url("../fonts/Glancyr-Italic.woff") format("woff");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-MediumItalic.woff2") format("woff2"),
+    url("../fonts/Glancyr-MediumItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-SemiBoldItalic.woff2") format("woff2"),
+    url("../fonts/Glancyr-SemiBoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glancyr";
+  src:
+    url("../fonts/Glancyr-BoldItalic.woff2") format("woff2"),
+    url("../fonts/Glancyr-BoldItalic.woff") format("woff");
+  font-style: italic;
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -36,6 +168,7 @@
 @layer base {
   html {
     background-color: #f5f7fa;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -45,6 +178,13 @@
       radial-gradient(circle at top right, rgba(219, 232, 244, 0.82), transparent 34%),
       linear-gradient(180deg, #f8fafc 0%, #ffffff 48%, #f5f7fa 100%);
     color: #0b1f3b;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.004em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
   }
 
   ::selection {
@@ -60,9 +200,31 @@
   img {
     display: block;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-feature-settings: "normal" 1;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 @layer utilities {
+  .eyebrow-label {
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .display-balance {
+    text-wrap: balance;
+  }
+
   .page-glow {
     position: fixed;
     z-index: -1;

@@ -3,7 +3,7 @@ import { SectionHeading } from "~/components/ui/section-heading";
 
 export function ProcessSupportTeam() {
   return (
-    <section className="mx-auto max-w-[90vw] py-6 lg:px-8">
+    <section className="mx-auto max-w-[80vw] py-6 lg:px-8">
       <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
         <SectionHeading
           description="El tratamiento puede involucrar distintas especialidades médicas según las necesidades clínicas de cada paciente."
@@ -12,11 +12,11 @@ export function ProcessSupportTeam() {
           title="Especialidades que sostienen el recorrido completo"
           variant="accent"
         />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           {multidisciplinaryTeam.map((item) => (
-            <div key={item.title} className="rounded-[22px] bg-white/8 px-4 py-4 text-sm text-white/78">
+            <div key={item.title} className="flex flex-1 basis-[calc(100%-1rem)] flex-col rounded-[22px] bg-white/8 p-5 sm:basis-[calc(50%-1rem)] lg:basis-[calc(25%-1rem)]">
               <p className="font-medium text-white/90">{item.title}</p>
-              <p className="mt-1 text-[12px] leading-relaxed text-white/55">{item.description}</p>
+              <p className="mt-2 flex-1 text-[13px] leading-relaxed text-white/60">{item.description}</p>
             </div>
           ))}
         </div>

@@ -1,33 +1,41 @@
+import { FaDna, FaMicroscope, FaSnowflake } from "react-icons/fa";
+
 import { treatmentCategories } from "~/components/data";
 import { SectionHeading } from "~/components/ui/section-heading";
 
+const TREATMENT_ICONS = [FaMicroscope, FaDna, FaSnowflake];
+
 export function HomeTreatmentsPreview() {
   return (
-    <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
+    <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <SectionHeading
         description="Desde evaluación y diagnóstico hasta reproducción asistida, preservación de fertilidad y donación."
         eyebrow="Tratamientos"
         title="Un portafolio clínico pensado para decisiones bien informadas"
         variant="editorial"
       />
-      <div className="mt-8 grid gap-5 lg:grid-cols-3">
-        {treatmentCategories.slice(0, 3).map((category) => (
-          <article
-            key={category.title}
-            className="rounded-[28px] border border-brand-950/10 bg-white/88 p-6 shadow-[0_18px_50px_rgba(11,31,59,0.08)]"
-          >
-            <h3 className="text-xl font-semibold text-brand-950">{category.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-brand-950/72">{category.description}</p>
-            <ul className="mt-5 grid gap-2 text-sm text-brand-950/80">
-              {category.items.map((item) => (
-                <li key={item} className="rounded-full bg-brand-950/5 px-4 py-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
+      <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        {treatmentCategories.slice(0, 3).map((category, index) => {
+          const Icon = TREATMENT_ICONS[index];
+          return (
+            <article
+              key={category.title}
+              className="group flex flex-col rounded-[30px] border border-brand-950/8 bg-white/82 p-7 shadow-[0_20px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(11,31,59,0.11)]"
+            >
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[18px] bg-brand-950/[0.04] text-brand-700 transition-colors group-hover:bg-brand-950/[0.06]">
+                <Icon aria-hidden="true" className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-[1.65rem] leading-[1.02] tracking-[-0.035em] text-brand-950">
+                {category.title}
+              </h3>
+            <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">{category.description}</p>
+            <div className="mt-6 border-t border-brand-950/8 pt-5">
+              <p className="text-sm leading-7 text-brand-950/78">{category.items.join(" \u00b7 ")}</p>
+            </div>
           </article>
-        ))}
-      </div>
+        );
+      })}
+    </div>
     </section>
   );
 }

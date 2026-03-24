@@ -129,22 +129,22 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-16 pt-28 sm:px-10 lg:px-16 lg:pb-20`}>
         <div className="max-w-3xl pb-10">
-          <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.25em] text-white backdrop-blur-md">
+          <p className="eyebrow-label mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-white backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-400" />
             {eyebrow}
           </p>
 
-          <h1 className="font-display text-[2.6rem] leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[4.8rem]">
+          <h1 className="display-balance font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.9rem]">
             {title}
           </h1>
 
           {subtitle ? (
-            <p className="mt-3 font-display text-[1.4rem] leading-[1.2] tracking-tight text-white/85 sm:text-2xl lg:text-[2.2rem] xl:text-[2.6rem]">
+            <p className="display-balance mt-3 font-display text-[1.4rem] leading-[1.12] tracking-[-0.035em] text-white/85 sm:text-2xl lg:text-[2.2rem] xl:text-[2.6rem]">
               {subtitle}
             </p>
           ) : null}
 
-          <p className="mt-6 max-w-xl text-lg leading-[1.75] text-white/75 sm:text-xl">{description}</p>
+          <p className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/78 sm:text-[1.15rem]">{description}</p>
 
           {actions?.length ? (
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -159,16 +159,16 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
           <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-6 border-t border-white/15 pt-8 sm:grid-cols-3 lg:max-w-3xl">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="text-3xl font-light text-white">{stat.value}</p>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-white/50">{stat.label}</p>
+                <p className="font-display text-3xl tracking-[-0.04em] text-white">{stat.value}</p>
+                <p className="eyebrow-label mt-2 text-white/50">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
         <div className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-xl transition-all hover:bg-white/15 lg:block">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-accent-200">{badge}</p>
-          <p className="mt-2 text-sm leading-relaxed text-white/80">{caption}</p>
+          <p className="eyebrow-label text-[10px] text-accent-200">{badge}</p>
+          <p className="mt-2 text-sm leading-7 text-white/80">{caption}</p>
         </div>
       </div>
     </section>
@@ -188,10 +188,10 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16">
         <div className={`grid ${heightClass} items-end gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28`}>
           <div className="flex flex-col justify-end">
-            <p className="mb-4 text-xs font-bold tracking-[0.3em] text-brand-950/50">{eyebrow}</p>
-            <h1 className="font-display text-4xl leading-[0.95] tracking-tight text-brand-950 sm:text-5xl lg:text-[4.5rem]">{title}</h1>
+            <p className="eyebrow-label mb-4 text-brand-950/50">{eyebrow}</p>
+            <h1 className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]">{title}</h1>
             <div className="mt-8 h-px w-24 bg-brand-950/20" />
-            <p className="mt-6 max-w-lg text-lg font-light leading-relaxed text-brand-950/75">{description}</p>
+            <p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72">{description}</p>
 
             {actions?.length ? (
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -207,16 +207,16 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
                 {stats.map((stat) => (
                   <div key={stat.label} className="border-l-2 border-brand-950/15 pl-4 lg:border-l-0 lg:border-r-2 lg:pl-0 lg:pr-4">
-                    <p className="text-2xl font-medium text-brand-950">{stat.value}</p>
-                    <p className="mt-1 text-xs uppercase tracking-wider text-brand-950/55">{stat.label}</p>
+                    <p className="font-display text-2xl tracking-[-0.035em] text-brand-950">{stat.value}</p>
+                    <p className="eyebrow-label mt-1 text-brand-950/55">{stat.label}</p>
                   </div>
                 ))}
               </div>
             ) : null}
 
             <div className="rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-md lg:max-w-xs lg:text-left">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-brand-700">{badge}</p>
-              <p className="mt-2 text-sm leading-relaxed text-brand-950/70">{caption}</p>
+              <p className="eyebrow-label text-[10px] text-brand-700">{badge}</p>
+              <p className="mt-2 text-sm leading-7 text-brand-950/70">{caption}</p>
             </div>
           </div>
         </div>
@@ -236,16 +236,16 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-14 pt-28 sm:px-10 lg:px-16 lg:pb-20`}>
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-brand-800 backdrop-blur-md">
+          <p className="eyebrow-label inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-brand-800 backdrop-blur-md">
             <span className="h-2 w-2 rounded-full bg-accent-300" />
             {eyebrow}
           </p>
 
-          <h1 className="mt-6 font-display text-4xl leading-[0.98] tracking-tight text-brand-950 sm:text-5xl lg:text-[4.6rem]">
+          <h1 className="display-balance mt-6 font-display text-4xl leading-[0.95] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.6rem]">
             {title}
           </h1>
           <div className="mt-7 h-px w-24 bg-brand-950/16" />
-          <p className="mt-7 max-w-xl text-lg leading-8 text-brand-950/68">{description}</p>
+          <p className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-brand-950/66 sm:text-[1.15rem]">{description}</p>
 
           {actions?.length ? (
             <div className="mt-8 flex flex-wrap gap-4">
@@ -263,16 +263,16 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
                 key={stat.label}
                 className="rounded-xl border border-white/20 bg-white/12 px-5 py-4 backdrop-blur-xl"
               >
-                <p className="text-[1.6rem] font-light tracking-tight text-brand-950">{stat.value}</p>
-                <p className="mt-1.5 text-[10px] font-medium uppercase tracking-[0.24em] text-brand-950/45">{stat.label}</p>
+                <p className="font-display text-[1.7rem] tracking-[-0.04em] text-brand-950">{stat.value}</p>
+                <p className="eyebrow-label mt-1.5 text-brand-950/45">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
         <div className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-xl lg:block">
-          <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-brand-700">{badge}</p>
-          <p className="mt-2 text-sm leading-relaxed text-brand-950/62">{caption}</p>
+          <p className="eyebrow-label text-[10px] text-brand-700">{badge}</p>
+          <p className="mt-2 text-sm leading-7 text-brand-950/62">{caption}</p>
         </div>
       </div>
     </section>
@@ -292,9 +292,9 @@ function ProcessHero({ actions, badge, caption, description, eyebrow, heightClas
       <div className="pointer-events-none absolute -right-20 bottom-0 z-[1] h-[400px] w-[400px] rounded-full bg-accent-400/10 blur-[100px]" />
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20`}>
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-accent-200/80">{eyebrow}</p>
-        <h1 className="max-w-3xl font-display text-4xl leading-[1.1] text-white sm:text-5xl lg:text-[4.5rem] [text-shadow:0_2px_30px_rgba(0,0,0,0.4)]">{title}</h1>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/60">{description}</p>
+        <p className="eyebrow-label mb-4 text-accent-200/80">{eyebrow}</p>
+        <h1 className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white sm:text-5xl lg:text-[4.5rem] [text-shadow:0_2px_30px_rgba(0,0,0,0.4)]">{title}</h1>
+        <p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68">{description}</p>
 
         {actions?.length ? (
           <div className="mt-8 flex flex-wrap gap-4">
@@ -308,15 +308,15 @@ function ProcessHero({ actions, badge, caption, description, eyebrow, heightClas
           <div className="mt-12 flex flex-wrap gap-10 border-t border-white/10 pt-7">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="text-xl font-bold text-white">{stat.value}</p>
-                <p className="text-[10px] uppercase tracking-wider text-white/40">{stat.label}</p>
+                <p className="font-display text-xl tracking-[-0.03em] text-white">{stat.value}</p>
+                <p className="eyebrow-label text-white/40">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
         <p className="mt-8 max-w-sm text-xs leading-relaxed text-white/35">
-          <span className="font-bold uppercase tracking-widest text-accent-200/60">{badge}</span>
+          <span className="eyebrow-label text-[10px] text-accent-200/60">{badge}</span>
           {" - "}
           {caption}
         </p>
@@ -337,9 +337,9 @@ function ConciergeHero({ actions, badge, caption, description, eyebrow, heightCl
       <div className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-accent-200/30 blur-[100px]" />
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col items-center justify-center px-6 py-24 text-center sm:px-10 lg:px-16`}>
-        <p className="mb-6 text-[11px] font-bold uppercase tracking-[0.25em] text-brand-700/70">{eyebrow}</p>
-        <h1 className="max-w-4xl font-display text-4xl leading-[1.08] text-brand-950 sm:text-5xl lg:text-[5rem]">{title}</h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-brand-950/65">{description}</p>
+        <p className="eyebrow-label mb-6 text-brand-700/70">{eyebrow}</p>
+        <h1 className="display-balance max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[5rem]">{title}</h1>
+        <p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-brand-950/64 sm:text-[1.15rem]">{description}</p>
 
         {actions?.length ? (
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -353,16 +353,16 @@ function ConciergeHero({ actions, badge, caption, description, eyebrow, heightCl
           <div className="mt-16 flex flex-wrap justify-center gap-8 sm:gap-14">
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center">
-                <p className="text-3xl font-light text-brand-950">{stat.value}</p>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-brand-950/45">{stat.label}</p>
+                <p className="font-display text-3xl tracking-[-0.04em] text-brand-950">{stat.value}</p>
+                <p className="eyebrow-label mt-2 text-brand-950/45">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
         <div className="mt-12 rounded-2xl border border-brand-950/8 bg-white/60 px-6 py-4 backdrop-blur-xl">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-brand-700">{badge}</p>
-          <p className="mt-1 text-sm text-brand-950/60">{caption}</p>
+          <p className="eyebrow-label text-[10px] text-brand-700">{badge}</p>
+          <p className="mt-1 text-sm leading-7 text-brand-950/60">{caption}</p>
         </div>
       </div>
     </section>

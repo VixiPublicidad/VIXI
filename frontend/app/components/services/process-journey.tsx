@@ -3,7 +3,7 @@ import { SectionHeading } from "~/components/ui/section-heading";
 
 export function ProcessJourney() {
   return (
-    <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
+    <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <SectionHeading
         description="Cada etapa ayuda a entender qué estudios se requieren, cuál es el factor que impide el embarazo y qué sigue después."
         eyebrow="Ruta clínica"

@@ -36,7 +36,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
 
   return (
     <section
-      className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[0.98fr_1.02fr] lg:px-8"
+      className="mx-auto grid max-w-[80vw] gap-8 py-6 lg:grid-cols-[0.98fr_1.02fr] lg:px-8"
       id="contact-form"
     >
       <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)] sm:p-10">

@@ -3,7 +3,7 @@ import { SectionHeading } from "~/components/ui/section-heading";
 
 export function OutOfTownHighlightsSection() {
   return (
-    <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
+    <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <SectionHeading
         description="La atención para pacientes foráneos busca dar claridad antes del viaje y acompañamiento durante cada etapa del tratamiento."
         eyebrow="Acompañamiento"

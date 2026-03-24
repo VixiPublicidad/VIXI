@@ -26,7 +26,7 @@ const contactCards = [
 
 export function ContactChannels() {
   return (
-    <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
+    <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <SectionHeading
         description="Toda la información esencial para comunicarte con VIXI y programar tu primera valoración."
         eyebrow="Datos generales"

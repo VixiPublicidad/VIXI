@@ -5,7 +5,7 @@ import { SectionHeading } from "~/components/ui/section-heading";
 
 export function HomeExperience() {
   return (
-    <section className="mx-auto grid max-w-[90vw] gap-8 py-6 lg:grid-cols-[1fr_0.95fr] lg:px-8">
+    <section className="mx-auto grid max-w-[80vw] gap-8 py-6 lg:grid-cols-[1fr_0.95fr] lg:px-8">
       <div>
         <SectionHeading
           description="Atención integral, ambiente moderno y tranquilo, y acompañamiento personalizado para que cada paciente se sienta en buenas manos."

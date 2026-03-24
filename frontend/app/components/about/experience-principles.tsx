@@ -18,7 +18,7 @@ const principles = [
 
 export function ExperiencePrinciples() {
   return (
-    <section className="mx-auto max-w-[90vw] py-16 lg:px-8">
+    <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <SectionHeading
         align="center"
         description="Atención integral, trato cercano y una sensación de calma que ayuda a vivir el proceso con mayor confianza."

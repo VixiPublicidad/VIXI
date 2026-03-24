@@ -74,7 +74,7 @@ export function SiteHeader() {
               key={item.to}
               className={({ isActive }) =>
                 cn(
-                  "nav-link relative px-3 py-2 text-[13px] font-medium tracking-[0.01em] transition-colors duration-200",
+                  "nav-link relative px-3 py-2 text-[12px] font-medium uppercase tracking-[0.16em] transition-colors duration-200",
                   heroHeader
                     ? isActive
                       ? "text-white"
@@ -208,10 +208,10 @@ export function SiteHeader() {
                 >
                   {({ isActive }) => (
                     <div className="flex items-center justify-between gap-4">
-                      <span className="text-[15px] font-medium">{item.label}</span>
+                      <span className="font-display text-[1.05rem] leading-none tracking-[-0.02em]">{item.label}</span>
                       <span
                         className={cn(
-                          "text-xs uppercase tracking-[0.24em] transition-colors duration-200",
+                          "text-[10px] uppercase tracking-[0.28em] transition-colors duration-200",
                           isActive ? "text-white/65" : "text-brand-700/45 group-hover:text-brand-700/70",
                         )}
                       >
@@ -235,7 +235,7 @@ export function SiteHeader() {
                   Agendar por WhatsApp
                 </ButtonLink>
                 <a
-                  className="flex items-center justify-center rounded-full border border-white/14 px-5 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-white/8"
+                  className="flex items-center justify-center rounded-full border border-white/14 px-5 py-3 text-[0.95rem] font-medium tracking-[0.01em] text-white transition-colors duration-200 hover:bg-white/8"
                   href={contactDetails.phoneHref}
                 >
                   Llamar a {contactDetails.phoneDisplay}
