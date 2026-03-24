@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-import { ScrollSmoother, useGSAP } from "~/components/lib/gsap";
+import { gsap, ScrollSmoother, useGSAP } from "~/components/lib/gsap";
 
 type UseGlobalSmoothScrollOptions = {
   contentRef: RefObject<HTMLDivElement | null>;
@@ -20,18 +20,27 @@ export default function useGlobalSmoothScroll({
 
       if (!wrapper || !content) return;
 
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
       const existingSmoother = ScrollSmoother.get();
       existingSmoother?.kill();
+
+      gsap.set([wrapper, content], { clearProps: "all" });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+      const isSmallViewport = window.matchMedia("(max-width: 1023px)").matches;
+
+      // Mobile browsers are the least reliable environment for ScrollSmoother.
+      // Fall back to native scrolling there so ScrollTrigger reveals can still fire.
+      if (isTouchDevice || isSmallViewport) return;
 
       const smoother = ScrollSmoother.create({
         content: "#smooth-content",
         effects: true,
         ignoreMobileResize: true,
         normalizeScroll: true,
-        smooth: window.matchMedia("(pointer: coarse)").matches ? 0.7 : 1.2,
-        smoothTouch: 0.12,
+        smooth: 1.2,
+        smoothTouch: false,
         wrapper: "#smooth-wrapper",
       });
 
