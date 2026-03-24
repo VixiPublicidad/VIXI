@@ -1,7 +1,7 @@
 import { CTABanner } from "~/components/shared/cta-banner";
 
-import { TreatmentsCategories } from "~/components/services/treatments-categories";
-import { TreatmentsHero } from "~/components/services/treatments-hero";
+import { TreatmentsCategories } from "./categories";
+import { TreatmentsHero } from "./hero";
 
 export function TreatmentsPage() {
   return (

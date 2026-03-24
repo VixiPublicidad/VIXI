@@ -11,8 +11,7 @@ export function TreatmentsHero() {
       }}
       imageBadge="Portafolio clínico"
       imageCaption="Opciones terapéuticas explicadas con claridad para entender qué camino puede ajustarse mejor a tu caso."
-      stats={[
-      ]}
+      stats={[]}
       title="Tratamientos de fertilidad organizados con claridad, sensibilidad y criterio médico."
       variant="editorial"
       height="60vh"

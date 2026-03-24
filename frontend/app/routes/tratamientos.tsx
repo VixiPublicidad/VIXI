@@ -1,5 +1,5 @@
 import { buildMeta } from "~/components/lib/meta";
-import { TreatmentsPage } from "~/components/services/treatments-page";
+import { TreatmentsPage } from "~/components/services/treatments/page";
 
 export function meta() {
   return buildMeta(

@@ -1,8 +1,8 @@
 import { CTABanner } from "~/components/shared/cta-banner";
 
-import { ProcessHero } from "~/components/services/process-hero";
-import { ProcessJourney } from "~/components/services/process-journey";
-import { ProcessSupportTeam } from "~/components/services/process-support-team";
+import { ProcessHero } from "./hero";
+import { ProcessJourney } from "./journey";
+import { ProcessSupportTeam } from "./support-team";
 
 export function ProcessPage() {
   return (

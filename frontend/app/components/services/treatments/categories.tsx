@@ -17,6 +17,7 @@ export function TreatmentsCategories() {
       <div className="mt-10 flex flex-wrap justify-center gap-5">
         {treatmentCategories.map((category, index) => {
           const Icon = TREATMENT_ICONS[index];
+
           return (
             <article
               key={category.title}
@@ -28,14 +29,14 @@ export function TreatmentsCategories() {
               <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
                 {category.title}
               </h2>
-            <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">{category.description}</p>
-            <div className="mt-6 border-t border-brand-950/8 pt-5">
-              <p className="text-sm leading-7 text-brand-950/78">{category.items.join(" · ")}</p>
-            </div>
-          </article>
-        );
-      })}
-    </div>
+              <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">{category.description}</p>
+              <div className="mt-6 border-t border-brand-950/8 pt-5">
+                <p className="text-sm leading-7 text-brand-950/78">{category.items.join(" · ")}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }
