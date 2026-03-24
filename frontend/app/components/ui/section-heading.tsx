@@ -36,7 +36,7 @@ type HeadingComponentProps = Omit<SectionHeadingProps, "variant">;
 function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingComponentProps) {
   const isCenter = align === "center";
   return (
-    <div className={cn("max-w-[850px] relative", isCenter && "mx-auto text-center flex flex-col items-center")}>
+    <div className={cn("max-w-[850px] relative", isCenter && "mx-auto text-center flex flex-col items-center")} data-reveal-item data-text-block>
       <div className={cn("absolute -left-4 top-2 h-16 w-[2px] rounded-full hidden sm:block",
         isCenter ? "hidden" : "block",
         tone === "light" ? "bg-gradient-to-b from-white to-transparent opacity-30" : "bg-gradient-to-b from-brand-950 to-transparent opacity-10"
@@ -48,6 +48,7 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
             "eyebrow-label mb-3 text-brand-700/80",
             tone === "light" ? "text-accent-200/90" : "text-brand-700/80",
           )}
+          data-text-fade
         >
           {eyebrow}
         </p>
@@ -57,6 +58,7 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
           "display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] sm:text-4xl lg:text-5xl",
           tone === "light" ? "text-white" : "text-brand-950",
         )}
+        data-split="lines"
       >
         {title}
       </h2>
@@ -68,6 +70,7 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
               isCenter && "max-w-2xl",
               tone === "light" ? "text-white/78" : "text-brand-950/68",
             )}
+            data-split="lines"
           >
             {description}
           </p>
@@ -83,7 +86,7 @@ function ClassicHeading({ align, description, eyebrow, tone, title }: HeadingCom
 function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComponentProps) {
   const isCenter = align === "center";
   return (
-    <div className={cn("max-w-4xl relative", isCenter && "mx-auto text-center flex flex-col items-center")}>
+    <div className={cn("max-w-4xl relative", isCenter && "mx-auto text-center flex flex-col items-center")} data-reveal-item data-text-block>
       {eyebrow ? (
         <div
           className={cn(
@@ -96,7 +99,7 @@ function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComp
           <svg className={cn("h-3.5 w-3.5", tone === "light" ? "text-accent-100" : "text-accent-400")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <span className="eyebrow-label pt-[1px] text-[10px]">{eyebrow}</span>
+          <span className="eyebrow-label pt-[1px] text-[10px]" data-text-fade>{eyebrow}</span>
         </div>
       ) : null}
 
@@ -105,6 +108,7 @@ function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComp
           "display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] sm:text-4xl lg:text-5xl",
           tone === "light" ? "text-white" : "bg-clip-text text-transparent bg-gradient-to-br from-brand-950 via-[#183457] to-[#3a5d8c]",
         )}
+        data-text-fade
       >
         {title}
       </h2>
@@ -116,6 +120,7 @@ function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComp
             isCenter && "mx-auto",
             tone === "light" ? "text-white/72" : "text-brand-950/66",
           )}
+          data-split="words"
         >
           {description}
         </p>
@@ -130,7 +135,7 @@ function AccentHeading({ align, description, eyebrow, tone, title }: HeadingComp
 function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingComponentProps) {
   const isCenter = align === "center";
   return (
-    <div className={cn("max-w-5xl", isCenter && "mx-auto text-center")}>
+    <div className={cn("max-w-5xl", isCenter && "mx-auto text-center")} data-reveal-item data-text-block>
       <div
         className={cn(
           "grid gap-6 sm:grid-cols-[auto_1fr] md:gap-10",
@@ -160,6 +165,7 @@ function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingC
                 "eyebrow-label mb-4 text-[10px]",
                 tone === "light" ? "text-accent-200" : "text-brand-700",
               )}
+              data-text-fade
             >
               {eyebrow}
             </p>
@@ -171,6 +177,7 @@ function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingC
               tone === "light" ? "text-white" : "text-brand-950",
             )}
             style={{ textShadow: tone === "light" ? "0 4px 40px rgba(0,0,0,0.15)" : "none" }}
+            data-split="lines"
           >
             {title}
           </h2>
@@ -189,6 +196,7 @@ function EditorialHeading({ align, description, eyebrow, tone, title }: HeadingC
                 isCenter ? "mx-auto max-w-2xl" : "max-w-3xl pr-4 sm:ml-4",
                 tone === "light" ? "text-white/82" : "text-brand-950/74",
               )}
+              data-split="lines"
             >
               {description}
             </p>
@@ -206,6 +214,8 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
   const isCenter = align === "center";
   return (
     <div
+      data-reveal-item
+      data-text-block
       className={cn(
         "relative overflow-hidden rounded-[3rem] px-8 py-12 sm:px-14 sm:py-16 transition-all duration-700 ease-out hover:shadow-[0_40px_100px_-20px_rgba(11,31,59,0.15)]",
         isCenter && "mx-auto text-center flex flex-col items-center",
@@ -214,15 +224,15 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
           : "border border-white/60 bg-white/70 backdrop-blur-3xl shadow-[0_20px_80px_-15px_rgba(11,31,59,0.08)] ring-1 ring-brand-950/5",
       )}
     >
-      {/* Interactive/Animated Orbs - using simple CSS animations since no framer-motion */}
+      {/* Decorative orbs with CSS-only motion. */}
       <div className={cn(
         "pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full mix-blend-multiply blur-[80px]",
         tone === "light" ? "bg-accent-200/10" : "bg-accent-100/50"
-      )} />
+      )} data-ambient-orb />
       <div className={cn(
         "pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 rounded-full mix-blend-multiply blur-[100px]",
         tone === "light" ? "bg-accent-300/15" : "bg-brand-200/50"
-      )} />
+      )} data-ambient-orb />
 
       {/* Grid Pattern Overlay */}
       <div className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMTEsMzEsNTksMC4wMykiLz48L3N2Zz4=')] opacity-50" />
@@ -234,6 +244,7 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
               "eyebrow-label mb-4",
               tone === "light" ? "text-accent-200 shadow-sm" : "text-brand-700",
             )}
+            data-text-fade
           >
             {eyebrow}
           </p>
@@ -245,9 +256,10 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
             tone === "light" ? "text-white" : "text-brand-950",
           )}
           style={{ textShadow: "0 10px 30px rgba(0,0,0,0.05)" }}
-        >
-          {title}
-        </h2>
+            data-split="lines"
+          >
+            {title}
+          </h2>
 
         {description ? (
           <p
@@ -256,6 +268,7 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
               isCenter && "mx-auto max-w-2xl",
               tone === "light" ? "text-white/78" : "text-brand-950/68",
             )}
+            data-split="words"
           >
             {description}
           </p>
@@ -271,7 +284,7 @@ function HighlightHeading({ align, description, eyebrow, tone, title }: HeadingC
 function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingComponentProps) {
   const isCenter = align === "center";
   return (
-    <div className={cn("max-w-3xl", isCenter && "mx-auto text-center")}>
+    <div className={cn("max-w-3xl", isCenter && "mx-auto text-center")} data-reveal-item data-text-block>
       {eyebrow ? (
         <div className={cn("mb-6 flex items-center gap-4", isCenter && "justify-center")}>
           <div className={cn("h-[1px] w-8", tone === "light" ? "bg-white/30" : "bg-brand-950/20")} />
@@ -280,6 +293,7 @@ function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingCom
               "eyebrow-label text-[9px]",
               tone === "light" ? "text-white/50" : "text-brand-950/40",
             )}
+            data-text-fade
           >
             {eyebrow}
           </p>
@@ -292,6 +306,7 @@ function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingCom
           "display-balance font-display text-2xl font-medium leading-[1.02] tracking-[-0.035em] sm:text-3xl lg:text-4xl",
           tone === "light" ? "text-white" : "text-brand-950",
         )}
+        data-split="lines"
       >
         {title}
       </h2>
@@ -303,6 +318,7 @@ function MinimalHeading({ align, description, eyebrow, tone, title }: HeadingCom
             isCenter && "mx-auto",
             tone === "light" ? "text-white/56" : "text-brand-950/56",
           )}
+          data-split="words"
         >
           {description}
         </p>

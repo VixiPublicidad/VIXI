@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-import { getLenisInstance } from "~/components/lib/lenis";
+import { ScrollSmoother } from "~/components/lib/gsap";
 
 export default function useScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const lenis = getLenisInstance();
+    const smoother = ScrollSmoother.get();
 
-    if (lenis && typeof lenis.scrollTo === "function") {
-      lenis.scrollTo(0, { immediate: true });
+    if (smoother) {
+      smoother.scrollTo(0, false);
+      ScrollSmoother.refresh();
       return;
     }
 

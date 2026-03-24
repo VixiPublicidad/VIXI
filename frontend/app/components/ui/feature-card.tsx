@@ -17,12 +17,14 @@ export function FeatureCard({
 }: FeatureCardProps) {
   return (
     <article
+      data-card
+      data-reveal-item
       className={cn(
         "flex h-full flex-col rounded-[30px] border border-brand-950/8 bg-white/82 p-7 shadow-[0_20px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm",
         className,
       )}
     >
-      {icon ? <div className="mb-5 text-accent-400">{icon}</div> : null}
+      {icon ? <div className="mb-5 text-accent-400" data-card-float>{icon}</div> : null}
       {eyebrow ? (
         <p className="eyebrow-label mb-4 text-brand-700/62">
           {eyebrow}

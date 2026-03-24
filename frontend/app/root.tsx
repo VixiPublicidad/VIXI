@@ -4,7 +4,6 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
 } from "react-router";
 
 import type { ReactNode } from "react";
@@ -113,7 +112,6 @@ export function Layout({ children }: { children: ReactNode }) {
       </head>
       <body className="font-sans text-brand-950 antialiased">
         {children}
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

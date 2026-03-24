@@ -108,8 +108,8 @@ type HeroComponentProps = Omit<PageHeroProps, "variant" | "imageBadge" | "imageC
 
 function SignatureHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, subtitle, title }: HeroComponentProps) {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden" data-hero-root>
+      <div className="absolute inset-0 z-0" data-hero-media>
         <img
           alt={image.alt}
           className="h-full w-full object-cover"
@@ -124,30 +124,30 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-brand-950/20" />
       </div>
 
-      <div className="pointer-events-none absolute -left-40 top-1/2 -z-0 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-accent-400/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 -z-0 h-[400px] w-[400px] rounded-full bg-brand-200/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/2 -z-0 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-accent-400/10 blur-[120px]" data-ambient-orb />
+      <div className="pointer-events-none absolute bottom-0 right-0 -z-0 h-[400px] w-[400px] rounded-full bg-brand-200/10 blur-[100px]" data-ambient-orb />
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-16 pt-28 sm:px-10 lg:px-16 lg:pb-20`}>
         <div className="max-w-3xl pb-10">
-          <p className="eyebrow-label mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-white backdrop-blur-md">
+          <p className="eyebrow-label mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-white backdrop-blur-md" data-hero-eyebrow>
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-400" />
             {eyebrow}
           </p>
 
-          <h1 className="display-balance font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.9rem]">
+          <h1 className="display-balance font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.9rem]" data-hero-title data-split="lines">
             {title}
           </h1>
 
           {subtitle ? (
-            <p className="display-balance mt-3 font-display text-[1.4rem] leading-[1.12] tracking-[-0.035em] text-white/85 sm:text-2xl lg:text-[2.2rem] xl:text-[2.6rem]">
+            <p className="display-balance mt-3 font-display text-[1.4rem] leading-[1.12] tracking-[-0.035em] text-white/85 sm:text-2xl lg:text-[2.2rem] xl:text-[2.6rem]" data-hero-title data-split="lines">
               {subtitle}
             </p>
           ) : null}
 
-          <p className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/78 sm:text-[1.15rem]">{description}</p>
+          <p className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/78 sm:text-[1.15rem]" data-hero-copy data-split="words">{description}</p>
 
           {actions?.length ? (
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center gap-4" data-hero-actions>
               {actions.map((action, i) => (
                 <ButtonLink key={action.to} external={action.external} to={action.to} variant={i === 0 ? "primary" : "secondary"}>{action.label}</ButtonLink>
               ))}
@@ -156,17 +156,17 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
         </div>
 
         {stats?.length ? (
-          <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-6 border-t border-white/15 pt-8 sm:grid-cols-3 lg:max-w-3xl">
+          <div className="mt-16 grid grid-cols-2 gap-x-10 gap-y-6 border-t border-white/15 pt-8 sm:grid-cols-3 lg:max-w-3xl" data-hero-stats>
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="font-display text-3xl tracking-[-0.04em] text-white">{stat.value}</p>
+                <p className="font-display text-3xl tracking-[-0.04em] text-white" data-split="chars">{stat.value}</p>
                 <p className="eyebrow-label mt-2 text-white/50">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
-        <div className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-xl transition-all hover:bg-white/15 lg:block">
+        <div className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-xl transition-all hover:bg-white/15 lg:block" data-hero-aside>
           <p className="eyebrow-label text-[10px] text-accent-200">{badge}</p>
           <p className="mt-2 text-sm leading-7 text-white/80">{caption}</p>
         </div>
@@ -177,8 +177,8 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
 
 function EditorialHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden" data-hero-root>
+      <div className="absolute inset-0 z-0" data-hero-media>
         <img alt={image.alt} className="h-full w-full object-cover grayscale-[30%]" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#fafaf9]/98 via-[#fafaf9]/85 to-[#fafaf9]/40" />
       </div>
@@ -188,13 +188,13 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16">
         <div className={`grid ${heightClass} items-end gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28`}>
           <div className="flex flex-col justify-end">
-            <p className="eyebrow-label mb-4 text-brand-950/50">{eyebrow}</p>
-            <h1 className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]">{title}</h1>
+            <p className="eyebrow-label mb-4 text-brand-950/50" data-hero-eyebrow>{eyebrow}</p>
+            <h1 className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]" data-hero-title data-split="lines">{title}</h1>
             <div className="mt-8 h-px w-24 bg-brand-950/20" />
-            <p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72">{description}</p>
+            <p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72" data-hero-copy data-split="words">{description}</p>
 
             {actions?.length ? (
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row" data-hero-actions>
                 {actions.map((action, i) => (
                   <ButtonLink key={action.to} external={action.external} to={action.to} variant={i === 0 ? "primary" : "secondary"}>{action.label}</ButtonLink>
                 ))}
@@ -204,17 +204,17 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
 
           <div className="flex flex-col items-start gap-8 lg:items-end lg:text-right">
             {stats?.length ? (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1" data-hero-stats>
                 {stats.map((stat) => (
                   <div key={stat.label} className="border-l-2 border-brand-950/15 pl-4 lg:border-l-0 lg:border-r-2 lg:pl-0 lg:pr-4">
-                    <p className="font-display text-2xl tracking-[-0.035em] text-brand-950">{stat.value}</p>
+                    <p className="font-display text-2xl tracking-[-0.035em] text-brand-950" data-split="chars">{stat.value}</p>
                     <p className="eyebrow-label mt-1 text-brand-950/55">{stat.label}</p>
                   </div>
                 ))}
               </div>
             ) : null}
 
-            <div className="rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-md lg:max-w-xs lg:text-left">
+            <div className="rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-md lg:max-w-xs lg:text-left" data-hero-aside>
               <p className="eyebrow-label text-[10px] text-brand-700">{badge}</p>
               <p className="mt-2 text-sm leading-7 text-brand-950/70">{caption}</p>
             </div>
@@ -227,8 +227,8 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
 
 function GalleryHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden" data-hero-root>
+      <div className="absolute inset-0 z-0" data-hero-media>
         <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#faf7f2]/88 via-[#faf7f2]/38 to-brand-950/12" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/30" />
@@ -236,19 +236,19 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-14 pt-28 sm:px-10 lg:px-16 lg:pb-20`}>
         <div className="max-w-3xl">
-          <p className="eyebrow-label inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-brand-800 backdrop-blur-md">
+          <p className="eyebrow-label inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-brand-800 backdrop-blur-md" data-hero-eyebrow>
             <span className="h-2 w-2 rounded-full bg-accent-300" />
             {eyebrow}
           </p>
 
-          <h1 className="display-balance mt-6 font-display text-4xl leading-[0.95] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.6rem]">
+          <h1 className="display-balance mt-6 font-display text-4xl leading-[0.95] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.6rem]" data-hero-title data-split="lines">
             {title}
           </h1>
           <div className="mt-7 h-px w-24 bg-brand-950/16" />
-          <p className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-brand-950/66 sm:text-[1.15rem]">{description}</p>
+          <p className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-brand-950/66 sm:text-[1.15rem]" data-hero-copy data-split="words">{description}</p>
 
           {actions?.length ? (
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4" data-hero-actions>
               {actions.map((action, i) => (
                 <ButtonLink key={action.to} external={action.external} to={action.to} variant={i === 0 ? "primary" : "secondary"}>{action.label}</ButtonLink>
               ))}
@@ -257,20 +257,20 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
         </div>
 
         {stats?.length ? (
-          <div className="mt-12 flex flex-wrap gap-4 border-t border-brand-950/10 pt-8 lg:max-w-3xl">
+          <div className="mt-12 flex flex-wrap gap-4 border-t border-brand-950/10 pt-8 lg:max-w-3xl" data-hero-stats>
             {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="rounded-xl border border-white/20 bg-white/12 px-5 py-4 backdrop-blur-xl"
               >
-                <p className="font-display text-[1.7rem] tracking-[-0.04em] text-brand-950">{stat.value}</p>
+                <p className="font-display text-[1.7rem] tracking-[-0.04em] text-brand-950" data-split="chars">{stat.value}</p>
                 <p className="eyebrow-label mt-1.5 text-brand-950/45">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
-        <div className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-xl lg:block">
+        <div className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-xl lg:block" data-hero-aside>
           <p className="eyebrow-label text-[10px] text-brand-700">{badge}</p>
           <p className="mt-2 text-sm leading-7 text-brand-950/62">{caption}</p>
         </div>
@@ -281,23 +281,23 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
 
 function ProcessHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden" data-hero-root>
+      <div className="absolute inset-0 z-0" data-hero-media>
         <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-950/20 to-brand-950/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-brand-950/30 to-brand-950/50" />
       </div>
 
-      <div className="pointer-events-none absolute -left-32 top-1/3 z-[1] h-[500px] w-[500px] rounded-full bg-brand-700/20 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-20 bottom-0 z-[1] h-[400px] w-[400px] rounded-full bg-accent-400/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-32 top-1/3 z-[1] h-[500px] w-[500px] rounded-full bg-brand-700/20 blur-[120px]" data-ambient-orb />
+      <div className="pointer-events-none absolute -right-20 bottom-0 z-[1] h-[400px] w-[400px] rounded-full bg-accent-400/10 blur-[100px]" data-ambient-orb />
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20`}>
-        <p className="eyebrow-label mb-4 text-accent-200/80">{eyebrow}</p>
-        <h1 className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white sm:text-5xl lg:text-[4.5rem] [text-shadow:0_2px_30px_rgba(0,0,0,0.4)]">{title}</h1>
-        <p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68">{description}</p>
+        <p className="eyebrow-label mb-4 text-accent-200/80" data-hero-eyebrow>{eyebrow}</p>
+        <h1 className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white sm:text-5xl lg:text-[4.5rem] [text-shadow:0_2px_30px_rgba(0,0,0,0.4)]" data-hero-title data-split="lines">{title}</h1>
+        <p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" data-hero-copy data-split="words">{description}</p>
 
         {actions?.length ? (
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-4" data-hero-actions>
             {actions.map((action, i) => (
               <ButtonLink key={action.to} external={action.external} to={action.to} variant={i === 0 ? "primary" : "secondary"}>{action.label}</ButtonLink>
             ))}
@@ -305,17 +305,17 @@ function ProcessHero({ actions, badge, caption, description, eyebrow, heightClas
         ) : null}
 
         {stats?.length ? (
-          <div className="mt-12 flex flex-wrap gap-10 border-t border-white/10 pt-7">
+          <div className="mt-12 flex flex-wrap gap-10 border-t border-white/10 pt-7" data-hero-stats>
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="font-display text-xl tracking-[-0.03em] text-white">{stat.value}</p>
+                <p className="font-display text-xl tracking-[-0.03em] text-white" data-split="chars">{stat.value}</p>
                 <p className="eyebrow-label text-white/40">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
-        <p className="mt-8 max-w-sm text-xs leading-relaxed text-white/35">
+        <p className="mt-8 max-w-sm text-xs leading-relaxed text-white/35" data-hero-aside>
           <span className="eyebrow-label text-[10px] text-accent-200/60">{badge}</span>
           {" - "}
           {caption}
@@ -327,22 +327,22 @@ function ProcessHero({ actions, badge, caption, description, eyebrow, heightClas
 
 function ConciergeHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden" data-hero-root>
+      <div className="absolute inset-0 z-0" data-hero-media>
         <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/50 to-white/20" />
         <div className="absolute inset-0 bg-accent-100/20" />
       </div>
 
-      <div className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-accent-200/30 blur-[100px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-accent-200/30 blur-[100px]" data-ambient-orb />
 
       <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col items-center justify-center px-6 py-24 text-center sm:px-10 lg:px-16`}>
-        <p className="eyebrow-label mb-6 text-brand-700/70">{eyebrow}</p>
-        <h1 className="display-balance max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[5rem]">{title}</h1>
-        <p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-brand-950/64 sm:text-[1.15rem]">{description}</p>
+        <p className="eyebrow-label mb-6 text-brand-700/70" data-hero-eyebrow>{eyebrow}</p>
+        <h1 className="display-balance max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[5rem]" data-hero-title data-split="lines">{title}</h1>
+        <p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-brand-950/64 sm:text-[1.15rem]" data-hero-copy data-split="words">{description}</p>
 
         {actions?.length ? (
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4" data-hero-actions>
             {actions.map((action, i) => (
               <ButtonLink key={action.to} external={action.external} to={action.to} variant={i === 0 ? "primary" : "secondary"}>{action.label}</ButtonLink>
             ))}
@@ -350,17 +350,17 @@ function ConciergeHero({ actions, badge, caption, description, eyebrow, heightCl
         ) : null}
 
         {stats?.length ? (
-          <div className="mt-16 flex flex-wrap justify-center gap-8 sm:gap-14">
+          <div className="mt-16 flex flex-wrap justify-center gap-8 sm:gap-14" data-hero-stats>
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center">
-                <p className="font-display text-3xl tracking-[-0.04em] text-brand-950">{stat.value}</p>
+                <p className="font-display text-3xl tracking-[-0.04em] text-brand-950" data-split="chars">{stat.value}</p>
                 <p className="eyebrow-label mt-2 text-brand-950/45">{stat.label}</p>
               </div>
             ))}
           </div>
         ) : null}
 
-        <div className="mt-12 rounded-2xl border border-brand-950/8 bg-white/60 px-6 py-4 backdrop-blur-xl">
+        <div className="mt-12 rounded-2xl border border-brand-950/8 bg-white/60 px-6 py-4 backdrop-blur-xl" data-hero-aside>
           <p className="eyebrow-label text-[10px] text-brand-700">{badge}</p>
           <p className="mt-1 text-sm leading-7 text-brand-950/60">{caption}</p>
         </div>

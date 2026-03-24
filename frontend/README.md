@@ -1,29 +1,33 @@
 # VIXI Frontend
 
-Sitio web marketing de VIXI, una clinica de fertilidad enfocada en reproduccion asistida. El proyecto esta construido con React Router 7, React 19, TypeScript y Tailwind CSS 4, con renderizado del lado del servidor y una arquitectura orientada a contenido estatico enriquecido con SEO tecnico y un formulario de contacto funcional.
+Frontend SSR del sitio publico de VIXI. El proyecto esta construido con React Router 7, React 19, TypeScript, Vite y Tailwind CSS 4, y esta orientado a un marketing site editorial con animacion avanzada, SEO tecnico y un formulario de contacto server-side.
 
-## 1. Objetivo del sitio
+## Objetivo del sitio
 
-El sitio esta pensado para:
+El sitio actual esta pensado para:
 
-- Presentar la propuesta de valor de VIXI con una narrativa editorial y visual.
-- Explicar el equipo, la experiencia del paciente, los tratamientos y el proceso clinico.
-- Resolver dudas frecuentes antes de la primera consulta.
-- Captar leads por WhatsApp, llamada telefonica, correo y formulario.
-- Posicionar organicamente el sitio con metadatos, Open Graph, datos estructurados y sitemap.
+- presentar la propuesta de valor de VIXI;
+- explicar tratamientos, proceso clinico, experiencia del paciente y perfil del equipo;
+- captar contactos por WhatsApp, llamada, correo y formulario;
+- sostener una base SEO consistente con metadatos, Open Graph, JSON-LD, robots y sitemap.
 
-## 2. Stack tecnico
+## Stack actual
 
-- `React Router 7` para enrutamiento, SSR y acciones del servidor.
+- `React Router 7` para rutas, SSR, `meta()` por pagina y `action()` server-side.
 - `React 19` para la UI.
-- `TypeScript` para tipado del proyecto.
-- `Tailwind CSS 4` para estilos utilitarios.
-- `Framer Motion` para transiciones y microinteracciones.
-- `Lenis` para smooth scroll en cliente.
-- `React Icons` para iconografia.
-- `Resend API` para el envio del formulario de contacto.
+- `TypeScript` para tipado.
+- `Vite` como bundler de desarrollo y build.
+- `Tailwind CSS 4` para estilos.
+- `GSAP` y `@gsap/react` para reveals, split text, parallax, scroll smoothing y microinteracciones.
+- `react-icons` para iconografia puntual.
+- Integracion con `Resend` via `fetch` HTTP directo desde servidor. No se usa el SDK oficial.
 
-## 3. Como correr el proyecto
+## Requisitos locales
+
+- `Node.js 20+` recomendado.
+- `npm` para instalar dependencias y ejecutar scripts.
+
+## Como correr el proyecto
 
 ### Instalar dependencias
 
@@ -37,7 +41,7 @@ npm install
 npm run dev
 ```
 
-El sitio queda disponible en `http://localhost:5173`.
+El entorno queda disponible en `http://localhost:5173`.
 
 ### Typecheck
 
@@ -45,165 +49,141 @@ El sitio queda disponible en `http://localhost:5173`.
 npm run typecheck
 ```
 
-### Build de produccion
+### Build
 
 ```bash
 npm run build
 ```
 
-El build ejecuta antes la generacion del sitemap.
+Antes de compilar, el build genera `public/sitemap.xml`.
 
-### Servir el build
+### Servir produccion
 
 ```bash
 npm run start
 ```
 
-## 4. Scripts disponibles
+## Scripts disponibles
 
-- `npm run dev`: levanta el entorno de desarrollo.
+- `npm run dev`: inicia el servidor de desarrollo de React Router.
 - `npm run typecheck`: genera tipos de rutas y ejecuta TypeScript.
-- `npm run generate:sitemap`: crea `public/sitemap.xml` a partir de `app/routes.ts`.
+- `npm run generate:sitemap`: genera `public/sitemap.xml` leyendo `app/routes.ts`.
 - `npm run build`: genera sitemap y compila cliente y servidor.
-- `npm run start`: sirve la salida de produccion desde `build/server/index.js`.
+- `npm run start`: sirve `build/server/index.js`.
 
-## 5. Variables de entorno
+Nota: hoy no hay scripts de `test` ni `lint` en `package.json`. La validacion automatizada disponible es `typecheck`.
 
-Estas variables afectan comportamiento real del sitio:
+## Variables de entorno
 
 ### SEO y URLs
 
-- `SITE_URL`: URL canonica del sitio. Se usa para canonicals, Open Graph, datos estructurados y sitemap.
+- `SITE_URL`: URL canonica del sitio. Se usa en canonicals, Open Graph, JSON-LD y sitemap.
+
+Si no existe, el proyecto usa `https://vixireproduccion.mx` como fallback.
 
 ### Formulario de contacto
 
-- `RESEND_API_KEY`: API key de Resend.
-- `CONTACT_FORM_TO_EMAIL`: correo destino que recibe los leads.
-- `CONTACT_FORM_FROM_EMAIL`: remitente opcional. Si no existe, se usa `VIXI Contacto <noreply@vixireproduccion.mx>`.
+- `RESEND_API_KEY`: token privado para autenticar con Resend.
+- `CONTACT_FORM_TO_EMAIL`: correo que recibe los leads.
+- `CONTACT_FORM_FROM_EMAIL`: remitente opcional. Si falta, se usa `VIXI Contacto <noreply@vixireproduccion.mx>`.
 
-Si `RESEND_API_KEY` o `CONTACT_FORM_TO_EMAIL` no estan definidos, el formulario no envia y responde con un error controlado en pantalla.
+Si faltan `RESEND_API_KEY` o `CONTACT_FORM_TO_EMAIL`, la accion de contacto devuelve un error controlado y no intenta enviar correo.
 
-## 6. Arquitectura general
+## Funcionamiento actual
 
-La aplicacion sigue una estructura simple de marketing site:
+### 1. Rutas y rendering
 
-- `app/root.tsx`: define la shell HTML, metadatos globales, JSON-LD base y error boundary.
-- `app/routes.ts`: declara todas las rutas publicas.
-- `app/routes/*.tsx`: define cada pagina y, cuando aplica, `meta()` y `action()`.
-- `app/components/layout/*`: header, footer, layout marketing y proveedor de scroll.
-- `app/components/data/site-content.ts`: fuente central de contenido, navegacion, contacto, FAQs, tratamientos y metadata reutilizable.
-- `app/components/ui/*`: componentes base presentacionales como `PageHero`, `SectionHeading`, `FeatureCard` e `ImageCard`.
-- `app/components/home`, `app/components/about`, `app/components/services`, `app/components/contact`: bloques de pagina por dominio.
-- `scripts/generate-sitemap.mjs`: genera sitemap a partir del archivo de rutas.
+- El proyecto corre con SSR habilitado en `react-router.config.ts`.
+- `app/routes.ts` declara las rutas publicas.
+- Cada archivo en `app/routes/*.tsx` suele hacer dos cosas: definir `meta()` y renderizar un page component.
+- La unica ruta con `action()` es `/contacto`.
 
-## 7. Mapa del sitio
+Rutas publicas actuales:
 
-Las rutas publicas actuales son:
+- `/`
+- `/quienes-somos`
+- `/nuestra-experiencia`
+- `/tratamientos`
+- `/como-funciona-tu-tratamiento`
+- `/pacientes-foraneos`
+- `/preguntas-frecuentes`
+- `/contacto`
 
-- `/`: inicio.
-- `/quienes-somos`: equipo medico, perfiles y enfoque clinico.
-- `/nuestra-experiencia`: experiencia del paciente, tono humano y acompanamiento.
-- `/tratamientos`: portafolio de servicios y tratamientos.
-- `/como-funciona-tu-tratamiento`: recorrido del proceso clinico.
-- `/pacientes-foraneos`: atencion para pacientes de otros estados o paises.
-- `/preguntas-frecuentes`: preguntas frecuentes.
-- `/contacto`: datos de contacto, mapa y formulario.
+### 2. Layout global
 
-La navegacion principal y parte del footer se alimentan desde `app/components/data/site-content.ts`, lo que evita duplicar labels o URLs.
+`app/root.tsx` define:
 
-## 8. Como funciona el sitio
+- shell HTML global;
+- favicon;
+- metadatos base;
+- JSON-LD para `MedicalClinic` y `WebSite`;
+- `MarketingLayout` como contenedor comun de todo el sitio.
 
-### Layout y experiencia base
+`MarketingLayout` monta:
 
-- Todas las paginas renderizan dentro de `MarketingLayout`.
-- El layout monta `SiteHeader`, `SiteFooter` y `LenisProvider`.
-- `useScrollToTop` restablece la posicion al cambiar de ruta.
-- El header cambia de estilo segun scroll y segun la pagina actual.
-- En mobile, el menu bloquea el scroll del `body` mientras esta abierto.
+- `SiteHeader`;
+- `SiteFooter`;
+- wrapper global de scroll suave;
+- animaciones GSAP ligadas al contenido de cada pagina;
+- `useScrollToTop()` al cambiar de ruta.
 
-### Contenido
+### 3. Sistema visual y animacion
 
-- La mayor parte del contenido editorial vive en `site-content.ts`.
-- Las paginas consumen ese contenido y lo transforman en secciones visuales.
-- Esto facilita cambiar copy, telefonos, FAQs, tratamientos o navegacion sin reescribir multiples componentes.
+La experiencia visual actual depende de:
 
-### Interaccion principal
+- `app/app.css` para fuentes custom (`Corbel` y `Glancyr`), tema y utilidades;
+- `app/components/lib/gsap.ts` para registrar `ScrollTrigger`, `ScrollSmoother`, `ScrollToPlugin` y `SplitText`;
+- `app/components/hooks/useGlobalSmoothScroll.ts` para crear un `ScrollSmoother` global;
+- atributos como `data-hero-root`, `data-split`, `data-card`, `data-text-block`, `data-reveal-item` y `data-parallax` para conectar el markup con las animaciones.
 
-El sitio prioriza cuatro canales de conversion:
+Las animaciones respetan `prefers-reduced-motion: reduce`.
 
-- WhatsApp.
-- Llamada telefonica.
-- Correo.
-- Formulario de contacto.
+### 4. Contenido
 
-Estos canales aparecen repetidamente en hero sections, CTAs, footer y pagina de contacto.
+El contenido ya no vive en un solo archivo. Hoy esta repartido por dominio dentro de `app/components/data/`:
 
-## 9. Flujo del formulario de contacto
+- `site.ts`: branding, URL base, navegacion y footer.
+- `contact.ts`: telefono, WhatsApp, correo, direccion y coordenadas.
+- `home.ts`: hero, pilares, estadisticas, diferenciales y audiencias.
+- `about.ts`: perfiles del equipo, highlights e imagenes editoriales.
+- `services.ts`: categorias de tratamiento, journey y apoyo a pacientes foraneos.
+- `care.ts`: equipo multidisciplinario.
+- `faq.ts`: preguntas frecuentes.
+- `types.ts`: contratos tipados para contenido reutilizable.
 
-La logica del formulario vive en `app/routes/contacto.tsx` y su UI en `app/components/contact/contact-page.tsx`.
+Esto permite cambiar copy, rutas enlazadas, FAQs o datos de contacto sin tocar multiples paginas a la vez.
 
-### Flujo completo
+### 5. SEO
 
-1. El usuario completa nombre, correo, telefono, motivo y mensaje.
-2. Existe un campo oculto `company` como honeypot anti-spam.
-3. La `action()` del route recibe `formData` en el servidor.
-4. Se validan longitudes minimas, formato de correo, motivo y limite de `2000` caracteres en el mensaje.
-5. Si hay errores, la accion devuelve `errors` y `values` para rehidratar el formulario.
-6. Si faltan variables de entorno, devuelve un error de configuracion visible.
-7. Si todo es valido, el servidor hace `POST` a `https://api.resend.com/emails`.
-8. El correo se arma en dos formatos: `text` y `html`.
-9. Si Resend responde con error, se muestra un mensaje de fallo controlado.
-10. Si el envio funciona, se muestra el estado `success`.
+El SEO actual se reparte entre varios puntos:
 
-### Detalles importantes
+- `app/root.tsx`: metadatos globales y JSON-LD base.
+- `app/components/lib/meta.ts`: helper `buildMeta()` para title, description, keywords, canonical, Open Graph y Twitter cards.
+- `scripts/generate-sitemap.mjs`: genera el sitemap leyendo `app/routes.ts`.
+- `public/robots.txt`: reglas para crawling.
+- `public/og/*`: imagenes Open Graph por pagina.
 
-- `reply_to` se configura con el correo capturado en el formulario.
-- El correo HTML conserva branding visual de VIXI.
-- El selector de motivo de contacto es un componente custom con portal y animaciones.
-- `useNavigation()` se usa para mostrar estado de envio en el boton.
+Cada ruta publica define su `meta()` usando `buildMeta()`.
 
-## 10. SEO y discoverability
+### 6. Formulario de contacto
 
-El proyecto ya incorpora una base SEO bastante completa:
+El flujo real del formulario esta dividido asi:
 
-- Metadatos globales desde `app/root.tsx`.
-- Metadatos por pagina a traves de `buildMeta()` en `app/components/lib/meta.ts`.
-- Canonical URLs.
-- Open Graph y Twitter cards.
-- Keywords por ruta.
-- JSON-LD para `MedicalClinic` y `WebSite`.
-- `sitemap.xml` generado automaticamente desde las rutas declaradas.
+- `app/components/contact/contact-form-section.tsx`: UI del formulario, estados, dropdown custom del motivo y mapa embebido.
+- `app/components/contact/contact-page.tsx`: composicion completa de la pagina de contacto.
+- `app/routes/contacto.tsx`: validacion server-side y envio a Resend.
 
-La URL base para todos estos recursos depende de `SITE_URL`.
+Resumen del flujo:
 
-## 11. Sistema de contenido y componentes
+1. El usuario envia `name`, `email`, `phone`, `reason`, `message` y el honeypot `company`.
+2. La `action()` valida nombre, correo, telefono, motivo y longitud del mensaje.
+3. Si hay errores, devuelve `errors` y `values`.
+4. Si el honeypot trae valor, responde como exito silencioso para cortar spam basico.
+5. Si faltan variables de entorno, responde con error visible.
+6. Si todo es valido, hace `POST` a `https://api.resend.com/emails`.
+7. El correo se manda en `text` y `html`, usando el email capturado como `reply_to`.
 
-### Fuente unica de contenido
-
-`app/components/data/site-content.ts` centraliza:
-
-- nombre del sitio y tagline,
-- descripcion global,
-- navegacion,
-- datos de contacto,
-- imagenes de hero y galerias,
-- pilares de marca,
-- perfiles medicos,
-- categorias de tratamientos,
-- FAQs,
-- journey del tratamiento,
-- enlaces de footer.
-
-### Componentes reutilizables clave
-
-- `PageHero`: hero principal de cada pagina.
-- `SectionHeading`: encabezados consistentes de seccion.
-- `FeatureCard`: tarjetas de contenido corto.
-- `ImageCard`: bloques visuales reutilizables.
-- `CTABanner`: cierre de pagina con llamada a la accion.
-- `ButtonLink`: CTA estilizado con soporte para links internos o externos.
-
-## 12. Estructura resumida de carpetas
+## Arquitectura de carpetas
 
 ```text
 frontend/
@@ -213,43 +193,85 @@ frontend/
       contact/
       data/
       home/
+      hooks/
       layout/
       lib/
       services/
       shared/
       ui/
     routes/
+    welcome/
+    app.css
     root.tsx
     routes.ts
-    app.css
+  fonts/
   public/
+    gallery/
+    heroes/
+    logos/
+    og/
+    pillars/
+    favicon.ico
+    robots.txt
+    sitemap.xml
   scripts/
     generate-sitemap.mjs
+  Dockerfile
   package.json
+  react-router.config.ts
+  vite.config.ts
 ```
 
-## 13. Consideraciones operativas
+Notas sobre esa estructura:
 
-- Es un sitio mayormente estatico, pero no es una SPA pura: usa SSR.
-- El smooth scroll solo se activa si el usuario no tiene `prefers-reduced-motion: reduce`.
-- El formulario depende de conectividad saliente hacia Resend desde el servidor.
-- El sitemap depende de que las rutas publicas queden declaradas en `app/routes.ts`.
-- Si se agrega una nueva pagina, conviene actualizar:
-  - la ruta en `app/routes.ts`,
-  - el contenido o enlaces en `site-content.ts`,
-  - su `meta()` correspondiente,
-  - y verificar que quede incluida en el sitemap.
+- `app/routes/` contiene wrappers delgados por pagina.
+- `app/components/*` agrupa UI y contenido por dominio funcional.
+- `app/welcome/` viene del scaffold inicial de React Router y hoy no participa en las rutas publicas.
+- `fonts/` guarda las tipografias locales cargadas desde `app/app.css`.
+- `public/` concentra imagenes, logos, OG assets y archivos estaticos.
 
-## 14. Mantenimiento recomendado
+## Composicion de paginas
 
-Cuando se modifique el sitio, revisar al menos estos puntos:
+Las paginas actuales se arman con bloques reutilizables:
 
-- que los datos de contacto sigan correctos en `site-content.ts`,
-- que `SITE_URL` coincida con el dominio real del entorno,
-- que las imagenes referenciadas existan en `public/`,
-- que el formulario siga teniendo variables validas en servidor,
-- que las rutas nuevas o removidas mantengan coherencia con header, footer y sitemap.
+- `home/`: portada y secciones principales de captacion.
+- `about/`: quienes somos y experiencia del paciente.
+- `services/`: tratamientos y proceso.
+- `contact/`: contacto, FAQ y pacientes foraneos.
+- `shared/cta-banner.tsx`: CTA de cierre reutilizado en varias paginas.
+- `ui/`: primitives como `PageHero`, `SectionHeading`, `ButtonLink`, `FeatureCard` e `ImageCard`.
 
-## 15. Estado actual del README
+## Operacion y mantenimiento
 
-Este archivo reemplaza el template generico de React Router y documenta el comportamiento real del proyecto VIXI en su estado actual.
+Si agregas o modificas una pagina, revisa al menos esto:
+
+1. declarar la ruta en `app/routes.ts`;
+2. crear o actualizar su `meta()` con `buildMeta()`;
+3. enlazarla desde `siteNavigation` o `footerLinks` si aplica;
+4. verificar assets en `public/`;
+5. regenerar el sitemap con `npm run generate:sitemap` o `npm run build`.
+
+Si cambias contenido global, normalmente los puntos de entrada son:
+
+- `app/components/data/site.ts`
+- `app/components/data/contact.ts`
+- `app/components/data/home.ts`
+- `app/components/data/about.ts`
+- `app/components/data/services.ts`
+- `app/components/data/care.ts`
+- `app/components/data/faq.ts`
+
+## Docker
+
+El proyecto incluye un `Dockerfile` multi-stage que:
+
+- instala dependencias de desarrollo para construir;
+- instala dependencias de produccion por separado;
+- ejecuta `npm run build`;
+- arranca el proyecto con `npm run start`.
+
+## Documentacion adicional
+
+- `RESEND_INTEGRATION_GUIDE.md`: detalle tecnico de la integracion del formulario con Resend.
+
+Este README reemplaza el template generico y documenta la estructura y el comportamiento actuales del frontend de VIXI.

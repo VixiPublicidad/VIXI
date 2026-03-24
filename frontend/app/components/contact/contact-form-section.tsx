@@ -1,9 +1,9 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
 import { Form, useNavigation } from "react-router";
 
 import { contactDetails } from "~/components/data";
+import { gsap, useGSAP } from "~/components/lib/gsap";
 import { SectionHeading } from "~/components/ui/section-heading";
 
 type ContactFormValues = {
@@ -21,10 +21,10 @@ type ContactFormState = {
 };
 
 const contactReasons = [
-  "Primera valoración",
+  "Primera valoracion",
   "Tratamientos de fertilidad",
-  "Consulta en línea",
-  "Pacientes foráneos",
+  "Consulta en linea",
+  "Pacientes foraneos",
   "Otra consulta",
 ];
 
@@ -39,11 +39,11 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
       className="mx-auto grid max-w-[80vw] gap-8 py-6 lg:grid-cols-[0.98fr_1.02fr] lg:px-8"
       id="contact-form"
     >
-      <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)] sm:p-10">
+      <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)] sm:p-10" data-reveal-item>
         <SectionHeading
           description="Escribe tus datos y contexto general. El formulario queda listo para enviar correos con Resend mediante variables de entorno del servidor."
           eyebrow="Formulario de contacto"
-          title="Cuéntanos en qué etapa estás"
+          title="Cuentanos en que etapa estas"
           variant="accent"
         />
 
@@ -68,7 +68,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             <FormField
               defaultValue={values.email}
               error={errors?.email}
-              label="Correo electrónico"
+              label="Correo electronico"
               name="email"
               placeholder="nombre@correo.com"
               type="email"
@@ -79,7 +79,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             <FormField
               defaultValue={values.phone}
               error={errors?.phone}
-              label="Teléfono o WhatsApp"
+              label="Telefono o WhatsApp"
               name="phone"
               placeholder="477 000 0000"
               type="tel"
@@ -96,7 +96,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
               defaultValue={values.message}
               id="message"
               name="message"
-              placeholder="Comparte brevemente tu situación o la duda principal."
+              placeholder="Comparte brevemente tu situacion o la duda principal."
             />
             {errors?.message ? <p className="text-sm text-[#9f1d35]">{errors.message}</p> : null}
           </div>
@@ -109,7 +109,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
 
           {formState?.success ? (
             <div className="rounded-[22px] border border-emerald-300/60 bg-emerald-50 px-5 py-4 text-sm leading-6 text-emerald-900">
-              Gracias. Recibimos tu mensaje y el equipo de VIXI podrá responderte por correo o WhatsApp.
+              Gracias. Recibimos tu mensaje y el equipo de VIXI podra responderte por correo o WhatsApp.
             </div>
           ) : null}
 
@@ -126,10 +126,10 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
       </div>
 
       <div className="grid gap-8">
-        <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
+        <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]" data-reveal-item>
           <SectionHeading
-            description="VIXI está ubicado dentro de un entorno hospitalario confiable y ofrece consulta en línea para valoración inicial."
-            eyebrow="Ubicación"
+            description="VIXI esta ubicado dentro de un entorno hospitalario confiable y ofrece consulta en linea para valoracion inicial."
+            eyebrow="Ubicacion"
             title="Dentro de un entorno hospitalario moderno y confiable"
             tone="light"
             variant="editorial"
@@ -137,17 +137,17 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
           <div className="mt-8 grid gap-4 text-sm leading-7 text-white/78">
             <p>{contactDetails.address}</p>
             <p>{contactDetails.hours}</p>
-            <p>Consulta en línea disponible para valoración inicial y seguimiento.</p>
+            <p>Consulta en linea disponible para valoracion inicial y seguimiento.</p>
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-[32px] border border-brand-950/10 bg-white shadow-[0_18px_50px_rgba(11,31,59,0.08)]">
+        <div className="overflow-hidden rounded-[32px] border border-brand-950/10 bg-white shadow-[0_18px_50px_rgba(11,31,59,0.08)]" data-reveal-item>
           <iframe
             className="h-[420px] w-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=Av%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Gto.&output=embed"
-            title="Ubicación de VIXI"
+            title="Ubicacion de VIXI"
           />
         </div>
       </div>
@@ -166,8 +166,11 @@ function ContactReasonField({
   const [selectedReason, setSelectedReason] = useState(defaultValue ?? "");
   const fieldRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerIconRef = useRef<HTMLSpanElement>(null);
   const listboxId = useId();
+  const panelRef = useRef<HTMLDivElement>(null);
   const [panelStyle, setPanelStyle] = useState<{ left: number; top: number; width: number } | null>(null);
+  const hasMountedRef = useRef(false);
 
   useEffect(() => {
     setSelectedReason(defaultValue ?? "");
@@ -185,7 +188,7 @@ function ContactReasonField({
     }
 
     function handlePointerDown(event: PointerEvent) {
-      if (!fieldRef.current?.contains(event.target as Node)) {
+      if (!fieldRef.current?.contains(event.target as Node) && !panelRef.current?.contains(event.target as Node)) {
         setIsOpen(false);
       }
     }
@@ -212,7 +215,91 @@ function ContactReasonField({
     };
   }, [isOpen]);
 
-  const currentLabel = selectedReason || "Selecciona una opción";
+  useGSAP(
+    () => {
+      const trigger = triggerRef.current;
+      const triggerIcon = triggerIconRef.current;
+      const panel = panelRef.current;
+      const options = panel ? Array.from(panel.querySelectorAll("[data-dropdown-option]")) : [];
+
+      if (!trigger || !triggerIcon) return;
+
+      const setStaticState = () => {
+        gsap.set(trigger, {
+          boxShadow: isOpen ? "0 18px 42px rgba(11,31,59,0.12)" : "0 16px 38px rgba(11,31,59,0.07)",
+        });
+        gsap.set(triggerIcon, { rotate: isOpen ? 180 : 0 });
+
+        if (panel) {
+          gsap.set(panel, {
+            autoAlpha: isOpen ? 1 : 0,
+            display: isOpen ? "block" : "none",
+            pointerEvents: isOpen ? "auto" : "none",
+            scale: isOpen ? 1 : 0.98,
+            y: isOpen ? 0 : -12,
+          });
+        }
+      };
+
+      if (!hasMountedRef.current) {
+        setStaticState();
+        hasMountedRef.current = true;
+        return;
+      }
+
+      gsap.killTweensOf([trigger, triggerIcon, panel, ...options]);
+      gsap.to(trigger, {
+        boxShadow: isOpen ? "0 18px 42px rgba(11,31,59,0.12)" : "0 16px 38px rgba(11,31,59,0.07)",
+        duration: 0.18,
+        ease: "power2.out",
+      });
+      gsap.to(triggerIcon, {
+        duration: 0.22,
+        ease: "power2.out",
+        rotate: isOpen ? 180 : 0,
+      });
+
+      if (!panel) return;
+
+      if (isOpen) {
+        gsap.set(panel, { display: "block", pointerEvents: "auto" });
+        gsap.fromTo(
+          panel,
+          { autoAlpha: 0, scale: 0.98, y: -12 },
+          { autoAlpha: 1, duration: 0.2, ease: "power2.out", scale: 1, y: 0 },
+        );
+        gsap.fromTo(
+          options,
+          { autoAlpha: 0, x: -8 },
+          {
+            autoAlpha: 1,
+            duration: 0.18,
+            ease: "power2.out",
+            stagger: {
+              each: 0.025,
+              amount: 0.12,
+            },
+            x: 0,
+          },
+        );
+        return;
+      }
+
+      gsap.to(panel, {
+        autoAlpha: 0,
+        duration: 0.16,
+        ease: "power2.inOut",
+        scale: 0.98,
+        y: -8,
+        onComplete: () => {
+          gsap.set(panel, { display: "none", pointerEvents: "none" });
+        },
+      });
+    },
+    { dependencies: [isOpen, panelStyle?.left, panelStyle?.top, panelStyle?.width], revertOnUpdate: false },
+  );
+
+  const currentLabel = selectedReason || "Selecciona una opcion";
 
   return (
     <div ref={fieldRef} className="space-y-2">
@@ -221,8 +308,7 @@ function ContactReasonField({
       </label>
       <input name="reason" type="hidden" value={selectedReason} />
 
-      <motion.button
-        animate={isOpen ? { boxShadow: "0 18px 42px rgba(11,31,59,0.12)" } : { boxShadow: "0 16px 38px rgba(11,31,59,0.07)" }}
+      <button
         aria-controls={listboxId}
         aria-expanded={isOpen}
         ref={triggerRef}
@@ -237,16 +323,12 @@ function ContactReasonField({
         id="reason"
         onClick={() => setIsOpen((open) => !open)}
         type="button"
-        transition={{ duration: 0.18, ease: "easeOut" }}
-        whileHover={{ boxShadow: "0 20px 44px rgba(11,31,59,0.1)" }}
-        whileTap={{ scale: 0.998 }}
       >
         <span className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-[radial-gradient(circle_at_left,rgba(198,137,152,0.16),transparent_68%)]" />
         <span className={selectedReason ? "text-brand-950" : "text-brand-950/46"}>{currentLabel}</span>
-        <motion.span
-          animate={isOpen ? { rotate: 180 } : { rotate: 0 }}
+        <span
+          ref={triggerIconRef}
           className="relative z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-950/10 bg-white/78 text-brand-700 shadow-[0_8px_18px_rgba(11,31,59,0.08)]"
-          transition={{ duration: 0.22, ease: "easeOut" }}
         >
           <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 24 24">
             <path
@@ -257,52 +339,44 @@ function ContactReasonField({
               strokeWidth="1.8"
             />
           </svg>
-        </motion.span>
-      </motion.button>
+        </span>
+      </button>
 
       {typeof document !== "undefined" && panelStyle
         ? createPortal(
-            <AnimatePresence>
-              {isOpen ? (
-                <motion.div
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  className="fixed z-[120] overflow-hidden rounded-[26px] border border-brand-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,245,241,0.98))] p-2 shadow-[0_24px_60px_rgba(11,31,59,0.14)] backdrop-blur-xl"
-                  exit={{ opacity: 0, y: -10, scale: 0.98 }}
-                  id={listboxId}
-                  initial={{ opacity: 0, y: -12, scale: 0.98 }}
-                  role="listbox"
-                  style={{
-                    left: panelStyle.left,
-                    top: panelStyle.top,
-                    width: panelStyle.width,
+            <div
+              ref={panelRef}
+              className="fixed z-[120] overflow-hidden rounded-[26px] border border-brand-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,245,241,0.98))] p-2 shadow-[0_24px_60px_rgba(11,31,59,0.14)] backdrop-blur-xl"
+              id={listboxId}
+              role="listbox"
+              style={{
+                left: panelStyle.left,
+                top: panelStyle.top,
+                width: panelStyle.width,
+              }}
+            >
+              <div className="grid gap-1">
+                <DropdownOption
+                  isActive={selectedReason === ""}
+                  label="Selecciona una opcion"
+                  onSelect={() => {
+                    setSelectedReason("");
+                    setIsOpen(false);
                   }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                >
-                  <div className="grid gap-1">
-                    <DropdownOption
-                      isActive={selectedReason === ""}
-                      label="Selecciona una opción"
-                      onSelect={() => {
-                        setSelectedReason("");
-                        setIsOpen(false);
-                      }}
-                    />
-                    {contactReasons.map((reason, index) => (
-                      <DropdownOption
-                        key={reason}
-                        delay={index}
-                        isActive={selectedReason === reason}
-                        label={reason}
-                        onSelect={() => {
-                          setSelectedReason(reason);
-                          setIsOpen(false);
-                        }}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>,
+                />
+                {contactReasons.map((reason) => (
+                  <DropdownOption
+                    key={reason}
+                    isActive={selectedReason === reason}
+                    label={reason}
+                    onSelect={() => {
+                      setSelectedReason(reason);
+                      setIsOpen(false);
+                    }}
+                  />
+                ))}
+              </div>
+            </div>,
             document.body,
           )
         : null}
@@ -313,37 +387,33 @@ function ContactReasonField({
 }
 
 function DropdownOption({
-  delay = 0,
   isActive,
   label,
   onSelect,
 }: {
-  delay?: number;
   isActive: boolean;
   label: string;
   onSelect: () => void;
 }) {
   return (
-    <motion.button
-      animate={{ opacity: 1, x: 0 }}
+    <button
       className={[
         "flex w-full items-center justify-between rounded-[18px] px-4 py-3 text-left text-sm transition",
         isActive
           ? "bg-brand-950 text-white shadow-[0_14px_30px_rgba(11,31,59,0.2)]"
           : "text-brand-950/76 hover:bg-white hover:text-brand-950",
       ].join(" ")}
-      initial={{ opacity: 0, x: -8 }}
+      data-dropdown-option
       onClick={onSelect}
       role="option"
-      transition={{ duration: 0.18, delay: Math.min(delay * 0.025, 0.12), ease: "easeOut" }}
       type="button"
-      whileHover={{ x: 2 }}
     >
       <span>{label}</span>
-      <motion.span
-        animate={isActive ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
-        className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/14"
-        transition={{ duration: 0.16, ease: "easeOut" }}
+      <span
+        className={[
+          "inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/14 transition-all duration-200",
+          isActive ? "scale-100 opacity-100" : "scale-75 opacity-0",
+        ].join(" ")}
       >
         <svg aria-hidden="true" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24">
           <path
@@ -354,8 +424,8 @@ function DropdownOption({
             strokeWidth="1.8"
           />
         </svg>
-      </motion.span>
-    </motion.button>
+      </span>
+    </button>
   );
 }
 

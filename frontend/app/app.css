@@ -168,7 +168,7 @@
 @layer base {
   html {
     background-color: #f5f7fa;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
@@ -248,15 +248,33 @@
     background: rgba(219, 232, 244, 0.9);
   }
 
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+  #smooth-wrapper {
+    min-height: 100vh;
   }
 
-  .lenis.lenis-stopped {
-    overflow: clip;
+  #smooth-content {
+    will-change: transform;
   }
 
-  .lenis.lenis-smooth iframe {
-    pointer-events: none;
+  .split-char,
+  .split-line,
+  .split-word {
+    will-change: transform, opacity;
+  }
+
+  [data-hero-media],
+  [data-hero-eyebrow],
+  [data-hero-title],
+  [data-hero-copy],
+  [data-hero-actions],
+  [data-hero-stats],
+  [data-hero-aside],
+  [data-reveal-item],
+  [data-card],
+  [data-card-float],
+  [data-parallax],
+  [data-ambient-orb],
+  [data-text-fade] {
+    will-change: transform, opacity;
   }
 }
