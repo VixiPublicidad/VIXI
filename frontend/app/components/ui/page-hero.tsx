@@ -18,6 +18,7 @@ type HeroHeight = "screen" | "80vh" | "70vh" | "60vh";
 
 type PageHeroProps = {
   actions?: HeroAction[];
+  contentAlignY?: "center" | "end";
   description: string;
   height?: HeroHeight;
   image: {
@@ -75,6 +76,7 @@ const heroHeightClass: Record<HeroHeight, string> = {
 
 export function PageHero({
   actions,
+  contentAlignY = "end",
   description,
   eyebrow,
   height,
@@ -91,7 +93,7 @@ export function PageHero({
   const caption = imageCaption ?? heroCopy.caption;
   const heightClass = heroHeightClass[height ?? heroVariantHeight[variant]];
 
-  const props: HeroComponentProps = { actions, badge, caption, description, eyebrow, heightClass, image, stats, subtitle, title };
+  const props: HeroComponentProps = { actions, badge, caption, contentAlignY, description, eyebrow, heightClass, image, stats, subtitle, title };
 
   if (variant === "signature") return <SignatureHero {...props} />;
   if (variant === "editorial") return <EditorialHero {...props} />;
@@ -112,8 +114,9 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
       <div className="absolute inset-0 z-0" data-hero-media>
         <img
           alt={image.alt}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover will-change-transform"
           decoding="async"
+          data-hero-image
           fetchPriority="high"
           height={image.height}
           loading="eager"
@@ -179,7 +182,7 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
   return (
     <section className="relative w-full overflow-hidden" data-hero-root>
       <div className="absolute inset-0 z-0" data-hero-media>
-        <img alt={image.alt} className="h-full w-full object-cover grayscale-[30%]" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
+        <img alt={image.alt} className="h-full w-full object-cover grayscale-[30%] will-change-transform" data-hero-image decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#fafaf9]/98 via-[#fafaf9]/85 to-[#fafaf9]/40" />
       </div>
 
@@ -225,16 +228,16 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
   );
 }
 
-function GalleryHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
+function GalleryHero({ actions, badge, caption, contentAlignY, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
   return (
     <section className="relative w-full overflow-hidden" data-hero-root>
       <div className="absolute inset-0 z-0" data-hero-media>
-        <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
+        <img alt={image.alt} className="h-full w-full object-cover will-change-transform" data-hero-image decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-[#faf7f2]/88 via-[#faf7f2]/38 to-brand-950/12" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/30" />
       </div>
 
-      <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-14 pt-28 sm:px-10 lg:px-16 lg:pb-20`}>
+      <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col ${contentAlignY === "center" ? "justify-center" : "justify-end"} px-6 pb-14 pt-28 sm:px-10 lg:px-16 lg:pb-20`}>
         <div className="max-w-3xl">
           <p className="eyebrow-label inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-brand-800 backdrop-blur-md" data-hero-eyebrow>
             <span className="h-2 w-2 rounded-full bg-accent-300" />
@@ -279,11 +282,11 @@ function GalleryHero({ actions, badge, caption, description, eyebrow, heightClas
   );
 }
 
-function ProcessHero({ actions, badge, caption, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
+function ProcessHero({ actions, badge, caption, contentAlignY, description, eyebrow, heightClass, image, stats, title }: HeroComponentProps) {
   return (
     <section className="relative w-full overflow-hidden" data-hero-root>
       <div className="absolute inset-0 z-0" data-hero-media>
-        <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
+        <img alt={image.alt} className="h-full w-full object-cover will-change-transform" data-hero-image decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-950/20 to-brand-950/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-brand-950/30 to-brand-950/50" />
       </div>
@@ -291,7 +294,7 @@ function ProcessHero({ actions, badge, caption, description, eyebrow, heightClas
       <div className="pointer-events-none absolute -left-32 top-1/3 z-[1] h-[500px] w-[500px] rounded-full bg-brand-700/20 blur-[120px]" data-ambient-orb />
       <div className="pointer-events-none absolute -right-20 bottom-0 z-[1] h-[400px] w-[400px] rounded-full bg-accent-400/10 blur-[100px]" data-ambient-orb />
 
-      <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col justify-end px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20`}>
+      <div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col ${contentAlignY === "center" ? "justify-center" : "justify-end"} px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20`}>
         <p className="eyebrow-label mb-4 text-accent-200/80" data-hero-eyebrow>{eyebrow}</p>
         <h1 className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white sm:text-5xl lg:text-[4.5rem] [text-shadow:0_2px_30px_rgba(0,0,0,0.4)]" data-hero-title data-split="lines">{title}</h1>
         <p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" data-hero-copy data-split="words">{description}</p>
@@ -329,7 +332,7 @@ function ConciergeHero({ actions, badge, caption, description, eyebrow, heightCl
   return (
     <section className="relative w-full overflow-hidden" data-hero-root>
       <div className="absolute inset-0 z-0" data-hero-media>
-        <img alt={image.alt} className="h-full w-full object-cover" decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
+        <img alt={image.alt} className="h-full w-full object-cover will-change-transform" data-hero-image decoding="async" fetchPriority="high" height={image.height} loading="eager" src={image.src} width={image.width} />
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/50 to-white/20" />
         <div className="absolute inset-0 bg-accent-100/20" />
       </div>

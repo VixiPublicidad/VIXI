@@ -172,6 +172,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
               defaults: { ease: "power3.out" },
             });
             const heroMedia = hero.querySelector<HTMLElement>("[data-hero-media]");
+            const heroImage = hero.querySelector<HTMLElement>("[data-hero-image]");
             const heroSplits = gsap.utils
               .toArray<HTMLElement>("[data-split]", hero)
               .filter(isLiveElement);
@@ -183,41 +184,57 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
             if (heroMedia) {
               heroTimeline.fromTo(
                 heroMedia,
-                { autoAlpha: 0.64, scale: desktop ? 1.16 : 1.1, yPercent: 4 },
-                { autoAlpha: 1, duration: 1.6, scale: 1, yPercent: 0 },
+                { autoAlpha: 0.64 },
+                { autoAlpha: 1, duration: 1.2 },
                 0,
               );
-
-              gsap.to(heroMedia, {
-                ease: "none",
-                scale: desktop ? 1.08 : 1.04,
-                yPercent: desktop ? 8 : 5,
-                scrollTrigger: {
-                  end: "bottom top",
-                  scrub: 1.2,
-                  start: "top top",
-                  trigger: hero,
-                },
-              });
             }
 
-            heroSplits.forEach((element, index) => {
-              const splitConfig = createSplitAnimation(element);
-
-              heroTimeline.from(
-                splitConfig.targets,
-                {
-                  autoAlpha: 0,
-                  duration: splitConfig.duration,
-                  ease: "power3.out",
-                  rotateX: splitConfig.rotateX ?? 0,
-                  stagger: splitConfig.stagger,
-                  transformOrigin: "50% 100% -12",
-                  yPercent: splitConfig.yPercent,
-                },
-                index === 0 ? 0.2 : "<0.08",
+            if (heroImage) {
+              heroTimeline.fromTo(
+                heroImage,
+                { scale: desktop ? 1.16 : 1.1, yPercent: 4 },
+                { duration: 1.6, scale: 1, yPercent: 0 },
+                0,
               );
-            });
+            }
+
+            if (desktop) {
+              heroSplits.forEach((element, index) => {
+                const splitConfig = createSplitAnimation(element);
+
+                heroTimeline.from(
+                  splitConfig.targets,
+                  {
+                    autoAlpha: 0,
+                    duration: splitConfig.duration,
+                    ease: "power3.out",
+                    rotateX: splitConfig.rotateX ?? 0,
+                    stagger: splitConfig.stagger,
+                    transformOrigin: "50% 100% -12",
+                    yPercent: splitConfig.yPercent,
+                  },
+                  index === 0 ? 0.2 : "<0.08",
+                );
+              });
+            } else if (heroSplits.length) {
+              gsap.set(heroSplits, { autoAlpha: 0, y: 28 });
+
+              heroTimeline.to(
+                heroSplits,
+                {
+                  autoAlpha: 1,
+                  clearProps: "opacity,transform,visibility",
+                  duration: 0.8,
+                  stagger: {
+                    each: 0.1,
+                    from: "start",
+                  },
+                  y: 0,
+                },
+                0.18,
+              );
+            }
 
             if (heroFadeTargets.length) {
               heroTimeline.from(
@@ -254,33 +271,54 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
             const splits = gsap.utils.toArray<HTMLElement>("[data-split]", block).filter(isLiveElement);
             const fades = gsap.utils.toArray<HTMLElement>("[data-text-fade]", block).filter(isLiveElement);
 
-            splits.forEach((element, splitIndex) => {
-              const splitConfig = createSplitAnimation(element);
+            if (desktop) {
+              splits.forEach((element, splitIndex) => {
+                const splitConfig = createSplitAnimation(element);
 
-              if (!splitConfig.targets.length) return;
+                if (!splitConfig.targets.length) return;
 
-              gsap.set(splitConfig.targets, {
-                autoAlpha: 0,
-                rotateX: splitConfig.rotateX ?? 0,
-                transformOrigin: "50% 100% -10",
-                yPercent: splitConfig.yPercent,
+                gsap.set(splitConfig.targets, {
+                  autoAlpha: 0,
+                  rotateX: splitConfig.rotateX ?? 0,
+                  transformOrigin: "50% 100% -10",
+                  yPercent: splitConfig.yPercent,
+                });
+
+                blockTimeline.to(
+                  splitConfig.targets,
+                  {
+                    autoAlpha: 1,
+                    clearProps: "opacity,transform,visibility",
+                    duration: splitConfig.duration,
+                    ease: "power3.out",
+                    overwrite: "auto",
+                    rotateX: 0,
+                    stagger: splitConfig.stagger,
+                    yPercent: 0,
+                  },
+                  splitIndex === 0 ? 0.02 : "<0.08",
+                );
               });
+            } else if (splits.length) {
+              gsap.set(splits, { autoAlpha: 0, y: 28 });
 
               blockTimeline.to(
-                splitConfig.targets,
+                splits,
                 {
                   autoAlpha: 1,
                   clearProps: "opacity,transform,visibility",
-                  duration: splitConfig.duration,
+                  duration: 0.76,
                   ease: "power3.out",
                   overwrite: "auto",
-                  rotateX: 0,
-                  stagger: splitConfig.stagger,
-                  yPercent: 0,
+                  stagger: {
+                    each: 0.1,
+                    from: "start",
+                  },
+                  y: 0,
                 },
-                splitIndex === 0 ? 0.02 : "<0.08",
+                0.02,
               );
-            });
+            }
 
             if (fades.length) {
               gsap.set(fades, { autoAlpha: 0, y: 24 });
@@ -357,29 +395,31 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
             });
           }
 
-          const parallaxTargets = gsap.utils.toArray<HTMLElement>("[data-parallax]", main).filter(isLiveElement);
+          if (desktop) {
+            const parallaxTargets = gsap.utils.toArray<HTMLElement>("[data-parallax]", main).filter(isLiveElement);
 
-          parallaxTargets.forEach((target, index) => {
-            const rawAmount = Number(target.dataset.parallax ?? "0.18");
-            const ratio = cards.length > 1 ? index / (parallaxTargets.length - 1 || 1) : 0.5;
-            const distance = gsap.utils.interpolate(desktop ? 10 : 6, desktop ? 20 : 12, ratio) * rawAmount;
+            parallaxTargets.forEach((target, index) => {
+              const rawAmount = Number(target.dataset.parallax ?? "0.18");
+              const ratio = cards.length > 1 ? index / (parallaxTargets.length - 1 || 1) : 0.5;
+              const distance = gsap.utils.interpolate(10, 20, ratio) * rawAmount;
 
-            gsap.fromTo(
-              target,
-              { yPercent: -distance * 0.45 },
-              {
-                ease: "none",
-                immediateRender: false,
-                scrollTrigger: {
-                  end: "bottom top",
-                  scrub: desktop ? 1.3 : 0.8,
-                  start: "top bottom",
-                  trigger: target.closest("section") ?? target,
+              gsap.fromTo(
+                target,
+                { yPercent: -distance * 0.45 },
+                {
+                  ease: "none",
+                  immediateRender: false,
+                  scrollTrigger: {
+                    end: "bottom top",
+                    scrub: 1.3,
+                    start: "top bottom",
+                    trigger: target.closest("section") ?? target,
+                  },
+                  yPercent: distance,
                 },
-                yPercent: distance,
-              },
-            );
-          });
+              );
+            });
+          }
 
           const generalRevealItems = gsap
             .utils
