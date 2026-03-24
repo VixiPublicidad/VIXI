@@ -9,10 +9,10 @@ export function HomePillars() {
     <section className="mx-auto grid max-w-[80vw] gap-8 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
       <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]" data-card data-reveal-item>
         <h2 className="display-balance mt-4 font-display text-4xl leading-[0.96] tracking-[-0.045em]">
-          {"Ciencia, experiencia y cercan\u00eda en equilibrio."}
+          {"Ciencia, experiencia y cercanía en equilibrio."}
         </h2>
         <p className="mt-5 max-w-xl text-base leading-8 text-white/76">
-          {"Estos pilares definen la atenci\u00f3n de VIXI: rigor m\u00e9dico, experiencia cl\u00ednica y un trato humano y cercano en cada etapa."}
+          {"Estos pilares definen la atención de VIXI: rigor médico, experiencia clínica y un trato humano y cercano en cada etapa."}
         </p>
         <div className="mt-8 grid gap-4">
           {brandPillars.map((pillar, index) => {
@@ -43,7 +43,7 @@ export function HomePillars() {
         <article className="flex flex-col rounded-[32px] border border-brand-950/8 bg-white/84 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm md:col-span-3" data-card data-reveal-item>
           <p className="eyebrow-label text-brand-700">Diferenciador</p>
           <h3 className="display-balance mt-3 font-display text-[2.2rem] font-medium leading-[0.98] tracking-[-0.04em] text-brand-950">
-            {"Atenci\u00f3n especializada dentro de un hospital."}
+            {"Atención especializada dentro de un hospital."}
           </h3>
           <p className="mt-5 max-w-3xl flex-1 text-[1.05rem] leading-8 text-brand-950/78">{differentiator}</p>
         </article>

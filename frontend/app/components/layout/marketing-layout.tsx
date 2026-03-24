@@ -88,9 +88,10 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
   const shellRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
   const { pathname } = useLocation();
 
-  useGlobalSmoothScroll({ contentRef, wrapperRef });
+  useGlobalSmoothScroll({ contentRef, pathname, wrapperRef });
   useScrollToTop();
 
   useGSAP(
@@ -138,11 +139,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
 
   useGSAP(
     () => {
-      const content = contentRef.current;
-
-      if (!content) return;
-
-      const main = content.querySelector<HTMLElement>("#main-content");
+      const main = mainRef.current;
 
       if (!main) return;
 
@@ -241,7 +238,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
 
           const textBlocks = gsap
             .utils
-            .toArray<HTMLElement>("[data-text-block]", content)
+            .toArray<HTMLElement>("[data-text-block]", main)
             .filter((block) => !block.closest("[data-hero-root]"));
 
           textBlocks.forEach((block, index) => {
@@ -372,6 +369,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
               { yPercent: -distance * 0.45 },
               {
                 ease: "none",
+                immediateRender: false,
                 scrollTrigger: {
                   end: "bottom top",
                   scrub: desktop ? 1.3 : 0.8,
@@ -467,7 +465,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
 
       return () => mm.revert();
     },
-    { scope: contentRef, dependencies: [pathname], revertOnUpdate: true },
+    { scope: mainRef, dependencies: [pathname], revertOnUpdate: true },
   );
 
   return (
@@ -481,7 +479,7 @@ export function MarketingLayout({ children }: MarketingLayoutProps) {
         <SiteHeader />
         <div id="smooth-wrapper" ref={wrapperRef}>
           <div id="smooth-content" ref={contentRef}>
-            <main className="pb-8" id="main-content">
+            <main ref={mainRef} className="pb-8" id="main-content">
               {children}
             </main>
             <SiteFooter />

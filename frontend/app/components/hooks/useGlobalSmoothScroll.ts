@@ -1,14 +1,16 @@
 import type { RefObject } from "react";
 
-import { ScrollSmoother, ScrollTrigger, useGSAP } from "~/components/lib/gsap";
+import { ScrollSmoother, useGSAP } from "~/components/lib/gsap";
 
 type UseGlobalSmoothScrollOptions = {
   contentRef: RefObject<HTMLDivElement | null>;
+  pathname: string;
   wrapperRef: RefObject<HTMLDivElement | null>;
 };
 
 export default function useGlobalSmoothScroll({
   contentRef,
+  pathname,
   wrapperRef,
 }: UseGlobalSmoothScrollOptions) {
   useGSAP(
@@ -33,12 +35,10 @@ export default function useGlobalSmoothScroll({
         wrapper: "#smooth-wrapper",
       });
 
-      ScrollTrigger.refresh();
-
       return () => {
         smoother.kill();
       };
     },
-    { scope: wrapperRef },
+    { scope: wrapperRef, dependencies: [pathname], revertOnUpdate: true },
   );
 }

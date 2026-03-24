@@ -8,7 +8,7 @@ export function HomeFaqContact() {
     <section className="mx-auto grid max-w-[80vw] gap-8 py-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
       <div className="rounded-[32px] border border-brand-950/8 bg-white/84 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm">
         <SectionHeading
-          description="Respondemos dudas frecuentes sobre costos, tiempos de proceso y probabilidad de \u00e9xito desde una perspectiva m\u00e9dica responsable."
+          description="Respondemos dudas frecuentes sobre costos, tiempos de proceso y probabilidad de éxito desde una perspectiva médica responsable."
           eyebrow="FAQ destacadas"
           title="Claridad antes de empezar"
           variant="minimal"
@@ -26,9 +26,9 @@ export function HomeFaqContact() {
       </div>
 
       <div className="rounded-[32px] bg-accent-100 p-8 text-brand-950 shadow-[0_20px_50px_rgba(244,166,183,0.18)]">
-        <p className="eyebrow-label text-brand-700">{"Contacto r\u00e1pido"}</p>
+        <p className="eyebrow-label text-brand-700">{"Contacto rápido"}</p>
         <h2 className="display-balance mt-4 font-display text-4xl leading-[0.96] tracking-[-0.045em]">
-          {"Agenda tu primera conversaci\u00f3n con el equipo."}
+          {"Agenda tu primera conversación con el equipo."}
         </h2>
         <div className="mt-8 grid gap-4 text-sm leading-6 sm:grid-cols-2">
           <a className="flex h-full flex-col items-center justify-center gap-3 rounded-[28px] bg-white/72 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white" href={contactDetails.phoneHref}>

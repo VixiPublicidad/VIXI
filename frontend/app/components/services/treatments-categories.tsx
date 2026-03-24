@@ -30,7 +30,7 @@ export function TreatmentsCategories() {
               </h2>
             <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">{category.description}</p>
             <div className="mt-6 border-t border-brand-950/8 pt-5">
-              <p className="text-sm leading-7 text-brand-950/78">{category.items.join(" \u00b7 ")}</p>
+              <p className="text-sm leading-7 text-brand-950/78">{category.items.join(" · ")}</p>
             </div>
           </article>
         );
