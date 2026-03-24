@@ -1,13 +1,16 @@
-import { Fragment, type RefObject } from "react";
+import { Fragment, type ReactNode, type RefObject } from "react";
 
 import {
   AnimatePresence,
-  motion,
-  useReducedMotion as useFramerReducedMotion,
+  LazyMotion,
+  MotionConfig,
+  domAnimation,
+  useReducedMotion as useMotionReducedMotion,
   useScroll,
   useTransform,
   type Variants,
-} from "framer-motion";
+} from "motion/react";
+import * as motion from "motion/react-m";
 
 import { cn } from "~/components/lib/utils";
 
@@ -16,6 +19,10 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const EMPTY_VARIANTS: Variants = {
   hidden: {},
   visible: {},
+};
+
+type MotionProviderProps = {
+  children: ReactNode;
 };
 
 type RevealOptions = {
@@ -35,6 +42,14 @@ export const revealViewport = {
   once: true,
 } as const;
 
+export function MotionProvider({ children }: MotionProviderProps) {
+  return (
+    <LazyMotion features={domAnimation} strict>
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
+    </LazyMotion>
+  );
+}
+
 export function createRevealUpVariants(
   reducedMotion: boolean,
   {
@@ -48,13 +63,11 @@ export function createRevealUpVariants(
 
   return {
     hidden: {
-      filter: "blur(10px)",
       opacity: 0,
       scale,
       y: distance,
     },
     visible: {
-      filter: "blur(0px)",
       opacity: 1,
       scale: 1,
       transition: {
@@ -104,9 +117,9 @@ export function AnimatedWords({
     <>
       {words.map((word, index) => (
         <Fragment key={`${word}-${index}`}>
-          <span className="inline-block overflow-hidden align-baseline">
+          <span className="inline-block overflow-hidden px-[0.08em] py-[0.12em] [margin-block:-0.12em] [margin-inline:-0.08em] align-baseline">
             <motion.span
-              className={cn("inline-block will-change-transform [color:inherit]", className)}
+              className={cn("inline-block leading-[inherit] will-change-transform [color:inherit]", className)}
               variants={wordVariants}
             >
               {word}
@@ -143,9 +156,12 @@ export function AnimatedChars({
         }
 
         return (
-          <span key={`${character}-${index}`} className="inline-block overflow-hidden align-baseline">
+          <span
+            key={`${character}-${index}`}
+            className="inline-block overflow-hidden px-[0.08em] py-[0.12em] [margin-block:-0.12em] [margin-inline:-0.08em] align-baseline"
+          >
             <motion.span
-              className={cn("inline-block will-change-transform [color:inherit]", className)}
+              className={cn("inline-block leading-[inherit] will-change-transform [color:inherit]", className)}
               variants={charVariants}
             >
               {character}
@@ -170,7 +186,7 @@ export function useParallax(
 }
 
 export function useReducedMotion() {
-  return !!useFramerReducedMotion();
+  return !!useMotionReducedMotion();
 }
 
 export {

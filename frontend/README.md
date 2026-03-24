@@ -1,104 +1,115 @@
 # VIXI Frontend
 
-Frontend SSR del sitio publico de VIXI. El proyecto esta construido con React Router 7, React 19, TypeScript, Vite y Tailwind CSS 4, y esta orientado a un marketing site editorial con animacion avanzada, SEO tecnico y un formulario de contacto server-side.
+> Public-facing SSR site for VIXI, built as an editorial marketing website with reusable content modules, route-level SEO metadata, Motion-based animation, smooth scrolling via Lenis, and a server-side contact flow backed by Resend.
 
-## Objetivo del sitio
+---
 
-El sitio actual esta pensado para:
+## Overview
 
-- presentar la propuesta de valor de VIXI;
-- explicar tratamientos, proceso clinico, experiencia del paciente y perfil del equipo;
-- captar contactos por WhatsApp, llamada, correo y formulario;
-- sostener una base SEO consistente con metadatos, Open Graph, JSON-LD, robots y sitemap.
+This app is the public website for **VIXI Reproduccion**.
 
-## Stack actual
+It is built around a few clear responsibilities:
 
-- `React Router 7` para rutas, SSR, `meta()` por pagina y `action()` server-side.
-- `React 19` para la UI.
-- `TypeScript` para tipado.
-- `Vite` como bundler de desarrollo y build.
-- `Tailwind CSS 4` para estilos.
-- `GSAP` y `@gsap/react` para reveals, split text, parallax, scroll smoothing y microinteracciones.
-- `react-icons` para iconografia puntual.
-- Integracion con `Resend` via `fetch` HTTP directo desde servidor. No se usa el SDK oficial.
+- Present the clinic, treatments, process, team, and patient experience.
+- Drive conversions through WhatsApp, phone, email, and a contact form.
+- Keep content centralized in typed data modules.
+- Serve SEO metadata, JSON-LD, OG tags, `robots.txt`, and `sitemap.xml`.
+- Render with SSR using React Router 7.
 
-## Requisitos locales
+The codebase is intentionally split into:
 
-- `Node.js 20+` recomendado.
-- `npm` para instalar dependencias y ejecutar scripts.
+- `routes/` for page entry points and route metadata.
+- `components/` for page sections and shared UI.
+- `components/data/` for reusable content and site configuration.
+- `components/lib/` for motion, metadata, Lenis helpers, and small utilities.
 
-## Como correr el proyecto
+---
 
-### Instalar dependencias
+## Stack
+
+### Runtime
+
+- `React 19`
+- `React Router 7`
+- `TypeScript`
+- `Vite`
+- `Tailwind CSS 4`
+
+### UI and behavior
+
+- `motion` for reveal/stagger/parallax animation and reduced-motion-aware transitions
+- `lenis` for smooth scrolling on the client
+- `react-icons` for selective icon usage
+
+### Delivery
+
+- SSR enabled through `react-router.config.ts`
+- Contact form submission sent server-side to the Resend HTTP API
+- Multi-stage `Dockerfile` for production builds
+
+---
+
+## Scripts
+
+Run these from `[frontend/](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend)`.
 
 ```bash
 npm install
-```
-
-### Desarrollo
-
-```bash
 npm run dev
 ```
 
-El entorno queda disponible en `http://localhost:5173`.
+Available scripts:
 
-### Typecheck
+- `npm run dev` starts the React Router dev server.
+- `npm run typecheck` runs route type generation and TypeScript.
+- `npm run generate:sitemap` writes `public/sitemap.xml`.
+- `npm run build` generates the sitemap and builds the app.
+- `npm run start` serves the production server from `build/server/index.js`.
 
-```bash
-npm run typecheck
-```
+There is currently no `test` or `lint` script in `package.json`.
 
-### Build
+---
 
-```bash
-npm run build
-```
+## Environment
 
-Antes de compilar, el build genera `public/sitemap.xml`.
+### Required for site configuration
 
-### Servir produccion
+- `SITE_URL`
 
-```bash
-npm run start
-```
+Used for:
 
-## Scripts disponibles
+- canonical URLs
+- Open Graph metadata
+- Twitter metadata
+- JSON-LD IDs and URLs
+- sitemap generation
 
-- `npm run dev`: inicia el servidor de desarrollo de React Router.
-- `npm run typecheck`: genera tipos de rutas y ejecuta TypeScript.
-- `npm run generate:sitemap`: genera `public/sitemap.xml` leyendo `app/routes.ts`.
-- `npm run build`: genera sitemap y compila cliente y servidor.
-- `npm run start`: sirve `build/server/index.js`.
+Fallback if missing:
 
-Nota: hoy no hay scripts de `test` ni `lint` en `package.json`. La validacion automatizada disponible es `typecheck`.
+- `https://vixireproduccion.mx`
 
-## Variables de entorno
+### Required for contact form delivery
 
-### SEO y URLs
+- `RESEND_API_KEY`
+- `CONTACT_FORM_TO_EMAIL`
 
-- `SITE_URL`: URL canonica del sitio. Se usa en canonicals, Open Graph, JSON-LD y sitemap.
+Optional:
 
-Si no existe, el proyecto usa `https://vixireproduccion.mx` como fallback.
+- `CONTACT_FORM_FROM_EMAIL`
 
-### Formulario de contacto
+Fallback if missing:
 
-- `RESEND_API_KEY`: token privado para autenticar con Resend.
-- `CONTACT_FORM_TO_EMAIL`: correo que recibe los leads.
-- `CONTACT_FORM_FROM_EMAIL`: remitente opcional. Si falta, se usa `VIXI Contacto <noreply@vixireproduccion.mx>`.
+- `VIXI Contacto <noreply@vixireproduccion.mx>`
 
-Si faltan `RESEND_API_KEY` o `CONTACT_FORM_TO_EMAIL`, la accion de contacto devuelve un error controlado y no intenta enviar correo.
+If `RESEND_API_KEY` or `CONTACT_FORM_TO_EMAIL` is missing, the contact route returns a controlled form error and does not attempt delivery.
 
-## Funcionamiento actual
+---
 
-### 1. Rutas y rendering
+## Route Map
 
-- El proyecto corre con SSR habilitado en `react-router.config.ts`.
-- `app/routes.ts` declara las rutas publicas.
-- Cada archivo en `app/routes/*.tsx` suele hacer dos cosas: definir `meta()` y renderizar un page component.
-- La unica ruta con `action()` es `/contacto`.
+Declared in `[app/routes.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/routes.ts)`.
 
-Rutas publicas actuales:
+Public routes:
 
 - `/`
 - `/quienes-somos`
@@ -109,81 +120,133 @@ Rutas publicas actuales:
 - `/preguntas-frecuentes`
 - `/contacto`
 
-### 2. Layout global
+Route files are intentionally thin. Most of them:
 
-`app/root.tsx` define:
+- export `meta()`
+- call `buildMeta()`
+- render a composed page component from `components/`
 
-- shell HTML global;
-- favicon;
-- metadatos base;
-- JSON-LD para `MedicalClinic` y `WebSite`;
-- `MarketingLayout` como contenedor comun de todo el sitio.
+The only route with a server-side `action()` today is `[contacto.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/routes/contacto.tsx)`.
 
-`MarketingLayout` monta:
+---
 
-- `SiteHeader`;
-- `SiteFooter`;
-- wrapper global de scroll suave;
-- animaciones GSAP ligadas al contenido de cada pagina;
-- `useScrollToTop()` al cambiar de ruta.
+## How It Works
 
-### 3. Sistema visual y animacion
+### App shell
 
-La experiencia visual actual depende de:
+`[root.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/root.tsx)` is the global document shell. It is responsible for:
 
-- `app/app.css` para fuentes custom (`Corbel` y `Glancyr`), tema y utilidades;
-- `app/components/lib/gsap.ts` para registrar `ScrollTrigger`, `ScrollSmoother`, `ScrollToPlugin` y `SplitText`;
-- `app/components/hooks/useGlobalSmoothScroll.ts` para crear un `ScrollSmoother` global;
-- atributos como `data-hero-root`, `data-split`, `data-card`, `data-text-block`, `data-reveal-item` y `data-parallax` para conectar el markup con las animaciones.
+- base HTML structure
+- favicon links
+- top-level metadata
+- JSON-LD for `MedicalClinic` and `WebSite`
+- mounting the global motion provider
+- rendering the shared `MarketingLayout`
 
-Las animaciones respetan `prefers-reduced-motion: reduce`.
+`[marketing-layout.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/layout/marketing-layout.tsx)` mounts:
 
-### 4. Contenido
+- `SiteHeader`
+- `SiteFooter`
+- the main content outlet
+- global Lenis initialization
+- scroll-to-top behavior on route changes
 
-El contenido ya no vive en un solo archivo. Hoy esta repartido por dominio dentro de `app/components/data/`:
+### Content model
 
-- `site.ts`: branding, URL base, navegacion y footer.
-- `contact.ts`: telefono, WhatsApp, correo, direccion y coordenadas.
-- `home.ts`: hero, pilares, estadisticas, diferenciales y audiencias.
-- `about.ts`: perfiles del equipo, highlights e imagenes editoriales.
-- `services.ts`: categorias de tratamiento, journey y apoyo a pacientes foraneos.
-- `care.ts`: equipo multidisciplinario.
-- `faq.ts`: preguntas frecuentes.
-- `types.ts`: contratos tipados para contenido reutilizable.
+Most site copy and structured content lives in `[components/data/](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data)`.
 
-Esto permite cambiar copy, rutas enlazadas, FAQs o datos de contacto sin tocar multiples paginas a la vez.
+Current modules:
 
-### 5. SEO
+- `[site.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/site.ts)` for branding, URL config, navigation, footer links, and site-level metadata values
+- `[contact.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/contact.ts)` for phone, WhatsApp, email, address, coordinates, and hours
+- `[home.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/home.ts)` for homepage hero, images, actions, stats, pillars, and audience content
+- `[about.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/about.ts)` for team and experience content
+- `[services.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/services.ts)` for treatment categories, treatment journey, and out-of-town support
+- `[care.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/care.ts)` for multidisciplinary team data
+- `[faq.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/faq.ts)` for FAQ items
+- `[types.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/types.ts)` for shared content contracts
 
-El SEO actual se reparte entre varios puntos:
+This is the first place to change site copy, reusable CTAs, and clinic contact details.
 
-- `app/root.tsx`: metadatos globales y JSON-LD base.
-- `app/components/lib/meta.ts`: helper `buildMeta()` para title, description, keywords, canonical, Open Graph y Twitter cards.
-- `scripts/generate-sitemap.mjs`: genera el sitemap leyendo `app/routes.ts`.
-- `public/robots.txt`: reglas para crawling.
-- `public/og/*`: imagenes Open Graph por pagina.
+### UI composition
 
-Cada ruta publica define su `meta()` usando `buildMeta()`.
+The UI is organized by domain:
 
-### 6. Formulario de contacto
+- `components/home/`
+- `components/about/`
+- `components/services/`
+- `components/contact/`
+- `components/shared/`
+- `components/ui/`
 
-El flujo real del formulario esta dividido asi:
+Shared primitives worth knowing:
 
-- `app/components/contact/contact-form-section.tsx`: UI del formulario, estados, dropdown custom del motivo y mapa embebido.
-- `app/components/contact/contact-page.tsx`: composicion completa de la pagina de contacto.
-- `app/routes/contacto.tsx`: validacion server-side y envio a Resend.
+- `[page-hero.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/page-hero.tsx)` for the reusable hero system
+- `[section-heading.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/section-heading.tsx)` for heading variants
+- `[button-link.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/button-link.tsx)` for branded CTA links
+- `[feature-card.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/feature-card.tsx)` for animated content cards
+- `[image-card.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/image-card.tsx)` for media blocks
 
-Resumen del flujo:
+### Animation and scrolling
 
-1. El usuario envia `name`, `email`, `phone`, `reason`, `message` y el honeypot `company`.
-2. La `action()` valida nombre, correo, telefono, motivo y longitud del mensaje.
-3. Si hay errores, devuelve `errors` y `values`.
-4. Si el honeypot trae valor, responde como exito silencioso para cortar spam basico.
-5. Si faltan variables de entorno, responde con error visible.
-6. Si todo es valido, hace `POST` a `https://api.resend.com/emails`.
-7. El correo se manda en `text` y `html`, usando el email capturado como `reply_to`.
+Animation is centralized in `[motion.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/lib/motion.tsx)`.
 
-## Arquitectura de carpetas
+Current motion setup:
+
+- `MotionProvider` wraps the app with `LazyMotion`
+- Motion components are loaded from `motion/react-m`
+- `MotionConfig reducedMotion="user"` enforces user preference globally
+- shared helpers create reveal and stagger variants
+- text reveal helpers split words and characters into animated wrappers
+- parallax behavior is based on `useScroll` and `useTransform`
+
+Smooth scrolling is handled by `[useGlobalLenis.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/hooks/useGlobalLenis.ts)`.
+
+Important behavior:
+
+- Lenis runs only on the client
+- it is disabled when `prefers-reduced-motion` is enabled
+- route changes call a dedicated scroll-to-top helper
+
+### SEO
+
+SEO is split across a few focused layers:
+
+- `[root.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/root.tsx)` for global metadata and JSON-LD
+- `[meta.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/lib/meta.ts)` for route-level metadata generation
+- route files for page-specific `meta()`
+- `[generate-sitemap.mjs](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/scripts/generate-sitemap.mjs)` for sitemap generation
+- `public/robots.txt` and `public/og/*` for crawl directives and OG assets
+
+Each public route calls `buildMeta()` with a title, description, path, and optional image/keywords.
+
+### Contact flow
+
+The contact experience is split between UI composition and the server action:
+
+- `[contact-page.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/contact/contact-page.tsx)`
+- `[contact-form-section.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/contact/contact-form-section.tsx)`
+- `[contacto.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/routes/contacto.tsx)`
+
+Submission flow:
+
+1. The form posts `name`, `email`, `phone`, `reason`, `message`, and the honeypot field `company`.
+2. The route action short-circuits to a silent success if the honeypot is filled.
+3. The action validates the fields server-side.
+4. Validation errors are returned as structured `errors` and `values`.
+5. If env vars are missing, the action returns a user-facing form error.
+6. If valid, the server sends an HTTP request to `https://api.resend.com/emails`.
+7. The message is sent as both plain text and HTML, with `reply_to` set to the submitted email.
+
+The contact UI also includes:
+
+- a custom reason dropdown
+- embedded Google Maps iframe
+- motion-based open/close and reveal states
+
+---
+
+## Folder Structure
 
 ```text
 frontend/
@@ -204,6 +267,7 @@ frontend/
     app.css
     root.tsx
     routes.ts
+  build/
   fonts/
   public/
     gallery/
@@ -222,56 +286,75 @@ frontend/
   vite.config.ts
 ```
 
-Notas sobre esa estructura:
+Notes:
 
-- `app/routes/` contiene wrappers delgados por pagina.
-- `app/components/*` agrupa UI y contenido por dominio funcional.
-- `app/welcome/` viene del scaffold inicial de React Router y hoy no participa en las rutas publicas.
-- `fonts/` guarda las tipografias locales cargadas desde `app/app.css`.
-- `public/` concentra imagenes, logos, OG assets y archivos estaticos.
+- `app/welcome/` is scaffold residue and is not part of the public route map.
+- `build/` exists only after a production build.
+- `public/` contains the static media and crawl assets used by the site.
 
-## Composicion de paginas
+---
 
-Las paginas actuales se arman con bloques reutilizables:
+## Maintenance Guide
 
-- `home/`: portada y secciones principales de captacion.
-- `about/`: quienes somos y experiencia del paciente.
-- `services/`: tratamientos y proceso.
-- `contact/`: contacto, FAQ y pacientes foraneos.
-- `shared/cta-banner.tsx`: CTA de cierre reutilizado en varias paginas.
-- `ui/`: primitives como `PageHero`, `SectionHeading`, `ButtonLink`, `FeatureCard` e `ImageCard`.
+### To add or change a page
 
-## Operacion y mantenimiento
+1. Update `[app/routes.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/routes.ts)`.
+2. Create or update the route file in `[app/routes/](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/routes)`.
+3. Add page metadata with `[buildMeta()](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/lib/meta.ts)`.
+4. Compose the page from existing section components or add new ones under the relevant domain folder.
+5. Update navigation or footer links in `[site.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/site.ts)` if needed.
+6. Run `npm run generate:sitemap` or `npm run build`.
 
-Si agregas o modificas una pagina, revisa al menos esto:
+### To update content
 
-1. declarar la ruta en `app/routes.ts`;
-2. crear o actualizar su `meta()` con `buildMeta()`;
-3. enlazarla desde `siteNavigation` o `footerLinks` si aplica;
-4. verificar assets en `public/`;
-5. regenerar el sitemap con `npm run generate:sitemap` o `npm run build`.
+Start in these files:
 
-Si cambias contenido global, normalmente los puntos de entrada son:
+- `[site.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/site.ts)`
+- `[contact.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/contact.ts)`
+- `[home.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/home.ts)`
+- `[about.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/about.ts)`
+- `[services.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/services.ts)`
+- `[care.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/care.ts)`
+- `[faq.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/data/faq.ts)`
 
-- `app/components/data/site.ts`
-- `app/components/data/contact.ts`
-- `app/components/data/home.ts`
-- `app/components/data/about.ts`
-- `app/components/data/services.ts`
-- `app/components/data/care.ts`
-- `app/components/data/faq.ts`
+### To update motion behavior
+
+Start in:
+
+- `[motion.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/lib/motion.tsx)`
+- `[page-hero.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/page-hero.tsx)`
+- `[section-heading.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/section-heading.tsx)`
+
+### To update SEO
+
+Start in:
+
+- `[root.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/root.tsx)`
+- `[meta.ts](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/lib/meta.ts)`
+- `[generate-sitemap.mjs](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/scripts/generate-sitemap.mjs)`
+
+---
 
 ## Docker
 
-El proyecto incluye un `Dockerfile` multi-stage que:
+`[Dockerfile](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/Dockerfile)` uses a multi-stage build:
 
-- instala dependencias de desarrollo para construir;
-- instala dependencias de produccion por separado;
-- ejecuta `npm run build`;
-- arranca el proyecto con `npm run start`.
+- install full dependencies
+- install production dependencies separately
+- run `npm run build`
+- copy the production server and production dependencies into the final image
+- start with `npm run start`
 
-## Documentacion adicional
+---
 
-- `RESEND_INTEGRATION_GUIDE.md`: detalle tecnico de la integracion del formulario con Resend.
+## Reality Check
 
-Este README reemplaza el template generico y documenta la estructura y el comportamiento actuales del frontend de VIXI.
+This README reflects the codebase as it exists now:
+
+- Motion is used.
+- Lenis is the current smooth-scroll implementation.
+- content lives in `components/data/*.ts`, not a different CMS layer
+- the contact form posts to Resend through the route `action()`
+- SSR is enabled
+
+If the code changes materially, update this file in the same PR instead of letting it drift again.

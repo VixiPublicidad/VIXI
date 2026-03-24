@@ -18,6 +18,7 @@ import {
   siteUrl,
 } from "~/components/data";
 import { MarketingLayout } from "~/components/layout/marketing-layout";
+import { MotionProvider } from "~/components/lib/motion";
 
 import "./app.css";
 import "lenis/dist/lenis.css";
@@ -112,7 +113,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body className="font-sans text-brand-950 antialiased">
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <Scripts />
       </body>
     </html>
