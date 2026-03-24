@@ -3,7 +3,14 @@ import { createPortal } from "react-dom";
 import { Form, useNavigation } from "react-router";
 
 import { contactDetails } from "~/components/data";
-import { gsap, useGSAP } from "~/components/lib/gsap";
+import {
+  AnimatePresence,
+  createRevealUpVariants,
+  createStaggerVariants,
+  motion,
+  revealViewport,
+  useReducedMotion,
+} from "~/components/lib/motion";
 import { SectionHeading } from "~/components/ui/section-heading";
 
 type ContactFormValues = {
@@ -33,13 +40,32 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
   const isSubmitting = navigation.state === "submitting";
   const values = formState?.success ? {} : formState?.values ?? {};
   const errors = formState?.errors;
+  const reducedMotion = useReducedMotion();
+  const leftVariants = createRevealUpVariants(reducedMotion, {
+    distance: 46,
+    duration: 0.9,
+  });
+  const rightVariants = createStaggerVariants(reducedMotion, {
+    delayChildren: 0.08,
+    staggerChildren: 0.1,
+  });
+  const cardVariants = createRevealUpVariants(reducedMotion, {
+    distance: 42,
+    duration: 0.84,
+  });
 
   return (
     <section
       className="mx-auto grid max-w-[80vw] gap-8 py-6 lg:grid-cols-[0.98fr_1.02fr] lg:px-8"
       id="contact-form"
     >
-      <div className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)] sm:p-10" data-reveal-item>
+      <motion.div
+        className="rounded-[32px] border border-brand-950/10 bg-white/90 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.08)] sm:p-10"
+        initial="hidden"
+        variants={leftVariants}
+        viewport={revealViewport}
+        whileInView="visible"
+      >
         <SectionHeading
           description="Escribe tus datos y contexto general. El formulario queda listo para enviar correos con Resend mediante variables de entorno del servidor."
           eyebrow="Formulario de contacto"
@@ -123,10 +149,16 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             </button>
           </div>
         </Form>
-      </div>
+      </motion.div>
 
-      <div className="grid gap-8">
-        <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]" data-reveal-item>
+      <motion.div
+        className="grid gap-8"
+        initial="hidden"
+        variants={rightVariants}
+        viewport={revealViewport}
+        whileInView="visible"
+      >
+        <motion.div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]" variants={cardVariants}>
           <SectionHeading
             description="VIXI esta ubicado dentro de un entorno hospitalario confiable y ofrece consulta en linea para valoracion inicial."
             eyebrow="Ubicacion"
@@ -139,9 +171,9 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             <p>{contactDetails.hours}</p>
             <p>Consulta en linea disponible para valoracion inicial y seguimiento.</p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="overflow-hidden rounded-[32px] border border-brand-950/10 bg-white shadow-[0_18px_50px_rgba(11,31,59,0.08)]" data-reveal-item>
+        <motion.div className="overflow-hidden rounded-[32px] border border-brand-950/10 bg-white shadow-[0_18px_50px_rgba(11,31,59,0.08)]" variants={cardVariants}>
           <iframe
             className="h-[420px] w-full"
             loading="lazy"
@@ -149,8 +181,8 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             src="https://www.google.com/maps?q=Av%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Gto.&output=embed"
             title="Ubicacion de VIXI"
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
@@ -166,11 +198,10 @@ function ContactReasonField({
   const [selectedReason, setSelectedReason] = useState(defaultValue ?? "");
   const fieldRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const triggerIconRef = useRef<HTMLSpanElement>(null);
   const listboxId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
   const [panelStyle, setPanelStyle] = useState<{ left: number; top: number; width: number } | null>(null);
-  const hasMountedRef = useRef(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     setSelectedReason(defaultValue ?? "");
@@ -215,90 +246,6 @@ function ContactReasonField({
     };
   }, [isOpen]);
 
-  useGSAP(
-    () => {
-      const trigger = triggerRef.current;
-      const triggerIcon = triggerIconRef.current;
-      const panel = panelRef.current;
-      const options = panel ? Array.from(panel.querySelectorAll("[data-dropdown-option]")) : [];
-
-      if (!trigger || !triggerIcon) return;
-
-      const setStaticState = () => {
-        gsap.set(trigger, {
-          boxShadow: isOpen ? "0 18px 42px rgba(11,31,59,0.12)" : "0 16px 38px rgba(11,31,59,0.07)",
-        });
-        gsap.set(triggerIcon, { rotate: isOpen ? 180 : 0 });
-
-        if (panel) {
-          gsap.set(panel, {
-            autoAlpha: isOpen ? 1 : 0,
-            display: isOpen ? "block" : "none",
-            pointerEvents: isOpen ? "auto" : "none",
-            scale: isOpen ? 1 : 0.98,
-            y: isOpen ? 0 : -12,
-          });
-        }
-      };
-
-      if (!hasMountedRef.current) {
-        setStaticState();
-        hasMountedRef.current = true;
-        return;
-      }
-
-      gsap.killTweensOf([trigger, triggerIcon, panel, ...options]);
-      gsap.to(trigger, {
-        boxShadow: isOpen ? "0 18px 42px rgba(11,31,59,0.12)" : "0 16px 38px rgba(11,31,59,0.07)",
-        duration: 0.18,
-        ease: "power2.out",
-      });
-      gsap.to(triggerIcon, {
-        duration: 0.22,
-        ease: "power2.out",
-        rotate: isOpen ? 180 : 0,
-      });
-
-      if (!panel) return;
-
-      if (isOpen) {
-        gsap.set(panel, { display: "block", pointerEvents: "auto" });
-        gsap.fromTo(
-          panel,
-          { autoAlpha: 0, scale: 0.98, y: -12 },
-          { autoAlpha: 1, duration: 0.2, ease: "power2.out", scale: 1, y: 0 },
-        );
-        gsap.fromTo(
-          options,
-          { autoAlpha: 0, x: -8 },
-          {
-            autoAlpha: 1,
-            duration: 0.18,
-            ease: "power2.out",
-            stagger: {
-              each: 0.025,
-              amount: 0.12,
-            },
-            x: 0,
-          },
-        );
-        return;
-      }
-
-      gsap.to(panel, {
-        autoAlpha: 0,
-        duration: 0.16,
-        ease: "power2.inOut",
-        scale: 0.98,
-        y: -8,
-        onComplete: () => {
-          gsap.set(panel, { display: "none", pointerEvents: "none" });
-        },
-      });
-    },
-    { dependencies: [isOpen, panelStyle?.left, panelStyle?.top, panelStyle?.width], revertOnUpdate: false },
-  );
-
   const currentLabel = selectedReason || "Selecciona una opcion";
 
   return (
@@ -308,10 +255,12 @@ function ContactReasonField({
       </label>
       <input name="reason" type="hidden" value={selectedReason} />
 
-      <button
+      <motion.button
         aria-controls={listboxId}
         aria-expanded={isOpen}
-        ref={triggerRef}
+        animate={{
+          boxShadow: isOpen ? "0 18px 42px rgba(11,31,59,0.12)" : "0 16px 38px rgba(11,31,59,0.07)",
+        }}
         className={[
           "relative flex min-h-[56px] w-full items-center justify-between overflow-hidden rounded-[22px]",
           "border px-4 py-3.5 text-left text-base outline-none transition",
@@ -322,13 +271,16 @@ function ContactReasonField({
         ].join(" ")}
         id="reason"
         onClick={() => setIsOpen((open) => !open)}
+        ref={triggerRef}
+        transition={{ duration: reducedMotion ? 0 : 0.18, ease: "easeOut" }}
         type="button"
       >
         <span className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-[radial-gradient(circle_at_left,rgba(198,137,152,0.16),transparent_68%)]" />
         <span className={selectedReason ? "text-brand-950" : "text-brand-950/46"}>{currentLabel}</span>
-        <span
-          ref={triggerIconRef}
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
           className="relative z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-950/10 bg-white/78 text-brand-700 shadow-[0_8px_18px_rgba(11,31,59,0.08)]"
+          transition={{ duration: reducedMotion ? 0 : 0.22, ease: "easeOut" }}
         >
           <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 24 24">
             <path
@@ -339,44 +291,77 @@ function ContactReasonField({
               strokeWidth="1.8"
             />
           </svg>
-        </span>
-      </button>
+        </motion.span>
+      </motion.button>
 
       {typeof document !== "undefined" && panelStyle
         ? createPortal(
-            <div
-              ref={panelRef}
-              className="fixed z-[120] overflow-hidden rounded-[26px] border border-brand-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,245,241,0.98))] p-2 shadow-[0_24px_60px_rgba(11,31,59,0.14)] backdrop-blur-xl"
-              id={listboxId}
-              role="listbox"
-              style={{
-                left: panelStyle.left,
-                top: panelStyle.top,
-                width: panelStyle.width,
-              }}
-            >
-              <div className="grid gap-1">
-                <DropdownOption
-                  isActive={selectedReason === ""}
-                  label="Selecciona una opcion"
-                  onSelect={() => {
-                    setSelectedReason("");
-                    setIsOpen(false);
+            <AnimatePresence>
+              {isOpen ? (
+                <motion.div
+                  ref={panelRef}
+                  animate="open"
+                  className="fixed z-[120] overflow-hidden rounded-[26px] border border-brand-950/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,245,241,0.98))] p-2 shadow-[0_24px_60px_rgba(11,31,59,0.14)] backdrop-blur-xl"
+                  exit="closed"
+                  id={listboxId}
+                  initial="closed"
+                  role="listbox"
+                  style={{
+                    left: panelStyle.left,
+                    top: panelStyle.top,
+                    width: panelStyle.width,
                   }}
-                />
-                {contactReasons.map((reason) => (
-                  <DropdownOption
-                    key={reason}
-                    isActive={selectedReason === reason}
-                    label={reason}
-                    onSelect={() => {
-                      setSelectedReason(reason);
-                      setIsOpen(false);
+                  transition={{ duration: reducedMotion ? 0 : 0.2, ease: "easeOut" }}
+                  variants={{
+                    closed: {
+                      opacity: 0,
+                      scale: 0.98,
+                      y: -12,
+                    },
+                    open: {
+                      opacity: 1,
+                      scale: 1,
+                      y: 0,
+                    },
+                  }}
+                >
+                  <motion.div
+                    animate="open"
+                    className="grid gap-1"
+                    initial="closed"
+                    variants={{
+                      closed: {},
+                      open: {
+                        transition: {
+                          delayChildren: reducedMotion ? 0 : 0.04,
+                          staggerChildren: reducedMotion ? 0 : 0.03,
+                        },
+                      },
                     }}
-                  />
-                ))}
-              </div>
-            </div>,
+                  >
+                    <DropdownOption
+                      isActive={selectedReason === ""}
+                      label="Selecciona una opcion"
+                      onSelect={() => {
+                        setSelectedReason("");
+                        setIsOpen(false);
+                      }}
+                    />
+                    {contactReasons.map((reason) => (
+                      <DropdownOption
+                        key={reason}
+                        isActive={selectedReason === reason}
+                        label={reason}
+                        onSelect={() => {
+                          setSelectedReason(reason);
+                          setIsOpen(false);
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>,
             document.body,
           )
         : null}
@@ -395,18 +380,30 @@ function DropdownOption({
   label: string;
   onSelect: () => void;
 }) {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <button
+    <motion.button
       className={[
         "flex w-full items-center justify-between rounded-[18px] px-4 py-3 text-left text-sm transition",
         isActive
           ? "bg-brand-950 text-white shadow-[0_14px_30px_rgba(11,31,59,0.2)]"
           : "text-brand-950/76 hover:bg-white hover:text-brand-950",
       ].join(" ")}
-      data-dropdown-option
       onClick={onSelect}
       role="option"
       type="button"
+      variants={{
+        closed: {
+          opacity: 0,
+          x: -8,
+        },
+        open: {
+          opacity: 1,
+          x: 0,
+        },
+      }}
+      transition={{ duration: reducedMotion ? 0 : 0.18, ease: "easeOut" }}
     >
       <span>{label}</span>
       <span
@@ -425,7 +422,7 @@ function DropdownOption({
           />
         </svg>
       </span>
-    </button>
+    </motion.button>
   );
 }
 

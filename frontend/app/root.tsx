@@ -20,6 +20,7 @@ import {
 import { MarketingLayout } from "~/components/layout/marketing-layout";
 
 import "./app.css";
+import "lenis/dist/lenis.css";
 
 export const links = () =>
   [

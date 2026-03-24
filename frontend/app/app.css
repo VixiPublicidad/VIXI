@@ -248,33 +248,20 @@
     background: rgba(219, 232, 244, 0.9);
   }
 
-  #smooth-wrapper {
-    min-height: 100vh;
+  html.lenis,
+  html.lenis body {
+    height: auto;
   }
 
-  #smooth-content {
-    will-change: transform;
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
   }
 
-  .split-char,
-  .split-line,
-  .split-word {
-    will-change: transform, opacity;
+  .lenis.lenis-stopped {
+    overflow: clip;
   }
 
-  [data-hero-media],
-  [data-hero-eyebrow],
-  [data-hero-title],
-  [data-hero-copy],
-  [data-hero-actions],
-  [data-hero-stats],
-  [data-hero-aside],
-  [data-reveal-item],
-  [data-card],
-  [data-card-float],
-  [data-parallax],
-  [data-ambient-orb],
-  [data-text-fade] {
-    will-change: transform, opacity;
+  .lenis [data-lenis-prevent] {
+    overscroll-behavior: contain;
   }
 }
