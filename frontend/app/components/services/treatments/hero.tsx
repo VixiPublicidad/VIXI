@@ -1,8 +1,32 @@
+import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
+
+import { contactDetails } from "~/components/data";
 import { PageHero } from "~/components/ui/page-hero";
 
 export function TreatmentsHero() {
   return (
     <PageHero
+      actions={[
+        {
+          label: (
+            <span className="inline-flex items-center gap-2">
+              <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
+              Agendar valoración
+            </span>
+          ),
+          to: contactDetails.whatsappHref,
+          external: true,
+        },
+        {
+          label: (
+            <span className="inline-flex items-center gap-2">
+              <FaArrowRight aria-hidden="true" className="h-4 w-4" />
+              Ver proceso
+            </span>
+          ),
+          to: "/como-funciona-tu-tratamiento",
+        },
+      ]}
       description="VIXI ofrece tratamientos de alta y baja complejidad para ayudar a lograr el embarazo con un plan individualizado y tecnología avanzada."
       eyebrow="Tratamientos"
       image={{

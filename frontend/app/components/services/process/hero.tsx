@@ -1,8 +1,32 @@
+import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
+
+import { contactDetails } from "~/components/data";
 import { PageHero } from "~/components/ui/page-hero";
 
 export function ProcessHero() {
   return (
     <PageHero
+      actions={[
+        {
+          label: (
+            <span className="inline-flex items-center gap-2">
+              <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
+              Agendar valoración
+            </span>
+          ),
+          to: contactDetails.whatsappHref,
+          external: true,
+        },
+        {
+          label: (
+            <span className="inline-flex items-center gap-2">
+              <FaArrowRight aria-hidden="true" className="h-4 w-4" />
+              Ver tratamientos
+            </span>
+          ),
+          to: "/tratamientos",
+        },
+      ]}
       description="El proceso inicia con una primera consulta, avanza hacia un diagnóstico definitivo y permite definir el tratamiento adecuado para cada caso."
       eyebrow="Cómo funciona tu tratamiento"
       image={{

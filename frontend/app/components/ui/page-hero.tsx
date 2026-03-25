@@ -115,8 +115,8 @@ function useHeroMotion() {
       scale: 1,
     }),
     textVariants: createStaggerVariants(reducedMotion, {
-      delayChildren: 0.14,
-      staggerChildren: 0.035,
+      delayChildren: 0.18,
+      staggerChildren: 0.065,
     }),
   };
 }
@@ -138,19 +138,20 @@ function HeroMedia({
 
   return (
     <div className={className}>
-      <motion.img
-        alt={image.alt}
-        animate={reducedMotion ? undefined : { scale: [1.03, 1.08, 1.03] }}
-        className="h-full w-full object-cover will-change-transform"
-        decoding="async"
-        fetchPriority="high"
-        height={image.height}
-        loading="eager"
-        src={image.src}
-        style={{ y: imageY }}
-        transition={{ duration: 15, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-        width={image.width}
-      />
+      <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
+        <motion.img
+          alt={image.alt}
+          animate={reducedMotion ? undefined : { scale: [1.03, 1.08, 1.03] }}
+          className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
+          decoding="async"
+          fetchPriority="high"
+          height={image.height}
+          loading="eager"
+          src={image.src}
+          transition={{ duration: 15, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+          width={image.width}
+        />
+      </motion.div>
       {overlay}
     </div>
   );
@@ -201,15 +202,39 @@ function HeroActions({
   if (!actions?.length) return null;
 
   return (
-    <motion.div variants={variants.actionVariants}>
+    <motion.div
+      className="flex w-full max-w-sm flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-stretch"
+      variants={variants.actionVariants}
+    >
       {actions.map((action, index) => (
-        <motion.div key={action.to} className="contents" variants={variants.itemVariants}>
-          <ButtonLink external={action.external} to={action.to} variant={index === 0 ? "primary" : "secondary"}>
+        <motion.div key={action.to} className="w-full sm:w-auto" variants={variants.itemVariants}>
+          <ButtonLink
+            className="flex w-full justify-center sm:w-auto"
+            external={action.external}
+            to={action.to}
+            variant={index === 0 ? "primary" : "secondary"}
+          >
             {action.label}
           </ButtonLink>
         </motion.div>
       ))}
     </motion.div>
+  );
+}
+
+function HeroAnimatedWords({
+  className,
+  text,
+  variants,
+}: {
+  className: string;
+  text: string;
+  variants: ReturnType<typeof useHeroMotion>;
+}) {
+  return (
+    <motion.span className="block" variants={variants.textVariants}>
+      <AnimatedWords className={className} reducedMotion={variants.reducedMotion} text={text} />
+    </motion.span>
   );
 }
 
@@ -313,21 +338,21 @@ function SignatureHero({ actions, badge, caption, description, eyebrow, heightCl
             {eyebrow}
           </motion.p>
 
-          <motion.h1 className="display-balance font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.9rem]" variants={variants.textVariants}>
-            <AnimatedWords className="text-white" reducedMotion={variants.reducedMotion} text={title} />
+          <motion.h1 className="display-balance font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.9rem]" variants={variants.itemVariants}>
+            <HeroAnimatedWords className="text-white" text={title} variants={variants} />
           </motion.h1>
 
           {subtitle ? (
-            <motion.p className="display-balance mt-3 font-display text-[1.4rem] leading-[1.12] tracking-[-0.035em] text-white/85 sm:text-2xl lg:text-[2.2rem] xl:text-[2.6rem]" variants={variants.textVariants}>
-              <AnimatedWords className="text-white/85" reducedMotion={variants.reducedMotion} text={subtitle} />
+            <motion.p className="display-balance mt-3 font-display text-[1.4rem] leading-[1.12] tracking-[-0.035em] text-white/85 sm:text-2xl lg:text-[2.2rem] xl:text-[2.6rem]" variants={variants.itemVariants}>
+              <HeroAnimatedWords className="text-white/85" text={subtitle} variants={variants} />
             </motion.p>
           ) : null}
 
-          <motion.p className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/78 sm:text-[1.15rem]" variants={variants.textVariants}>
-            <AnimatedWords className="text-white/78" reducedMotion={variants.reducedMotion} text={description} />
+          <motion.p className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/78 sm:text-[1.15rem]" variants={variants.itemVariants}>
+            <HeroAnimatedWords className="text-white/78" text={description} variants={variants} />
           </motion.p>
 
-          <motion.div className="mt-10 flex flex-wrap items-center gap-4" variants={variants.actionVariants}>
+          <motion.div className="mt-10 flex justify-center sm:justify-start" variants={variants.actionVariants}>
             <HeroActions actions={actions} variants={variants} />
           </motion.div>
         </div>
@@ -377,15 +402,15 @@ function EditorialHero({ actions, badge, caption, description, eyebrow, heightCl
         <div className={`grid ${heightClass} items-end gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28`}>
           <motion.div className="flex flex-col justify-end" variants={variants.contentVariants}>
             <motion.p className="eyebrow-label mb-4 text-brand-950/50" variants={variants.itemVariants}>{eyebrow}</motion.p>
-            <motion.h1 className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]" variants={variants.textVariants}>
-              <AnimatedWords className="text-brand-950" reducedMotion={variants.reducedMotion} text={title} />
+            <motion.h1 className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]" variants={variants.itemVariants}>
+              <HeroAnimatedWords className="text-brand-950" text={title} variants={variants} />
             </motion.h1>
             <motion.div className="mt-8 h-px w-24 bg-brand-950/20" variants={variants.itemVariants} />
-            <motion.p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72" variants={variants.textVariants}>
-              <AnimatedWords className="text-brand-950/72" reducedMotion={variants.reducedMotion} text={description} />
+            <motion.p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72" variants={variants.itemVariants}>
+              <HeroAnimatedWords className="text-brand-950/72" text={description} variants={variants} />
             </motion.p>
 
-            <motion.div className="mt-10 flex flex-col gap-3 sm:flex-row" variants={variants.actionVariants}>
+            <motion.div className="mt-10 flex justify-center sm:justify-start" variants={variants.actionVariants}>
               <HeroActions actions={actions} variants={variants} />
             </motion.div>
           </motion.div>
@@ -445,15 +470,15 @@ function GalleryHero({ actions, badge, caption, contentAlignY, description, eyeb
             {eyebrow}
           </motion.p>
 
-          <motion.h1 className="display-balance mt-6 font-display text-4xl leading-[0.95] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.6rem]" variants={variants.textVariants}>
-            <AnimatedWords className="text-brand-950" reducedMotion={variants.reducedMotion} text={title} />
+          <motion.h1 className="display-balance mt-6 font-display text-4xl leading-[0.95] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.6rem]" variants={variants.itemVariants}>
+            <HeroAnimatedWords className="text-brand-950" text={title} variants={variants} />
           </motion.h1>
           <motion.div className="mt-7 h-px w-24 bg-brand-950/16" variants={variants.itemVariants} />
-          <motion.p className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-brand-950/66 sm:text-[1.15rem]" variants={variants.textVariants}>
-            <AnimatedWords className="text-brand-950/66" reducedMotion={variants.reducedMotion} text={description} />
+          <motion.p className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-brand-950/66 sm:text-[1.15rem]" variants={variants.itemVariants}>
+            <HeroAnimatedWords className="text-brand-950/66" text={description} variants={variants} />
           </motion.p>
 
-          <motion.div className="mt-8 flex flex-wrap gap-4" variants={variants.actionVariants}>
+          <motion.div className="mt-8 flex justify-center sm:justify-start" variants={variants.actionVariants}>
             <HeroActions actions={actions} variants={variants} />
           </motion.div>
         </div>
@@ -508,14 +533,14 @@ function ProcessHero({ actions, badge, caption, contentAlignY, description, eyeb
 
       <motion.div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col ${contentAlignY === "center" ? "justify-center" : "justify-end"} px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20`} variants={variants.contentVariants}>
         <motion.p className="eyebrow-label mb-4 text-accent-200/80" variants={variants.itemVariants}>{eyebrow}</motion.p>
-        <motion.h1 className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-5xl lg:text-[4.5rem]" variants={variants.textVariants}>
-          <AnimatedWords className="text-white" reducedMotion={variants.reducedMotion} text={title} />
+        <motion.h1 className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-5xl lg:text-[4.5rem]" variants={variants.itemVariants}>
+          <HeroAnimatedWords className="text-white" text={title} variants={variants} />
         </motion.h1>
-        <motion.p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" variants={variants.textVariants}>
-          <AnimatedWords className="text-white/68" reducedMotion={variants.reducedMotion} text={description} />
+        <motion.p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" variants={variants.itemVariants}>
+          <HeroAnimatedWords className="text-white/68" text={description} variants={variants} />
         </motion.p>
 
-        <motion.div className="mt-8 flex flex-wrap gap-4" variants={variants.actionVariants}>
+        <motion.div className="mt-8 flex justify-center sm:justify-start" variants={variants.actionVariants}>
           <HeroActions actions={actions} variants={variants} />
         </motion.div>
 
@@ -568,14 +593,14 @@ function ConciergeHero({ actions, badge, caption, description, eyebrow, heightCl
 
       <motion.div className={`relative z-10 mx-auto flex ${heightClass} max-w-[1440px] flex-col items-center justify-center px-6 py-24 text-center sm:px-10 lg:px-16`} variants={variants.contentVariants}>
         <motion.p className="eyebrow-label mb-6 text-brand-700/70" variants={variants.itemVariants}>{eyebrow}</motion.p>
-        <motion.h1 className="display-balance max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[5rem]" variants={variants.textVariants}>
-          <AnimatedWords className="text-brand-950" reducedMotion={variants.reducedMotion} text={title} />
+        <motion.h1 className="display-balance max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[5rem]" variants={variants.itemVariants}>
+          <HeroAnimatedWords className="text-brand-950" text={title} variants={variants} />
         </motion.h1>
-        <motion.p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-brand-950/64 sm:text-[1.15rem]" variants={variants.textVariants}>
-          <AnimatedWords className="text-brand-950/64" reducedMotion={variants.reducedMotion} text={description} />
+        <motion.p className="mx-auto mt-6 max-w-2xl text-[1.05rem] leading-8 text-brand-950/64 sm:text-[1.15rem]" variants={variants.itemVariants}>
+          <HeroAnimatedWords className="text-brand-950/64" text={description} variants={variants} />
         </motion.p>
 
-        <motion.div className="mt-10 flex flex-wrap justify-center gap-4" variants={variants.actionVariants}>
+        <motion.div className="mt-10 flex justify-center" variants={variants.actionVariants}>
           <HeroActions actions={actions} variants={variants} />
         </motion.div>
 

@@ -26,9 +26,9 @@ export function FAQAccordion() {
     <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <SectionHeading
         align="center"
-        description="Aqui resolvemos dudas frecuentes con informacion util, cercana y medicamente responsable para una mejor decision."
+        description="Aquí resolvemos dudas frecuentes con información útil, cercana y médicamente responsable para una mejor decisión."
         eyebrow="FAQ"
-        title="Informacion util sin ruido ni sobrepromesas"
+        title="Información útil sin ruido ni sobrepromesas"
         variant="minimal"
       />
       <motion.div

@@ -5,6 +5,7 @@ import {
   LazyMotion,
   MotionConfig,
   domAnimation,
+  stagger,
   useReducedMotion as useMotionReducedMotion,
   useScroll,
   useTransform,
@@ -90,8 +91,8 @@ export function createStaggerVariants(
     hidden: {},
     visible: {
       transition: {
-        delayChildren,
-        staggerChildren,
+        delayChildren: stagger(staggerChildren, { startDelay: delayChildren }),
+        when: "beforeChildren",
       },
     },
   };
