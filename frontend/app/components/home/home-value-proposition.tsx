@@ -93,7 +93,6 @@ function ValueCard({
           reducedMotion
             ? undefined
             : {
-                rotate: [0, -1.4, 1.2, 0],
                 y: [0, -6, 0],
               }
         }
