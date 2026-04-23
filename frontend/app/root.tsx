@@ -8,20 +8,39 @@ import {
 
 import type { ReactNode } from "react";
 
-import {
-  contactDetails,
-  organizationName,
-  siteDescription,
-  siteLanguage,
-  siteName,
-  siteTagline,
-  siteUrl,
-} from "~/components/data";
 import { MarketingLayout } from "~/components/layout/marketing-layout";
 import { MotionProvider } from "~/components/lib/motion";
 
 import "./app.css";
 import "lenis/dist/lenis.css";
+
+const siteName = "VIXI";
+const siteTagline = "Ciencia y experiencia dando vida.";
+const configuredSiteUrl =
+  typeof process !== "undefined" && process.env?.SITE_URL
+    ? process.env.SITE_URL
+    : undefined;
+const siteUrl = configuredSiteUrl?.replace(/\/+$/, "") ?? "https://vixireproduccion.mx";
+const siteLanguage = "es-MX";
+const siteDescription =
+  "Clínica de fertilidad con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
+const organizationName = "VIXI Reproducción";
+const contactDetails = {
+  phoneHref: "tel:+524776725136",
+  email: "pacientes.vixi@gmail.com",
+  streetAddress: "Av. Cerro Gordo, Lomas del Campestre",
+  postalCode: "37150",
+  locality: "León de los Aldama",
+  region: "Guanajuato",
+  countryCode: "MX",
+  latitude: 21.1574,
+  longitude: -101.6942,
+  openingHours: {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:30",
+    closes: "18:00",
+  },
+};
 
 export const links = () =>
   [

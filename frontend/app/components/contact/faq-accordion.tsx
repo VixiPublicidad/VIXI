@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
-import { faqItems } from "~/components/data";
 import {
   AnimatePresence,
   createRevealUpVariants,
@@ -8,10 +7,9 @@ import {
   motion,
   useReducedMotion,
 } from "~/components/lib/motion";
-import { SectionHeading } from "~/components/ui/section-heading";
 
 export function FAQAccordion() {
-  const [openQuestion, setOpenQuestion] = useState<string | null>(faqItems[0]?.question ?? null);
+  const [openQuestion, setOpenQuestion] = useState<number | null>(0);
   const reducedMotion = useReducedMotion();
   const listVariants = createStaggerVariants(reducedMotion, {
     delayChildren: 0.06,
@@ -24,13 +22,19 @@ export function FAQAccordion() {
 
   return (
     <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
-      <SectionHeading
-        align="center"
-        description="Aquí resolvemos dudas frecuentes con información útil, cercana y médicamente responsable para una mejor decisión."
-        eyebrow="FAQ"
-        title="Información útil sin ruido ni sobrepromesas"
-        variant="minimal"
-      />
+      <div className="mx-auto max-w-3xl text-center">
+        <div className="mb-6 flex items-center justify-center gap-4">
+          <div className="h-[1px] w-8 bg-brand-950/20" />
+          <p className="eyebrow-label text-[9px] text-brand-950/40">FAQ</p>
+          <div className="h-[1px] w-8 bg-brand-950/20" />
+        </div>
+        <h2 className="display-balance font-display text-2xl font-medium leading-[1.02] tracking-[-0.035em] text-brand-950 sm:text-3xl lg:text-4xl">
+          Informacion util sin ruido ni sobrepromesas
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-brand-950/56">
+          Aqui resolvemos dudas frecuentes con informacion util, cercana y medicamente responsable para una mejor decision.
+        </p>
+      </div>
       <motion.div
         className="mt-8 grid gap-4"
         initial="hidden"
@@ -38,40 +42,107 @@ export function FAQAccordion() {
         viewport={{ margin: "-25% 0px", once: true }}
         whileInView="visible"
       >
-        {faqItems.map((item, index) => (
-          <FAQAccordionItem
-            key={item.question}
-            index={index}
-            isOpen={openQuestion === item.question}
-            item={item}
-            onToggle={() => {
-              setOpenQuestion((current) => (current === item.question ? null : item.question));
-            }}
-            reducedMotion={reducedMotion}
-            variants={itemVariants}
-          />
-        ))}
+        <FAQAccordionItem
+          index={0}
+          isOpen={openQuestion === 0}
+          onToggle={() => setOpenQuestion((current) => (current === 0 ? null : 0))}
+          reducedMotion={reducedMotion}
+          variants={itemVariants}
+        >
+          <span slot="question">Cuanto cuesta un tratamiento de fertilidad?</span>
+          <p>
+            No existe un costo unico. El presupuesto depende del diagnostico, estudios necesarios, medicamentos y procedimiento indicado. En consulta se explica con claridad que incluye cada etapa.
+          </p>
+        </FAQAccordionItem>
+
+        <FAQAccordionItem
+          index={1}
+          isOpen={openQuestion === 1}
+          onToggle={() => setOpenQuestion((current) => (current === 1 ? null : 1))}
+          reducedMotion={reducedMotion}
+          variants={itemVariants}
+        >
+          <span slot="question">Cuanto dura cada proceso?</span>
+          <p>
+            El tiempo cambia segun el tipo de tratamiento. Algunas valoraciones se resuelven en pocas semanas y otros protocolos requieren varias fases. El plan se agenda con tiempos realistas desde el inicio.
+          </p>
+        </FAQAccordionItem>
+
+        <FAQAccordionItem
+          index={2}
+          isOpen={openQuestion === 2}
+          onToggle={() => setOpenQuestion((current) => (current === 2 ? null : 2))}
+          reducedMotion={reducedMotion}
+          variants={itemVariants}
+        >
+          <span slot="question">Que probabilidad de exito tiene mi caso?</span>
+          <p>
+            La probabilidad depende de factores como edad, reserva ovarica, diagnostico y antecedentes. En VIXI se revisa cada caso de manera individual para hablar con expectativas medicas responsables.
+          </p>
+        </FAQAccordionItem>
+
+        <FAQAccordionItem
+          index={3}
+          isOpen={openQuestion === 3}
+          onToggle={() => setOpenQuestion((current) => (current === 3 ? null : 3))}
+          reducedMotion={reducedMotion}
+          variants={itemVariants}
+        >
+          <span slot="question">Atienden pacientes de otros estados o paises?</span>
+          <p>
+            Si. VIXI contempla atencion para pacientes foraneos con orientacion previa, coordinacion de visitas y seguimiento remoto cuando es pertinente.
+          </p>
+        </FAQAccordionItem>
+
+        <FAQAccordionItem
+          index={4}
+          isOpen={openQuestion === 4}
+          onToggle={() => setOpenQuestion((current) => (current === 4 ? null : 4))}
+          reducedMotion={reducedMotion}
+          variants={itemVariants}
+        >
+          <span slot="question">Puedo iniciar con consulta en linea?</span>
+          <p>
+            Si. La consulta en linea puede servir para una valoracion inicial, revision de estudios previos y planeacion del siguiente paso clinico.
+          </p>
+        </FAQAccordionItem>
+
+        <FAQAccordionItem
+          index={5}
+          isOpen={openQuestion === 5}
+          onToggle={() => setOpenQuestion((current) => (current === 5 ? null : 5))}
+          reducedMotion={reducedMotion}
+          variants={itemVariants}
+        >
+          <span slot="question">Atienden distintos modelos de familia?</span>
+          <p>
+            Si. VIXI acompana de forma inclusiva a parejas y pacientes que buscan maternidad o paternidad desde contextos y necesidades diferentes.
+          </p>
+        </FAQAccordionItem>
       </motion.div>
     </section>
   );
 }
 
 function FAQAccordionItem({
+  children,
   index,
   isOpen,
-  item,
   onToggle,
   reducedMotion,
   variants,
 }: {
+  children: ReactNode;
   index: number;
   isOpen: boolean;
-  item: { question: string; answer: string };
   onToggle: () => void;
   reducedMotion: boolean;
   variants: ReturnType<typeof createRevealUpVariants>;
 }) {
   const answerId = `faq-answer-${index}`;
+  const childArray = Array.isArray(children) ? children : [children];
+  const question = childArray[0];
+  const answer = childArray.slice(1);
 
   return (
     <motion.article
@@ -101,7 +172,7 @@ function FAQAccordionItem({
             </span>
           </span>
           <span className="block pr-4 text-lg font-semibold leading-7 text-brand-950 sm:text-[1.35rem]">
-            {item.question}
+            {question}
           </span>
         </span>
         <motion.span
@@ -138,7 +209,7 @@ function FAQAccordionItem({
             }}
             transition={{ duration: reducedMotion ? 0 : 0.28, ease: "easeOut" }}
           >
-            <motion.p
+            <motion.div
               animate={{
                 opacity: 1,
                 y: 0,
@@ -150,8 +221,8 @@ function FAQAccordionItem({
               }}
               transition={{ delay: reducedMotion ? 0 : 0.06, duration: reducedMotion ? 0 : 0.2, ease: "easeOut" }}
             >
-              {item.answer}
-            </motion.p>
+              {answer}
+            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>

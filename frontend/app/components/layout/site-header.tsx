@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
-import { contactDetails, siteNavigation } from "~/components/data";
 import { cn } from "~/components/lib/utils";
 import { ButtonLink } from "~/components/ui/button-link";
 
@@ -10,8 +9,6 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const whiteLogoRoutes = new Set(["/", "/nuestra-experiencia", "/como-funciona-tu-tratamiento"]);
-  const desktopNavigation = siteNavigation.filter((item) => item.to !== "/contacto");
-  const mobileNavigation = siteNavigation;
   const heroHeader = whiteLogoRoutes.has(location.pathname) && !scrolled && !menuOpen;
   const useWhiteLogo = heroHeader;
 
@@ -50,9 +47,7 @@ export function SiteHeader() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
-        scrolled
-          ? "bg-white/82 shadow-[0_1px_0_rgba(11,31,59,0.06)] backdrop-blur-xl"
-          : "bg-transparent",
+        scrolled ? "bg-white/82 shadow-[0_1px_0_rgba(11,31,59,0.06)] backdrop-blur-xl" : "bg-transparent",
       )}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-3.5 sm:px-8 lg:py-4">
@@ -69,36 +64,13 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex">
-          {desktopNavigation.map((item) => (
-            <NavLink
-              key={item.to}
-              className={({ isActive }) =>
-                cn(
-                  "nav-link relative px-3 py-2 text-[12px] font-medium uppercase tracking-[0.16em] transition-colors duration-200",
-                  heroHeader
-                    ? isActive
-                      ? "text-white"
-                      : "text-white/72 hover:text-white"
-                    : isActive
-                      ? "text-brand-950"
-                      : "text-brand-950/50 hover:text-brand-950/80",
-                )
-              }
-              to={item.to}
-            >
-              {({ isActive }) => (
-                <>
-                  {item.label}
-                  <span
-                    className={cn(
-                      "absolute inset-x-3 -bottom-0.5 h-[2px] origin-left rounded-full bg-accent-400 transition-transform duration-300",
-                      isActive ? "scale-x-100" : "scale-x-0",
-                    )}
-                  />
-                </>
-              )}
-            </NavLink>
-          ))}
+          <DesktopNavLink heroHeader={heroHeader} to="/">Inicio</DesktopNavLink>
+          <DesktopNavLink heroHeader={heroHeader} to="/quienes-somos">Quienes somos</DesktopNavLink>
+          <DesktopNavLink heroHeader={heroHeader} to="/nuestra-experiencia">Experiencia</DesktopNavLink>
+          <DesktopNavLink heroHeader={heroHeader} to="/tratamientos">Tratamientos</DesktopNavLink>
+          <DesktopNavLink heroHeader={heroHeader} to="/como-funciona-tu-tratamiento">Proceso</DesktopNavLink>
+          <DesktopNavLink heroHeader={heroHeader} to="/pacientes-foraneos">Foraneos</DesktopNavLink>
+          <DesktopNavLink heroHeader={heroHeader} to="/preguntas-frecuentes">FAQ</DesktopNavLink>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -116,9 +88,7 @@ export function SiteHeader() {
             aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
             className={cn(
               "relative flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-200 lg:hidden",
-              heroHeader
-                ? "border border-white/20 hover:bg-white/10"
-                : "border border-brand-950/8 hover:bg-brand-950/5",
+              heroHeader ? "border border-white/20 hover:bg-white/10" : "border border-brand-950/8 hover:bg-brand-950/5",
             )}
             onClick={() => setMenuOpen((v) => !v)}
             type="button"
@@ -145,10 +115,7 @@ export function SiteHeader() {
 
       <div
         aria-hidden={!menuOpen}
-        className={cn(
-          "fixed inset-0 z-40 lg:hidden",
-          menuOpen ? "pointer-events-auto" : "pointer-events-none",
-        )}
+        className={cn("fixed inset-0 z-40 lg:hidden", menuOpen ? "pointer-events-auto" : "pointer-events-none")}
       >
         <button
           aria-label="Cerrar menu"
@@ -190,37 +157,28 @@ export function SiteHeader() {
 
           <div className="flex flex-1 flex-col overflow-y-auto px-4 pb-5 pt-4">
             <nav className="grid gap-2">
-              {mobileNavigation.map((item, index) => (
-                <NavLink
-                  key={item.to}
-                  className={({ isActive }) =>
-                    cn(
-                      "group rounded-[24px] border px-5 py-4 transition-all duration-300",
-                      menuOpen ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
-                      isActive
-                        ? "border-brand-950 bg-brand-950 text-white shadow-[0_16px_34px_rgba(11,31,59,0.18)]"
-                        : "border-brand-950/8 bg-white/70 text-brand-950/78 hover:border-brand-950/14 hover:bg-white hover:text-brand-950",
-                    )
-                  }
-                  onClick={() => setMenuOpen(false)}
-                  style={{ transitionDelay: `${index * 45}ms` }}
-                  to={item.to}
-                >
-                  {({ isActive }) => (
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="font-display text-[1.05rem] leading-none tracking-[-0.02em]">{item.label}</span>
-                      <span
-                        className={cn(
-                          "text-[10px] uppercase tracking-[0.28em] transition-colors duration-200",
-                          isActive ? "text-white/65" : "text-brand-700/45 group-hover:text-brand-700/70",
-                        )}
-                      >
-                        Ir
-                      </span>
-                    </div>
-                  )}
-                </NavLink>
-              ))}
+              <MobileNavLink delay={0} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/">Inicio</MobileNavLink>
+              <MobileNavLink delay={45} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/quienes-somos">
+                Quienes somos
+              </MobileNavLink>
+              <MobileNavLink delay={90} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/nuestra-experiencia">
+                Experiencia
+              </MobileNavLink>
+              <MobileNavLink delay={135} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/tratamientos">
+                Tratamientos
+              </MobileNavLink>
+              <MobileNavLink delay={180} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/como-funciona-tu-tratamiento">
+                Proceso
+              </MobileNavLink>
+              <MobileNavLink delay={225} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/pacientes-foraneos">
+                Foraneos
+              </MobileNavLink>
+              <MobileNavLink delay={270} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/preguntas-frecuentes">
+                FAQ
+              </MobileNavLink>
+              <MobileNavLink delay={315} menuOpen={menuOpen} onClick={() => setMenuOpen(false)} to="/contacto">
+                Contacto
+              </MobileNavLink>
             </nav>
 
             <div
@@ -231,14 +189,14 @@ export function SiteHeader() {
               style={{ transitionDelay: "180ms" }}
             >
               <div className="grid gap-3">
-                <ButtonLink className="justify-center bg-white text-brand-950 hover:bg-white/92" external to={contactDetails.whatsappHref}>
+                <ButtonLink className="justify-center bg-white text-brand-950 hover:bg-white/92" external to="https://wa.me/524776725136">
                   Agendar por WhatsApp
                 </ButtonLink>
                 <a
                   className="flex items-center justify-center rounded-full border border-white/14 px-5 py-3 text-[0.95rem] font-medium tracking-[0.01em] text-white transition-colors duration-200 hover:bg-white/8"
-                  href={contactDetails.phoneHref}
+                  href="tel:+524776725136"
                 >
-                  Llamar a {contactDetails.phoneDisplay}
+                  Llamar a 477 672 5136
                 </a>
               </div>
             </div>
@@ -250,11 +208,96 @@ export function SiteHeader() {
               )}
               style={{ transitionDelay: "220ms" }}
             >
-              {contactDetails.hours}
+              Lunes a viernes - 8:30 a 18:00 h
             </div>
           </div>
         </div>
       </div>
     </header>
+  );
+}
+
+function DesktopNavLink({
+  children,
+  heroHeader,
+  to,
+}: {
+  children: ReactNode;
+  heroHeader: boolean;
+  to: string;
+}) {
+  return (
+    <NavLink
+      className={({ isActive }) =>
+        cn(
+          "nav-link relative px-3 py-2 text-[12px] font-medium uppercase tracking-[0.16em] transition-colors duration-200",
+          heroHeader
+            ? isActive
+              ? "text-white"
+              : "text-white/72 hover:text-white"
+            : isActive
+              ? "text-brand-950"
+              : "text-brand-950/50 hover:text-brand-950/80",
+        )
+      }
+      to={to}
+    >
+      {({ isActive }) => (
+        <>
+          {children}
+          <span
+            className={cn(
+              "absolute inset-x-3 -bottom-0.5 h-[2px] origin-left rounded-full bg-accent-400 transition-transform duration-300",
+              isActive ? "scale-x-100" : "scale-x-0",
+            )}
+          />
+        </>
+      )}
+    </NavLink>
+  );
+}
+
+function MobileNavLink({
+  children,
+  delay,
+  menuOpen,
+  onClick,
+  to,
+}: {
+  children: ReactNode;
+  delay: number;
+  menuOpen: boolean;
+  onClick: () => void;
+  to: string;
+}) {
+  return (
+    <NavLink
+      className={({ isActive }) =>
+        cn(
+          "group rounded-[24px] border px-5 py-4 transition-all duration-300",
+          menuOpen ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
+          isActive
+            ? "border-brand-950 bg-brand-950 text-white shadow-[0_16px_34px_rgba(11,31,59,0.18)]"
+            : "border-brand-950/8 bg-white/70 text-brand-950/78 hover:border-brand-950/14 hover:bg-white hover:text-brand-950",
+        )
+      }
+      onClick={onClick}
+      style={{ transitionDelay: `${delay}ms` }}
+      to={to}
+    >
+      {({ isActive }) => (
+        <div className="flex items-center justify-between gap-4">
+          <span className="font-display text-[1.05rem] leading-none tracking-[-0.02em]">{children}</span>
+          <span
+            className={cn(
+              "text-[10px] uppercase tracking-[0.28em] transition-colors duration-200",
+              isActive ? "text-white/65" : "text-brand-700/45 group-hover:text-brand-700/70",
+            )}
+          >
+            Ir
+          </span>
+        </div>
+      )}
+    </NavLink>
   );
 }

@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { type ReactNode, useRef } from "react";
 import { FaFlask, FaHandHoldingHeart, FaUserMd } from "react-icons/fa";
 
-import { brandPillars, differentiator } from "~/components/data";
 import {
   createRevealUpVariants,
   createStaggerVariants,
@@ -10,8 +9,6 @@ import {
   useParallax,
   useReducedMotion,
 } from "~/components/lib/motion";
-
-const PILLAR_ICONS = [FaFlask, FaUserMd, FaHandHoldingHeart];
 
 export function HomePillars() {
   const reducedMotion = useReducedMotion();
@@ -40,38 +37,45 @@ export function HomePillars() {
           Estos pilares definen la atención de VIXI: rigor médico, experiencia clínica y un trato humano y cercano en cada etapa.
         </p>
         <motion.div className="mt-8 grid gap-4" variants={sectionVariants}>
-          {brandPillars.map((pillar, index) => {
-            const Icon = PILLAR_ICONS[index];
-
-            return (
-              <motion.div
-                key={pillar.title}
-                className="group flex flex-col rounded-[28px] border border-white/12 bg-white/6 p-6 backdrop-blur-sm transition-all hover:bg-white/10"
-                variants={cardVariants}
-              >
-                <div className="flex items-center gap-4">
-                  <motion.div
-                    animate={
-                      reducedMotion
-                        ? undefined
-                        : {
-                            rotate: [0, -3, 2, 0],
-                            y: [0, -6, 0],
-                          }
-                    }
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-100/10 text-accent-200 transition-colors group-hover:bg-accent-100/20"
-                    transition={{ duration: 5.4, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-                  >
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                  </motion.div>
-                  <p className="font-display text-[1.45rem] font-medium leading-[1.02] tracking-[-0.03em] text-white">
-                    {pillar.title}
-                  </p>
-                </div>
-                <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-white/78">{pillar.description}</p>
-              </motion.div>
-            );
-          })}
+          <motion.div className="group flex flex-col rounded-[28px] border border-white/12 bg-white/6 p-6 backdrop-blur-sm transition-all hover:bg-white/10" variants={cardVariants}>
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-100/10 text-accent-200 transition-colors group-hover:bg-accent-100/20">
+                <FaFlask aria-hidden="true" className="h-5 w-5" />
+              </div>
+              <p className="font-display text-[1.45rem] font-medium leading-[1.02] tracking-[-0.03em] text-white">
+                Ciencia
+              </p>
+            </div>
+            <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-white/78">
+              Diagnóstico preciso, protocolos individualizados y respaldo hospitalario.
+            </p>
+          </motion.div>
+          <motion.div className="group flex flex-col rounded-[28px] border border-white/12 bg-white/6 p-6 backdrop-blur-sm transition-all hover:bg-white/10" variants={cardVariants}>
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-100/10 text-accent-200 transition-colors group-hover:bg-accent-100/20">
+                <FaUserMd aria-hidden="true" className="h-5 w-5" />
+              </div>
+              <p className="font-display text-[1.45rem] font-medium leading-[1.02] tracking-[-0.03em] text-white">
+                Experiencia
+              </p>
+            </div>
+            <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-white/78">
+              Equipo con formación en biología de la reproducción humana y cirugía de mínima invasión.
+            </p>
+          </motion.div>
+          <motion.div className="group flex flex-col rounded-[28px] border border-white/12 bg-white/6 p-6 backdrop-blur-sm transition-all hover:bg-white/10" variants={cardVariants}>
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-100/10 text-accent-200 transition-colors group-hover:bg-accent-100/20">
+                <FaHandHoldingHeart aria-hidden="true" className="h-5 w-5" />
+              </div>
+              <p className="font-display text-[1.45rem] font-medium leading-[1.02] tracking-[-0.03em] text-white">
+                Cercanía
+              </p>
+            </div>
+            <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-white/78">
+              Un proceso emocionalmente acompañado, claro y respetuoso en cada etapa.
+            </p>
+          </motion.div>
         </motion.div>
       </motion.div>
 
@@ -81,38 +85,51 @@ export function HomePillars() {
           <h3 className="display-balance mt-3 font-display text-[2.2rem] font-medium leading-[0.98] tracking-[-0.04em] text-brand-950">
             Atención especializada dentro de un hospital.
           </h3>
-          <p className="mt-5 max-w-3xl flex-1 text-[1.05rem] leading-8 text-brand-950/78">{differentiator}</p>
+          <p className="mt-5 max-w-3xl flex-1 text-[1.05rem] leading-8 text-brand-950/78">
+            VIXI es el único centro de fertilización asistida de la región ubicado dentro de un hospital de prestigio.
+          </p>
         </motion.article>
 
-        {brandPillars.map((pillar) => (
-          <PillarImageCard
-            key={pillar.title}
-            description={pillar.description}
-            imageAlt={pillar.image?.alt ?? ""}
-            imageSrc={pillar.image?.src ?? ""}
-            reducedMotion={reducedMotion}
-            title={pillar.title}
-            variants={cardVariants}
-          />
-        ))}
+        <PillarImageCard imageAlt="Laboratorio médico moderno y análisis clínico" imageSrc="/pillars/ciencia.avif" reducedMotion={reducedMotion} variants={cardVariants}>
+          <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
+            Ciencia
+          </h3>
+          <p className="mt-4 text-[0.98rem] leading-7 text-white/84">
+            Diagnóstico preciso, protocolos individualizados y respaldo hospitalario.
+          </p>
+        </PillarImageCard>
+        <PillarImageCard imageAlt="Equipo de especialistas médicos profesionales y experimentados" imageSrc="/pillars/experiencia.avif" reducedMotion={reducedMotion} variants={cardVariants}>
+          <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
+            Experiencia
+          </h3>
+          <p className="mt-4 text-[0.98rem] leading-7 text-white/84">
+            Equipo con formación en biología de la reproducción humana y cirugía de mínima invasión.
+          </p>
+        </PillarImageCard>
+        <PillarImageCard imageAlt="Consulta médica cálida, empática y de confianza" imageSrc="/pillars/cercania.avif" reducedMotion={reducedMotion} variants={cardVariants}>
+          <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
+            Cercanía
+          </h3>
+          <p className="mt-4 text-[0.98rem] leading-7 text-white/84">
+            Un proceso emocionalmente acompañado, claro y respetuoso en cada etapa.
+          </p>
+        </PillarImageCard>
       </motion.div>
     </motion.section>
   );
 }
 
 function PillarImageCard({
-  description,
+  children,
   imageAlt,
   imageSrc,
   reducedMotion,
-  title,
   variants,
 }: {
-  description: string;
+  children: ReactNode;
   imageAlt: string;
   imageSrc: string;
   reducedMotion: boolean;
-  title: string;
   variants: ReturnType<typeof createRevealUpVariants>;
 }) {
   const cardRef = useRef<HTMLElement>(null);
@@ -137,10 +154,7 @@ function PillarImageCard({
       </motion.div>
       <div className="relative z-10 flex flex-col justify-end p-6 sm:p-7">
         <p className="eyebrow-label text-[10px] text-accent-200">Pilares</p>
-        <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
-          {title}
-        </h3>
-        <p className="mt-4 text-[0.98rem] leading-7 text-white/84">{description}</p>
+        {children}
       </div>
     </motion.article>
   );

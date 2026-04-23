@@ -125,17 +125,12 @@ function buildTextEmail(values: ContactFormValues) {
 
 function buildHtmlEmail(values: ContactFormValues) {
   const replyMailto = buildReplyMailto(values);
-  const rows = [
-    ["Nombre", values.name],
-    ["Correo", values.email],
-    ["Teléfono", values.phone],
-    ["Motivo", values.reason],
-  ]
-    .map(
-      ([label, value]) =>
-        `<tr><td style="padding:14px 16px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;width:34%;background:#f8fafc;">${escapeHtml(label)}</td><td style="padding:14px 16px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;background:#ffffff;">${escapeHtml(value)}</td></tr>`,
-    )
-    .join("");
+  const rows = `
+    <tr><td style="padding:14px 16px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;width:34%;background:#f8fafc;">Nombre</td><td style="padding:14px 16px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;background:#ffffff;">${escapeHtml(values.name)}</td></tr>
+    <tr><td style="padding:14px 16px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;width:34%;background:#f8fafc;">Correo</td><td style="padding:14px 16px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;background:#ffffff;">${escapeHtml(values.email)}</td></tr>
+    <tr><td style="padding:14px 16px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;width:34%;background:#f8fafc;">Teléfono</td><td style="padding:14px 16px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;background:#ffffff;">${escapeHtml(values.phone)}</td></tr>
+    <tr><td style="padding:14px 16px;font-weight:700;color:#1e3a5f;border-bottom:1px solid #dbe8f4;width:34%;background:#f8fafc;">Motivo</td><td style="padding:14px 16px;color:#0b1f3b;border-bottom:1px solid #dbe8f4;background:#ffffff;">${escapeHtml(values.reason)}</td></tr>
+  `;
 
   return `
     <div style="margin:0;padding:32px 16px;background:#f5f7fa;background-image:radial-gradient(circle at top left, rgba(247,214,222,0.72), transparent 34%),radial-gradient(circle at top right, rgba(219,232,244,0.9), transparent 32%),linear-gradient(180deg, #f8fafc 0%, #ffffff 48%, #f5f7fa 100%);font-family:Corbel,Arial,sans-serif;color:#0b1f3b;">

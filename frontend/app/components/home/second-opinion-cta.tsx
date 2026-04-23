@@ -1,6 +1,5 @@
 import { FaWhatsapp } from "react-icons/fa";
 
-import { contactDetails } from "~/components/data/contact";
 import {
   createRevealUpVariants,
   createStaggerVariants,
@@ -9,6 +8,8 @@ import {
   useReducedMotion,
 } from "~/components/lib/motion";
 import { ButtonLink } from "~/components/ui/button-link";
+
+const whatsappHref = "https://wa.me/524776725136";
 
 export function SecondOpinionCTA() {
   const reducedMotion = useReducedMotion();
@@ -76,7 +77,7 @@ export function SecondOpinionCTA() {
           className="relative mt-8 flex-shrink-0 lg:mt-0"
           variants={itemVariants}
         >
-          <ButtonLink external to={contactDetails.whatsappHref}>
+          <ButtonLink external to={whatsappHref}>
             <span className="inline-flex items-center gap-2">
               <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
               Solicitar consulta

@@ -1,8 +1,9 @@
-import { CTABanner } from "~/components/shared/cta-banner";
+import { FaPhone, FaWhatsapp } from "react-icons/fa";
 
 import { ExperienceGallery } from "~/components/about/experience-gallery";
 import { ExperienceHero } from "~/components/about/experience-hero";
 import { ExperiencePrinciples } from "~/components/about/experience-principles";
+import { ButtonLink } from "~/components/ui/button-link";
 
 export function ExperiencePage() {
   return (
@@ -10,11 +11,33 @@ export function ExperiencePage() {
       <ExperienceHero />
       <ExperiencePrinciples />
       <ExperienceGallery />
-      <CTABanner
-        description="La experiencia empieza desde la primera conversación. Agenda una valoración para conocer el proceso completo en VIXI."
-        eyebrow="Primera consulta"
-        title="Un espacio moderno y sereno para tomar decisiones con claridad."
-      />
+      <section className="mx-auto max-w-[80vw] py-6 lg:px-8">
+        <div className="overflow-hidden rounded-[32px] bg-brand-950 px-6 py-8 text-white shadow-[0_25px_60px_rgba(11,31,59,0.24)] sm:px-8 sm:py-10 lg:flex lg:items-end lg:justify-between lg:gap-10">
+          <div className="max-w-3xl">
+            <p className="eyebrow-label text-accent-200">Primera consulta</p>
+            <h2 className="display-balance mt-4 font-display text-4xl leading-[0.96] tracking-[-0.045em] sm:text-5xl">
+              Un espacio moderno y sereno para tomar decisiones con claridad.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-white/78">
+              La experiencia empieza desde la primera conversación. Agenda una valoración para conocer el proceso completo en VIXI.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0">
+            <ButtonLink className="whitespace-nowrap" external to="https://wa.me/524776725136">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
+                <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
+                Hablar por WhatsApp
+              </span>
+            </ButtonLink>
+            <ButtonLink className="whitespace-nowrap" to="/contacto" variant="secondary">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
+                <FaPhone aria-hidden="true" className="h-4 w-4" />
+                Ver contacto
+              </span>
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

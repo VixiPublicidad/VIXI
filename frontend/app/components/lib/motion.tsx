@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode, type RefObject } from "react";
+import { type ReactNode, type RefObject } from "react";
 
 import {
   AnimatePresence,
@@ -12,8 +12,6 @@ import {
   type Variants,
 } from "motion/react";
 import * as motion from "motion/react-m";
-
-import { cn } from "~/components/lib/utils";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -96,82 +94,6 @@ export function createStaggerVariants(
       },
     },
   };
-}
-
-export function AnimatedWords({
-  className,
-  reducedMotion,
-  text,
-}: {
-  className?: string;
-  reducedMotion: boolean;
-  text: string;
-}) {
-  const words = text.trim().split(/\s+/);
-  const wordVariants = createRevealUpVariants(reducedMotion, {
-    distance: 28,
-    duration: 0.7,
-    scale: 1,
-  });
-
-  return (
-    <>
-      {words.map((word, index) => (
-        <Fragment key={`${word}-${index}`}>
-          <span className="inline-block overflow-hidden px-[0.08em] py-[0.12em] [margin-block:-0.12em] [margin-inline:-0.08em] align-baseline">
-            <motion.span
-              className={cn("inline-block leading-[inherit] will-change-transform [color:inherit]", className)}
-              variants={wordVariants}
-            >
-              {word}
-            </motion.span>
-          </span>
-          {index < words.length - 1 ? " " : null}
-        </Fragment>
-      ))}
-    </>
-  );
-}
-
-export function AnimatedChars({
-  className,
-  reducedMotion,
-  text,
-}: {
-  className?: string;
-  reducedMotion: boolean;
-  text: string;
-}) {
-  const chars = Array.from(text);
-  const charVariants = createRevealUpVariants(reducedMotion, {
-    distance: 20,
-    duration: 0.54,
-    scale: 1,
-  });
-
-  return (
-    <>
-      {chars.map((character, index) => {
-        if (character === " ") {
-          return <span key={`space-${index}`}> </span>;
-        }
-
-        return (
-          <span
-            key={`${character}-${index}`}
-            className="inline-block overflow-hidden px-[0.08em] py-[0.12em] [margin-block:-0.12em] [margin-inline:-0.08em] align-baseline"
-          >
-            <motion.span
-              className={cn("inline-block leading-[inherit] will-change-transform [color:inherit]", className)}
-              variants={charVariants}
-            >
-              {character}
-            </motion.span>
-          </span>
-        );
-      })}
-    </>
-  );
 }
 
 export function useParallax(

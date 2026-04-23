@@ -181,7 +181,6 @@ The UI is organized by domain:
 
 Shared primitives worth knowing:
 
-- `[page-hero.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/page-hero.tsx)` for the reusable hero system
 - `[section-heading.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/section-heading.tsx)` for heading variants
 - `[button-link.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/button-link.tsx)` for branded CTA links
 - `[feature-card.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/feature-card.tsx)` for animated content cards
@@ -322,7 +321,6 @@ Start in these files:
 Start in:
 
 - `[motion.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/lib/motion.tsx)`
-- `[page-hero.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/page-hero.tsx)`
 - `[section-heading.tsx](C:/Users/dario/Desktop/WebDev/CREORAMA/VIXI/vixi/frontend/app/components/ui/section-heading.tsx)`
 
 ### To update SEO

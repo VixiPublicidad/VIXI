@@ -2,7 +2,6 @@ import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Form, useNavigation } from "react-router";
 
-import { contactDetails } from "~/components/data";
 import {
   AnimatePresence,
   createRevealUpVariants,
@@ -11,7 +10,6 @@ import {
   revealViewport,
   useReducedMotion,
 } from "~/components/lib/motion";
-import { SectionHeading } from "~/components/ui/section-heading";
 
 type ContactFormValues = {
   name?: string;
@@ -26,14 +24,6 @@ type ContactFormState = {
   success?: boolean;
   values?: ContactFormValues;
 };
-
-const contactReasons = [
-  "Primera valoracion",
-  "Tratamientos de fertilidad",
-  "Consulta en linea",
-  "Pacientes foraneos",
-  "Otra consulta",
-];
 
 export function ContactFormSection({ formState }: { formState?: ContactFormState }) {
   const navigation = useNavigation();
@@ -66,12 +56,20 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
         viewport={revealViewport}
         whileInView="visible"
       >
-        <SectionHeading
-          description="Escribe tus datos y contexto general. El formulario queda listo para enviar correos con Resend mediante variables de entorno del servidor."
-          eyebrow="Formulario de contacto"
-          title="Cuentanos en que etapa estas"
-          variant="accent"
-        />
+        <div className="relative max-w-4xl">
+          <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-brand-950/10 bg-white/60 px-4 py-1.5 text-brand-950 shadow-[0_4px_24px_-4px_rgba(11,31,59,0.08)] backdrop-blur-md">
+            <svg className="h-3.5 w-3.5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span className="eyebrow-label pt-[1px] text-[10px]">Formulario de contacto</span>
+          </div>
+          <h2 className="display-balance bg-gradient-to-br from-brand-950 via-[#183457] to-[#3a5d8c] bg-clip-text font-display text-3xl leading-[0.98] tracking-[-0.045em] text-transparent sm:text-4xl lg:text-5xl">
+            Cuentanos en que etapa estas
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-8 text-brand-950/66 sm:text-lg">
+            Escribe tus datos y contexto general. El formulario queda listo para enviar correos con Resend mediante variables de entorno del servidor.
+          </p>
+        </div>
 
         <Form className="mt-8 grid gap-5" method="post">
           <input
@@ -159,16 +157,24 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
         whileInView="visible"
       >
         <motion.div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]" variants={cardVariants}>
-          <SectionHeading
-            description="VIXI esta ubicado dentro de un entorno hospitalario confiable y ofrece consulta en linea para valoracion inicial."
-            eyebrow="Ubicacion"
-            title="Dentro de un entorno hospitalario moderno y confiable"
-            tone="light"
-            variant="editorial"
-          />
+          <div className="grid max-w-5xl gap-6 sm:grid-cols-[auto_1fr] md:gap-10">
+            <div className="relative hidden h-full w-1 sm:block">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-accent-400/80 via-white/50 to-transparent" />
+              <div className="absolute -left-[5px] top-0 h-3 w-3 rounded-full bg-white shadow-[0_0_15px_rgba(0,0,0,0.2)]" />
+            </div>
+            <div>
+              <p className="eyebrow-label mb-4 text-[10px] text-accent-200">Ubicacion</p>
+              <h2 className="display-balance font-display text-4xl leading-[0.96] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
+                Dentro de un entorno hospitalario moderno y confiable
+              </h2>
+              <p className="mt-6 max-w-3xl pr-4 text-base leading-8 text-white/82 sm:ml-4 sm:text-lg">
+                VIXI esta ubicado dentro de un entorno hospitalario confiable y ofrece consulta en linea para valoracion inicial.
+              </p>
+            </div>
+          </div>
           <div className="mt-8 grid gap-4 text-sm leading-7 text-white/78">
-            <p>{contactDetails.address}</p>
-            <p>{contactDetails.hours}</p>
+            <p>Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato</p>
+            <p>Lunes a viernes · 8:30 a 18:00 h</p>
             <p>Consulta en linea disponible para valoracion inicial y seguimiento.</p>
           </div>
         </motion.div>
@@ -347,17 +353,46 @@ function ContactReasonField({
                         setIsOpen(false);
                       }}
                     />
-                    {contactReasons.map((reason) => (
-                      <DropdownOption
-                        key={reason}
-                        isActive={selectedReason === reason}
-                        label={reason}
-                        onSelect={() => {
-                          setSelectedReason(reason);
-                          setIsOpen(false);
-                        }}
-                      />
-                    ))}
+                    <DropdownOption
+                      isActive={selectedReason === "Primera valoracion"}
+                      label="Primera valoracion"
+                      onSelect={() => {
+                        setSelectedReason("Primera valoracion");
+                        setIsOpen(false);
+                      }}
+                    />
+                    <DropdownOption
+                      isActive={selectedReason === "Tratamientos de fertilidad"}
+                      label="Tratamientos de fertilidad"
+                      onSelect={() => {
+                        setSelectedReason("Tratamientos de fertilidad");
+                        setIsOpen(false);
+                      }}
+                    />
+                    <DropdownOption
+                      isActive={selectedReason === "Consulta en linea"}
+                      label="Consulta en linea"
+                      onSelect={() => {
+                        setSelectedReason("Consulta en linea");
+                        setIsOpen(false);
+                      }}
+                    />
+                    <DropdownOption
+                      isActive={selectedReason === "Pacientes foraneos"}
+                      label="Pacientes foraneos"
+                      onSelect={() => {
+                        setSelectedReason("Pacientes foraneos");
+                        setIsOpen(false);
+                      }}
+                    />
+                    <DropdownOption
+                      isActive={selectedReason === "Otra consulta"}
+                      label="Otra consulta"
+                      onSelect={() => {
+                        setSelectedReason("Otra consulta");
+                        setIsOpen(false);
+                      }}
+                    />
                   </motion.div>
                 </motion.div>
               ) : null}

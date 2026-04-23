@@ -1,5 +1,3 @@
-import { defaultOgImage, siteDescription, siteLanguage, siteLocale, siteName, siteUrl } from "~/components/data";
-
 type BuildMetaOptions = {
   path?: string;
   image?: string;
@@ -8,6 +6,18 @@ type BuildMetaOptions = {
   noIndex?: boolean;
   structuredData?: Record<string, unknown>[];
 };
+
+const siteName = "VIXI";
+const configuredSiteUrl =
+  typeof process !== "undefined" && process.env?.SITE_URL
+    ? process.env.SITE_URL
+    : undefined;
+const siteUrl = configuredSiteUrl?.replace(/\/+$/, "") ?? "https://vixireproduccion.mx";
+const defaultOgImage = "/og/og-1.png";
+const siteLocale = "es_MX";
+const siteLanguage = "es-MX";
+const siteDescription =
+  "Clínica de fertilidad con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
 
 function toAbsoluteUrl(path = "/") {
   if (/^https?:\/\//.test(path)) return path;
