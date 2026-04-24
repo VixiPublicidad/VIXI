@@ -75,7 +75,7 @@ export function HomeFaqContact() {
           </a>
           <a
             className="flex h-full flex-col items-center justify-center gap-3 rounded-[28px] bg-white/72 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white"
-            href="https://maps.google.com/?q=Av.%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Guanajuato"
+            href="https://maps.google.com/?q=Hospital%20Angeles%2C%20Av.%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Guanajuato"
             rel="noreferrer"
             target="_blank"
           >
@@ -83,7 +83,7 @@ export function HomeFaqContact() {
               <FaMapMarkerAlt aria-hidden="true" className="h-5 w-5 text-brand-700" />
             </span>
             <span className="mt-1 font-medium text-brand-950/80">
-              Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato
+              Hospital Angeles, Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato
             </span>
           </a>
         </div>

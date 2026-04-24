@@ -79,8 +79,8 @@ export function HomePillars() {
         </motion.div>
       </motion.div>
 
-      <motion.div className="grid gap-5 md:grid-cols-3" variants={sectionVariants}>
-        <motion.article className="flex flex-col rounded-[32px] border border-brand-950/8 bg-white/84 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm md:col-span-3" variants={cardVariants}>
+      <motion.div className="grid gap-5" variants={sectionVariants}>
+        <motion.article className="flex flex-col rounded-[32px] border border-brand-950/8 bg-white/84 p-8 shadow-[0_18px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm" variants={cardVariants}>
           <p className="eyebrow-label text-brand-700">Diferenciador</p>
           <h3 className="display-balance mt-3 font-display text-[2.2rem] font-medium leading-[0.98] tracking-[-0.04em] text-brand-950">
             Atención especializada dentro de un hospital.
@@ -90,28 +90,18 @@ export function HomePillars() {
           </p>
         </motion.article>
 
-        <PillarImageCard imageAlt="Laboratorio médico moderno y análisis clínico" imageSrc="/pillars/ciencia.avif" reducedMotion={reducedMotion} variants={cardVariants}>
-          <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
-            Ciencia
+        <PillarImageCard
+          className="min-h-[320px]"
+          imageAlt="Atención médica especializada con respaldo clínico y trato cercano"
+          imageSrc="/pillars/ciencia.avif"
+          reducedMotion={reducedMotion}
+          variants={cardVariants}
+        >
+          <h3 className="display-balance mt-3 font-display text-[1.9rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
+            Un modelo de atención que integra laboratorio, consulta y acompañamiento.
           </h3>
-          <p className="mt-4 text-[0.98rem] leading-7 text-white/84">
-            Diagnóstico preciso, protocolos individualizados y respaldo hospitalario.
-          </p>
-        </PillarImageCard>
-        <PillarImageCard imageAlt="Equipo de especialistas médicos profesionales y experimentados" imageSrc="/pillars/experiencia.avif" reducedMotion={reducedMotion} variants={cardVariants}>
-          <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
-            Experiencia
-          </h3>
-          <p className="mt-4 text-[0.98rem] leading-7 text-white/84">
-            Equipo con formación en biología de la reproducción humana y cirugía de mínima invasión.
-          </p>
-        </PillarImageCard>
-        <PillarImageCard imageAlt="Consulta médica cálida, empática y de confianza" imageSrc="/pillars/cercania.avif" reducedMotion={reducedMotion} variants={cardVariants}>
-          <h3 className="display-balance mt-3 font-display text-[1.65rem] font-medium leading-[0.98] tracking-[-0.03em] text-white">
-            Cercanía
-          </h3>
-          <p className="mt-4 text-[0.98rem] leading-7 text-white/84">
-            Un proceso emocionalmente acompañado, claro y respetuoso en cada etapa.
+          <p className="mt-4 max-w-2xl text-[1rem] leading-7 text-white/84">
+            Cada caso se atiende con continuidad entre diagnóstico, decisión médica y seguimiento, para que el proceso sea más claro, coordinado y confiable.
           </p>
         </PillarImageCard>
       </motion.div>
@@ -120,12 +110,14 @@ export function HomePillars() {
 }
 
 function PillarImageCard({
+  className,
   children,
   imageAlt,
   imageSrc,
   reducedMotion,
   variants,
 }: {
+  className?: string;
   children: ReactNode;
   imageAlt: string;
   imageSrc: string;
@@ -137,23 +129,15 @@ function PillarImageCard({
 
   return (
     <motion.article
-      className="group relative flex min-h-[260px] flex-col justify-end overflow-hidden rounded-[2rem] shadow-[0_18px_50px_rgba(11,31,59,0.12)] transition-all duration-700 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_rgba(11,31,59,0.18)]"
+      className={`group relative flex min-h-[260px] flex-col justify-end overflow-hidden rounded-[2rem] shadow-[0_18px_50px_rgba(11,31,59,0.12)] transition-all duration-700 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_rgba(11,31,59,0.18)] ${className ?? ""}`}
       ref={cardRef}
       variants={variants}
     >
       <motion.div className="absolute inset-0" style={{ y: imageY }}>
-        <motion.img
-          alt={imageAlt}
-          animate={reducedMotion ? undefined : { scale: [1.02, 1.06, 1.02] }}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
-          loading="lazy"
-          src={imageSrc}
-          transition={{ duration: 12, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-        />
+        <motion.img alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" src={imageSrc} />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/40 to-brand-950/10" />
       </motion.div>
       <div className="relative z-10 flex flex-col justify-end p-6 sm:p-7">
-        <p className="eyebrow-label text-[10px] text-accent-200">Pilares</p>
         {children}
       </div>
     </motion.article>

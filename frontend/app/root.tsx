@@ -28,7 +28,7 @@ const organizationName = "VIXI Reproducción";
 const contactDetails = {
   phoneHref: "tel:+524776725136",
   email: "pacientes.vixi@gmail.com",
-  streetAddress: "Av. Cerro Gordo, Lomas del Campestre",
+  streetAddress: "Hospital Angeles, Av. Cerro Gordo, Lomas del Campestre",
   postalCode: "37150",
   locality: "León de los Aldama",
   region: "Guanajuato",

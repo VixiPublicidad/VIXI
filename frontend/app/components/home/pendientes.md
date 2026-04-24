@@ -1,5 +1,5 @@
 **home-pillars.tsx**
-Cambiar las 3 imagenes por una sola, con un texto que resuma los 3 textos, ya que se repite. 
+Cambiar las 3 imagenes por una sola, con un texto que resuma los 3 textos, ya que se repiten. 
 
 **journey.tsx**
 Creo que aquí no queda claro por qué está separado como etapas

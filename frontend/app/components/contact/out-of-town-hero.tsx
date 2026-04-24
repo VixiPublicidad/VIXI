@@ -34,13 +34,11 @@ export function OutOfTownHero() {
         <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
           <motion.img
             alt="Paciente revisando agenda de viaje y consulta médica."
-            animate={reducedMotion ? undefined : { scale: [1.03, 1.08, 1.03] }}
             className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
             decoding="async"
             fetchPriority="high"
             loading="eager"
             src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=80"
-            transition={{ duration: 15, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#faf7f2]/88 via-[#faf7f2]/38 to-brand-950/12" />

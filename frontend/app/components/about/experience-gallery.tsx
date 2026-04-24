@@ -45,7 +45,7 @@ export function ExperienceGallery() {
           <div className="rounded-[24px] bg-white/8 p-5">
             <p className="mt-3 font-semibold text-white">Atencion integral</p>
             <p className="mt-2 text-sm leading-6 text-white/76">
-              Atencion integral desde el diagnostico hasta el embarazo y el seguimiento.
+            Atención integral desde el diagnóstico hasta el nacimiento.
             </p>
           </div>
           <div className="rounded-[24px] bg-white/8 p-5">

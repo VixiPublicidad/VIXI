@@ -53,19 +53,10 @@ export function ImageCard({ src, alt, caption, className, imageClassName, contai
       >
         <motion.img
           alt={alt}
-          animate={reducedMotion ? undefined : { scale: [1.02, 1.06, 1.02] }}
-          className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-[1.03]",
-            imageClassName
-          )}
+          className={cn("absolute inset-0 h-full w-full object-cover", imageClassName)}
           loading="lazy"
           src={src}
           decoding="async"
-          transition={{
-            duration: 12,
-            ease: "easeInOut",
-            repeat: Number.POSITIVE_INFINITY,
-          }}
           variants={itemVariants}
         />
         <motion.div

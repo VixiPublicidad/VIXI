@@ -47,7 +47,7 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-4 py-6 text-sm text-white/66 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <p className="inline-flex items-center gap-2">
             <FaMapMarkerAlt aria-hidden="true" className="h-4 w-4 shrink-0 text-accent-200" />
-            Av. Cerro Gordo, Lomas del Campestre, 37150 Leon de los Aldama, Guanajuato
+            Hospital Angeles, Av. Cerro Gordo, Lomas del Campestre, 37150 Leon de los Aldama, Guanajuato
           </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-5">
             <a className="inline-flex items-center gap-2" href="tel:+524776725136">

@@ -173,7 +173,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             </div>
           </div>
           <div className="mt-8 grid gap-4 text-sm leading-7 text-white/78">
-            <p>Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato</p>
+            <p>Hospital Angeles, Av. Cerro Gordo, Lomas del Campestre, 37150 León de los Aldama, Guanajuato</p>
             <p>Lunes a viernes · 8:30 a 18:00 h</p>
             <p>Consulta en linea disponible para valoracion inicial y seguimiento.</p>
           </div>
@@ -184,7 +184,7 @@ export function ContactFormSection({ formState }: { formState?: ContactFormState
             className="h-[420px] w-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Av%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Gto.&output=embed"
+            src="https://www.google.com/maps?q=Hospital%20Angeles%2C%20Av%20Cerro%20Gordo%2C%20Lomas%20del%20Campestre%2C%2037150%20Le%C3%B3n%20de%20los%20Aldama%2C%20Gto.&output=embed"
             title="Ubicacion de VIXI"
           />
         </motion.div>

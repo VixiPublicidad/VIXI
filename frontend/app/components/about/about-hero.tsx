@@ -42,14 +42,12 @@ export function AboutHero() {
         <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
           <motion.img
             alt={image.alt}
-            animate={reducedMotion ? undefined : { scale: [1.03, 1.08, 1.03] }}
             className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
             decoding="async"
             fetchPriority="high"
             height={image.height}
             loading="eager"
             src={image.src}
-            transition={{ duration: 15, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
             width={image.width}
           />
         </motion.div>

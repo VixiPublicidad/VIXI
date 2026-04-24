@@ -54,7 +54,7 @@ export function SiteHeader() {
         <Link className="group flex items-center gap-3" to="/">
           <img
             alt="VIXI"
-            className="h-16 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
+            className="h-16 w-auto"
             decoding="async"
             fetchPriority="high"
             height="64"

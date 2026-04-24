@@ -55,7 +55,7 @@ export function createRevealUpVariants(
     delay = 0,
     distance = 36,
     duration = 0.82,
-    scale = 0.985,
+    scale = 1,
   }: RevealOptions = {},
 ): Variants {
   if (reducedMotion) return EMPTY_VARIANTS;
@@ -115,4 +115,6 @@ export function useReducedMotion() {
 export {
   AnimatePresence,
   motion,
+  useScroll,
+  useTransform,
 };

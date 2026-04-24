@@ -119,27 +119,10 @@ function ValueCard({
       variants={variants}
     >
       <motion.div className="absolute inset-0" style={{ y: imageY }}>
-        <motion.img
-          alt={imageAlt}
-          animate={reducedMotion ? undefined : { scale: [1.02, 1.06, 1.02] }}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
-          loading="lazy"
-          src={imageSrc}
-          transition={{ duration: 12, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-        />
+        <motion.img alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" src={imageSrc} />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/40 to-brand-950/10" />
       </motion.div>
-      <motion.div
-        animate={
-          reducedMotion
-            ? undefined
-            : {
-                y: [0, -6, 0],
-              }
-        }
-        className="relative z-10 p-7 sm:p-8"
-        transition={{ duration: 7, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-      >
+      <motion.div className="relative z-10 p-7 sm:p-8">
         <p className="eyebrow-label text-accent-200">VIXI</p>
         {children}
       </motion.div>

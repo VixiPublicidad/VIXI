@@ -48,20 +48,7 @@ export function FeatureCard({
       <motion.div variants={contentVariants}>
         {icon ? (
           <motion.div
-            animate={
-              reducedMotion
-                ? undefined
-                : {
-                    rotate: [0, -2, 2, 0],
-                    y: [0, -6, 0],
-                  }
-            }
             className="mb-5 text-accent-400"
-            transition={{
-              duration: 5.2,
-              ease: "easeInOut",
-              repeat: Number.POSITIVE_INFINITY,
-            }}
             variants={itemVariants}
           >
             {icon}

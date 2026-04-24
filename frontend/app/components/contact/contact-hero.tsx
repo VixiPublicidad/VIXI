@@ -34,13 +34,11 @@ export function ContactHero() {
         <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
           <motion.img
             alt="Fachada contemporánea de un hospital con luz cálida."
-            animate={reducedMotion ? undefined : { scale: [1.03, 1.08, 1.03] }}
             className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
             decoding="async"
             fetchPriority="high"
             loading="eager"
             src="/heroes/contact-hero-bg.avif"
-            transition={{ duration: 15, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/50 to-white/20" />

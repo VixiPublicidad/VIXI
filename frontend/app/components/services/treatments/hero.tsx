@@ -34,13 +34,11 @@ export function TreatmentsHero() {
         <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
           <motion.img
             alt="Embrióloga trabajando con instrumental especializado en un laboratorio."
-            animate={reducedMotion ? undefined : { scale: [1.03, 1.08, 1.03] }}
             className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
             decoding="async"
             fetchPriority="high"
             loading="eager"
             src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80"
-            transition={{ duration: 15, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#fafaf9]/98 via-[#fafaf9]/85 to-[#fafaf9]/40" />
