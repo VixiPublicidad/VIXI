@@ -25,7 +25,7 @@ export function HomeExperience() {
               Atención integral
             </h3>
             <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
-              Atención integral desde el diagnóstico hasta el embarazo y el seguimiento.
+              Atención integral desde el diagnóstico hasta el nacimiento.
             </p>
           </article>
           <article className="flex h-full flex-col rounded-[30px] border border-brand-950/8 bg-white/82 p-7 shadow-[0_20px_50px_rgba(11,31,59,0.07)] backdrop-blur-sm">
