@@ -47,7 +47,7 @@ export function HomeAudiences() {
           </div>
           <p className="eyebrow-label mb-4 text-brand-700/62">Perfil de paciente</p>
           <h3 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
-            Pacientes de +45 años
+            Pacientes de edad avanzada.
           </h3>
           <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
             Alternativas personalizadas para quienes buscan opciones reproductivas en etapas más avanzadas.
