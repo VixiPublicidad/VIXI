@@ -50,13 +50,13 @@ export function FAQHero() {
         className="relative z-10 mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16"
         variants={contentVariants}
       >
-        <div className="grid min-h-[70vh] items-end gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
-          <motion.div className="flex flex-col justify-end" variants={contentVariants}>
+        <div className="grid min-h-[70vh] items-center gap-12 py-20 lg:grid-cols-[minmax(0,56rem)_minmax(0,20rem)] lg:justify-between lg:py-28">
+          <motion.div className="flex w-full max-w-4xl flex-col justify-center" variants={contentVariants}>
             <motion.p className="eyebrow-label mb-4 text-brand-950/50" variants={itemVariants}>
               Preguntas frecuentes
             </motion.p>
             <motion.h1
-              className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]"
+              className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-6xl lg:text-[4.2rem]"
               variants={itemVariants}
             >
               Respuestas claras para las dudas más comunes antes de empezar.
@@ -92,7 +92,7 @@ export function FAQHero() {
             </motion.div>
           </motion.div>
 
-          <motion.div className="flex flex-col items-start gap-8 lg:items-end lg:text-right" variants={contentVariants}>
+          <motion.div className="flex flex-col items-start gap-8 lg:items-end lg:justify-center lg:text-right" variants={contentVariants}>
             <motion.div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1" variants={contentVariants}>
               <motion.div className="border-l-2 border-brand-950/15 pl-4 lg:border-l-0 lg:border-r-2 lg:pl-0 lg:pr-4" variants={itemVariants}>
                 <p className="font-display text-2xl tracking-[-0.035em] text-brand-950">Costos</p>

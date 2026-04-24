@@ -49,7 +49,7 @@ export function OutOfTownHero() {
         className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col justify-center px-6 pb-14 pt-28 sm:px-10 lg:px-16 lg:pb-20"
         variants={contentVariants}
       >
-        <div className="max-w-3xl">
+        <div className="w-full max-w-4xl">
           <motion.p
             className="eyebrow-label inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-brand-800 backdrop-blur-md"
             variants={itemVariants}
@@ -59,7 +59,7 @@ export function OutOfTownHero() {
           </motion.p>
 
           <motion.h1
-            className="display-balance mt-6 font-display text-4xl leading-[0.95] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.6rem]"
+            className="display-balance mt-6 max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-6xl lg:text-[4.2rem]"
             variants={itemVariants}
           >
             Cuando viajas para atender tu fertilidad, la claridad logística también importa.

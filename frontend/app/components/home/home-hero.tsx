@@ -65,10 +65,10 @@ export function HomeHero() {
       />
 
       <motion.div
-        className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col justify-end px-6 pb-16 pt-28 sm:px-10 lg:px-16 lg:pb-20"
+        className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col justify-center px-6 pb-16 pt-28 sm:px-10 lg:px-16 lg:pb-20"
         variants={contentVariants}
       >
-        <div className="max-w-6xl pb-10">
+        <div className="max-w-4xl pb-10">
           <motion.p
             className="eyebrow-label mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-white backdrop-blur-md"
             variants={itemVariants}
@@ -78,7 +78,7 @@ export function HomeHero() {
           </motion.p>
 
           <motion.h1
-            className="display-balance font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.2rem]"
+            className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.2rem]"
             variants={itemVariants}
           >
             Las técnicas de reproducción son más que un tratamiento

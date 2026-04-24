@@ -57,16 +57,15 @@ export function AboutHero() {
       <div className="absolute bottom-0 left-0 top-0 z-10 w-1 bg-brand-950" />
 
       <motion.div
-        className="relative z-10 mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-16"
+        className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col justify-center px-6 py-20 sm:px-10 lg:px-16 lg:py-28"
         variants={contentVariants}
       >
-        <div className="grid min-h-screen items-end gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
-          <motion.div className="flex flex-col justify-end" variants={contentVariants}>
+        <motion.div className="w-full max-w-4xl" variants={contentVariants}>
             <motion.p className="eyebrow-label mb-4 text-brand-950/50" variants={itemVariants}>
               Quiénes somos
             </motion.p>
             <motion.h1
-              className="display-balance font-display text-4xl leading-[0.94] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[4.5rem]"
+              className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-6xl lg:text-[4.2rem]"
               variants={itemVariants}
             >
               Una clínica que combina rigor médico, sensibilidad humana y tecnología avanzada.
@@ -94,8 +93,7 @@ export function AboutHero() {
                 </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
     </motion.section>
   );

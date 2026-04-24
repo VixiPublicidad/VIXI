@@ -55,11 +55,12 @@ export function ContactHero() {
         className="relative z-10 mx-auto flex min-h-[70vh] max-w-[1440px] flex-col items-center justify-center px-6 py-24 text-center sm:px-10 lg:px-16"
         variants={contentVariants}
       >
+        <div className="w-full max-w-4xl">
         <motion.p className="eyebrow-label mb-6 text-brand-700/70" variants={itemVariants}>
           Contacto
         </motion.p>
         <motion.h1
-          className="display-balance max-w-4xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-[5rem]"
+          className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-6xl lg:text-[4.2rem]"
           variants={itemVariants}
         >
           Tu viaje a la fertilidad comienza con nosotros.
@@ -95,6 +96,7 @@ export function ContactHero() {
             </motion.div>
           </motion.div>
         </motion.div>
+        </div>
 
         <motion.div
           className="mt-16 flex flex-wrap justify-center gap-8 sm:gap-14"

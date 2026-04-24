@@ -57,14 +57,15 @@ export function ProcessHero() {
       />
 
       <motion.div
-        className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col justify-end px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20"
+        className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col justify-center px-6 pb-14 pt-40 sm:px-10 lg:px-16 lg:pb-20"
         variants={contentVariants}
       >
+        <div className="w-full max-w-4xl">
         <motion.p className="eyebrow-label mb-4 text-accent-200/80" variants={itemVariants}>
           Cómo funciona tu tratamiento
         </motion.p>
         <motion.h1
-          className="display-balance max-w-3xl font-display text-4xl leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-5xl lg:text-[4.5rem]"
+          className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-6xl lg:text-[4.2rem]"
           variants={itemVariants}
         >
           Un proceso explicado paso a paso para tomar decisiones con menos incertidumbre.
@@ -97,6 +98,7 @@ export function ProcessHero() {
             </motion.div>
           </motion.div>
         </motion.div>
+        </div>
 
         <motion.div className="mt-12 flex flex-wrap gap-10 border-t border-white/10 pt-7" variants={contentVariants}>
           <motion.div variants={itemVariants}>
