@@ -4,12 +4,7 @@ export function ContactChannels() {
   return (
     <section className="mx-auto max-w-[80vw] py-16 lg:px-8">
       <div className="relative max-w-4xl">
-        <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-brand-950/10 bg-white/60 px-4 py-1.5 text-brand-950 shadow-[0_4px_24px_-4px_rgba(11,31,59,0.08)] backdrop-blur-md">
-          <svg className="h-3.5 w-3.5 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          <span className="eyebrow-label pt-[1px] text-[10px]">Datos generales</span>
-        </div>
+        <p className="eyebrow-label mb-5 text-brand-950/50">Datos generales</p>
         <h2 className="display-balance bg-gradient-to-br from-brand-950 via-[#183457] to-[#3a5d8c] bg-clip-text font-display text-3xl leading-[0.98] tracking-[-0.045em] text-transparent sm:text-4xl lg:text-5xl">
           Canales rápidos para iniciar tu valoración
         </h2>

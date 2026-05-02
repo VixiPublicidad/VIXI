@@ -33,7 +33,7 @@ export function ExperienceHero() {
       <div className="absolute inset-0 z-0">
         <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
           <motion.img
-            alt="Clínica de fertilidad VIXI."
+            alt="Centro de reproducción VIXI."
             className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
             decoding="async"
             fetchPriority="high"
@@ -61,64 +61,48 @@ export function ExperienceHero() {
         variants={contentVariants}
       >
         <div className="w-full max-w-4xl">
-        <motion.p className="eyebrow-label mb-4 text-accent-200/80" variants={itemVariants}>
-          Nuestra experiencia
-        </motion.p>
-        <motion.h1
-          className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-6xl lg:text-[4.2rem]"
-          variants={itemVariants}
-        >
-          Tecnología avanzada con una sensación acogedora y relajante.
-        </motion.h1>
-        <motion.p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" variants={itemVariants}>
-          La experiencia en VIXI combina tecnología avanzada con una sensación acogedora y relajante,
-          para acompañarte con claridad en cada etapa.
-        </motion.p>
-
-        <motion.div className="mt-8 flex justify-center sm:justify-start" variants={actionVariants}>
-          <motion.div
-            className="flex w-full max-w-sm flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-stretch"
-            variants={actionVariants}
+          <motion.p className="eyebrow-label mb-4 text-accent-200/80" variants={itemVariants}>
+            Nuestra experiencia
+          </motion.p>
+          <motion.h1
+            className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-6xl lg:text-[4.2rem]"
+            variants={itemVariants}
           >
-            <motion.div className="w-full sm:w-auto" variants={itemVariants}>
-              <ButtonLink className="flex w-full justify-center sm:w-auto" external to="https://wa.me/524776725136" variant="primary">
-                <span className="inline-flex items-center gap-2">
-                  <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
-                  Agendar valoración
-                </span>
-              </ButtonLink>
-            </motion.div>
-            <motion.div className="w-full sm:w-auto" variants={itemVariants}>
-              <ButtonLink className="flex w-full justify-center sm:w-auto" to="/tratamientos" variant="secondary">
-                <span className="inline-flex items-center gap-2">
-                  <FaArrowRight aria-hidden="true" className="h-4 w-4" />
-                  Ver tratamientos
-                </span>
-              </ButtonLink>
+            Tecnología de vanguardia con atención profundamente humana
+          </motion.h1>
+          <motion.p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" variants={itemVariants}>
+            La experiencia en VIXI integra infraestructura clínica, evaluación precisa y una
+            atención individualizada para acompañarte con claridad en cada decisión.
+          </motion.p>
+
+          <motion.div className="mt-8 flex justify-center sm:justify-start" variants={actionVariants}>
+            <motion.div
+              className="flex w-full max-w-sm flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-stretch"
+              variants={actionVariants}
+            >
+              <motion.div className="w-full sm:w-auto" variants={itemVariants}>
+                <ButtonLink className="flex w-full justify-center sm:w-auto" external to="https://wa.me/524776725136" variant="primary">
+                  <span className="inline-flex items-center gap-2">
+                    <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
+                    Agendar valoración
+                  </span>
+                </ButtonLink>
+              </motion.div>
+              <motion.div className="w-full sm:w-auto" variants={itemVariants}>
+                <ButtonLink className="flex w-full justify-center sm:w-auto" to="/tratamientos" variant="secondary">
+                  <span className="inline-flex items-center gap-2">
+                    <FaArrowRight aria-hidden="true" className="h-4 w-4" />
+                    Ver tratamientos
+                  </span>
+                </ButtonLink>
+              </motion.div>
             </motion.div>
           </motion.div>
-        </motion.div>
         </div>
 
-        <motion.div className="mt-12 flex flex-wrap gap-10 border-t border-white/10 pt-7" variants={contentVariants}>
-          <motion.div variants={itemVariants}>
-            <p className="font-display text-xl tracking-[-0.03em] text-white">Integral</p>
-            <p className="eyebrow-label text-white/40">desde diagnóstico hasta seguimiento</p>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <p className="font-display text-xl tracking-[-0.03em] text-white">Serena</p>
-            <p className="eyebrow-label text-white/40">tecnología avanzada con calma</p>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <p className="font-display text-xl tracking-[-0.03em] text-white">Personal</p>
-            <p className="eyebrow-label text-white/40">acompañamiento en cada etapa</p>
-          </motion.div>
-        </motion.div>
-
-        <motion.p className="mt-8 max-w-sm text-xs leading-relaxed text-white/35" variants={itemVariants}>
-          <span className="eyebrow-label text-[10px] text-accent-200/60">Experiencia sensorial</span>
-          {" - "}
-          Un ambiente moderno, tranquilo y humano que acompaña decisiones médicas importantes.
+        <motion.p className="mt-8 max-w-sm text-xs leading-relaxed text-white/35" variants={itemVariants}>       
+          Tecnología, infraestructura y acompañamiento para tomar mejores decisiones desde la
+          primera visita.
         </motion.p>
       </motion.div>
     </motion.section>

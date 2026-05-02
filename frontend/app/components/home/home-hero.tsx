@@ -69,35 +69,31 @@ export function HomeHero() {
         variants={contentVariants}
       >
         <div className="max-w-4xl pb-10">
-          <motion.p
-            className="eyebrow-label mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-white backdrop-blur-md"
-            variants={itemVariants}
-          >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-400" />
-            Clínica de fertilidad
+          <motion.p className="eyebrow-label mb-6 text-white/70" variants={itemVariants}>
+            Centro de reproducción
           </motion.p>
 
           <motion.h1
             className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white sm:text-6xl lg:text-[4.2rem]"
             variants={itemVariants}
           >
-            Las técnicas de reproducción son más que un tratamiento
+            La infertilidad requiere más que un tratamiento.
           </motion.h1>
 
           <motion.p
             className="display-balance mt-3 font-display text-[1.4rem] leading-[1.12] tracking-[-0.035em] text-white/85 sm:text-2xl lg:text-[2rem]"
             variants={itemVariants}
           >
-            Es una decisión emocional, médica y profundamente humana.
+            Es una decisión profesional, médica y profundamente humana.
           </motion.p>
 
           <motion.p
             className="mt-6 max-w-2xl text-[1.05rem] leading-8 text-white/78 sm:text-[1.15rem]"
             variants={itemVariants}
           >
-            VIXI es una clínica especializada en fertilización asistida que combina tecnología avanzada,
-            trato cercano y decisiones clínicas individualizadas dentro de un entorno hospitalario de
-            prestigio. Con 12 años de experiencia en la especialidad.
+            VIXI es un centro de reproducción especializado en tratamientos de baja y alta
+            complejidad en donde combinamos tecnología, trato cercano y decisiones
+            individualizadas, con 12 años de experiencia ayudando a nuestros pacientes.
           </motion.p>
 
           <motion.div className="mt-10 flex justify-center sm:justify-start" variants={actionVariants}>
@@ -132,9 +128,10 @@ export function HomeHero() {
           className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-xl transition-all hover:bg-white/15 lg:block"
           variants={itemVariants}
         >
-          <p className="eyebrow-label text-[10px] text-accent-200">Fertilidad con criterio</p>
+          <p className="eyebrow-label text-[10px] text-accent-200">TRATAMIENTOS A TU MEDIDA</p>
           <p className="mt-2 text-sm leading-7 text-white/80">
-            Medicina avanzada, conversaciones claras y una experiencia pensada para sostener decisiones complejas.
+            Medicina de vanguardia, explicaciones claras para ti y tu pareja, pensadas para tomar la
+            mejor decisión.
           </p>
         </motion.div>
       </motion.div>

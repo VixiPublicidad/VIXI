@@ -8,10 +8,11 @@ export function OutOfTownSupport() {
           <div className="relative z-10 w-full">
             <p className="eyebrow-label mb-4 text-brand-700">Lo que resolvemos</p>
             <h2 className="display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] text-brand-950 sm:text-4xl lg:text-5xl">
-              Menos fricción logística, más foco en tu tratamiento
+              Todo pensado para que atenderte en VIXI sea fácil
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-brand-950/68 sm:text-lg">
-              Consulta previa, planeación de visitas y seguimiento remoto ayudan a que el tratamiento sea más ordenado para quienes viajan.
+              Consulta, estudios y seguimiento se coordinan contigo para que el proceso se sienta
+              claro, acompañado y sin complicaciones.
             </p>
           </div>
         </div>
@@ -23,10 +24,10 @@ export function OutOfTownSupport() {
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-950/[0.04] text-[11px] font-bold tracking-widest text-brand-700">01</span>
             <div>
               <h3 className="font-display text-[1.25rem] font-medium leading-[1.1] text-brand-950">
-                Valoración inicial en línea
+                Primera consulta coordinada
               </h3>
               <p className="mt-2 text-[0.98rem] leading-7 text-brand-950/74">
-                La consulta virtual permite revisar antecedentes y preparar estudios antes de tu visita presencial.
+                Revisamos tu caso y definimos qué necesitas antes de viajar.
               </p>
             </div>
           </div>
@@ -36,10 +37,10 @@ export function OutOfTownSupport() {
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-950/[0.04] text-[11px] font-bold tracking-widest text-brand-700">02</span>
             <div>
               <h3 className="font-display text-[1.25rem] font-medium leading-[1.1] text-brand-950">
-                Planeación de tiempos
+                Estudios y tiempos claros
               </h3>
               <p className="mt-2 text-[0.98rem] leading-7 text-brand-950/74">
-                Organizamos el calendario clínico para concentrar valoraciones y procedimientos cuando el caso lo permite.
+                Organizamos los pasos del proceso para que sepas qué sigue y cuándo hacerlo.
               </p>
             </div>
           </div>
@@ -49,10 +50,11 @@ export function OutOfTownSupport() {
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-950/[0.04] text-[11px] font-bold tracking-widest text-brand-700">03</span>
             <div>
               <h3 className="font-display text-[1.25rem] font-medium leading-[1.1] text-brand-950">
-                Seguimiento a distancia
+                Seguimiento continuo
               </h3>
               <p className="mt-2 text-[0.98rem] leading-7 text-brand-950/74">
-                El acompañamiento continúa por canales remotos para dar claridad entre citas y resolver dudas puntuales.
+                Te acompañamos antes, durante y después de tu visita para que todo avance con
+                confianza.
               </p>
             </div>
           </div>

@@ -51,7 +51,7 @@ export function AboutHero() {
             width={image.width}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#fafaf9]/98 via-[#fafaf9]/85 to-[#fafaf9]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent-200/95 via-accent-200/55 to-[#fafaf9]/45" />
       </div>
 
       <div className="absolute bottom-0 left-0 top-0 z-10 w-1 bg-brand-950" />
@@ -72,7 +72,7 @@ export function AboutHero() {
             </motion.h1>
             <motion.div className="mt-8 h-px w-24 bg-brand-950/20" variants={itemVariants} />
             <motion.p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72" variants={itemVariants}>
-              VIXI es una clínica de fertilidad especializada en biología de la reproducción humana,
+              VIXI es un centro de reproducción especializado en biología de la reproducción humana,
               con un enfoque cálido, personalizado y respaldado por tecnología avanzada.
             </motion.p>
 

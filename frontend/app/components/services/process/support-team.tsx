@@ -3,12 +3,7 @@ export function ProcessSupportTeam() {
     <section className="mx-auto max-w-[80vw] py-6 lg:px-8">
       <div className="rounded-[32px] bg-brand-950 p-8 text-white shadow-[0_22px_60px_rgba(11,31,59,0.18)]">
         <div className="relative max-w-4xl">
-          <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-white shadow-sm backdrop-blur-xl">
-            <svg className="h-3.5 w-3.5 text-accent-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span className="eyebrow-label pt-[1px] text-[10px]">Apoyo clínico</span>
-          </div>
+          <p className="eyebrow-label mb-5 text-white/55">Apoyo clínico</p>
           <h2 className="display-balance font-display text-3xl leading-[0.98] tracking-[-0.045em] text-white sm:text-4xl lg:text-5xl">
             Especialidades que sostienen el recorrido completo
           </h2>

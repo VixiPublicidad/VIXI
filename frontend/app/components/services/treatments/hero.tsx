@@ -59,12 +59,12 @@ export function TreatmentsHero() {
               className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-6xl lg:text-[4.2rem]"
               variants={itemVariants}
             >
-              Tratamientos de fertilidad organizados con claridad, sensibilidad y criterio médico.
+              Tenemos todas las opciones en tratamientos, solo una decisión basada en evidencia
             </motion.h1>
             <motion.div className="mt-8 h-px w-24 bg-brand-950/20" variants={itemVariants} />
             <motion.p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-brand-950/72" variants={itemVariants}>
-              VIXI ofrece tratamientos de alta y baja complejidad para ayudar a lograr el embarazo con un
-              plan individualizado y tecnología avanzada.
+              Accede a un portafolio completo de tratamientos, con información suficiente en cada
+              etapa para tomar decisiones respaldadas por evidencia y criterio clínico.
             </motion.p>
 
             <motion.div className="mt-10 flex justify-center sm:justify-start" variants={actionVariants}>
@@ -89,18 +89,6 @@ export function TreatmentsHero() {
                   </ButtonLink>
                 </motion.div>
               </motion.div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div className="flex flex-col items-start gap-8 lg:items-end lg:justify-center lg:text-right" variants={contentVariants}>
-            <motion.div
-              className="rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-md lg:max-w-xs lg:text-left"
-              variants={itemVariants}
-            >
-              <p className="eyebrow-label text-[10px] text-brand-700">Portafolio clínico</p>
-              <p className="mt-2 text-sm leading-7 text-brand-950/70">
-                Opciones terapéuticas explicadas con claridad para entender qué camino puede ajustarse mejor a tu caso.
-              </p>
             </motion.div>
           </motion.div>
         </div>

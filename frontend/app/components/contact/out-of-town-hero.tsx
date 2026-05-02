@@ -50,11 +50,7 @@ export function OutOfTownHero() {
         variants={contentVariants}
       >
         <div className="w-full max-w-4xl">
-          <motion.p
-            className="eyebrow-label inline-flex items-center gap-2 rounded-full border border-white/55 bg-white/18 px-4 py-2 text-brand-800 backdrop-blur-md"
-            variants={itemVariants}
-          >
-            <span className="h-2 w-2 rounded-full bg-accent-300" />
+          <motion.p className="eyebrow-label text-brand-800/60" variants={itemVariants}>
             Pacientes foráneos
           </motion.p>
 
@@ -62,15 +58,15 @@ export function OutOfTownHero() {
             className="display-balance mt-6 max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-brand-950 sm:text-6xl lg:text-[4.2rem]"
             variants={itemVariants}
           >
-            Cuando viajas para atender tu fertilidad, la claridad logística también importa.
+            Atendemos pacientes de todo el país. Sin complicaciones.
           </motion.h1>
           <motion.div className="mt-7 h-px w-24 bg-brand-950/16" variants={itemVariants} />
           <motion.p
             className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-brand-950/66 sm:text-[1.15rem]"
             variants={itemVariants}
           >
-            VIXI atiende pacientes de otros estados y países, con orientación previa, consulta en línea
-            y seguimiento a distancia cuando es posible.
+            Desde donde estés, coordinamos tu primera consulta, tus estudios y tu seguimiento para
+            que el proceso sea claro y sin fricciones.
           </motion.p>
 
           <motion.div className="mt-8 flex justify-center sm:justify-start" variants={actionVariants}>
@@ -97,16 +93,6 @@ export function OutOfTownHero() {
             </motion.div>
           </motion.div>
         </div>
-
-        <motion.div
-          className="absolute bottom-20 right-10 z-20 hidden max-w-xs rounded-2xl border border-brand-950/8 bg-white/60 p-5 backdrop-blur-xl lg:block"
-          variants={itemVariants}
-        >
-          <p className="eyebrow-label text-[10px] text-brand-700">Logística cuidada</p>
-          <p className="mt-2 text-sm leading-7 text-brand-950/62">
-            Acompañamiento claro para organizar consultas, estudios y tiempos de viaje con mayor tranquilidad.
-          </p>
-        </motion.div>
       </motion.div>
     </motion.section>
   );

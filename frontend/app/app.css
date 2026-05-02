@@ -215,10 +215,23 @@
 
 @layer utilities {
   .eyebrow-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
     text-transform: uppercase;
     letter-spacing: 0.32em;
     font-size: 0.72rem;
     font-weight: 600;
+  }
+
+  .eyebrow-label::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    flex: 0 0 auto;
+    border-radius: 9999px;
+    background-color: rgb(221 181 255);
+    opacity: 1;
   }
 
   .display-balance {

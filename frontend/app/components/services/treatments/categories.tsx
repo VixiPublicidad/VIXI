@@ -1,5 +1,43 @@
 import type { ReactNode } from "react";
-import { FaBaby, FaDna, FaHandshake, FaMicroscope, FaSnowflake } from "react-icons/fa";
+import { FaBaby, FaDna, FaFlask, FaMicroscope } from "react-icons/fa";
+
+const CATEGORIES = [
+  {
+    icon: <FaMicroscope aria-hidden="true" className="h-6 w-6" />,
+    title: "Baja complejidad",
+    body: "Inseminación artificial homóloga o de donante.",
+    items: ["Inseminación artificial homóloga", "Inseminación artificial de donante"],
+  },
+  {
+    icon: <FaDna aria-hidden="true" className="h-6 w-6" />,
+    title: "Alta complejidad",
+    body: "Fertilización in vitro e inyección intracitoplasmática de espermatozoides, seleccionadas según diagnóstico y objetivos reproductivos.",
+    items: [
+      "Fertilización in vitro (FIV)",
+      "Inyección intracitoplasmática de espermatozoides (ICSI)",
+    ],
+  },
+  {
+    icon: <FaFlask aria-hidden="true" className="h-6 w-6" />,
+    title: "Opciones complementarias",
+    body: "Ovodonación, diagnóstico genético preimplantacional en todas sus variantes y estudios genéticos preconcepcionales.",
+    items: [
+      "Ovodonación",
+      "Diagnóstico genético preimplantacional en todas sus variantes",
+      "Estudios genéticos preconcepcionales",
+    ],
+  },
+  {
+    icon: <FaBaby aria-hidden="true" className="h-6 w-6" />,
+    title: "Acompañamiento para distintos proyectos de familia",
+    body: "Opciones de tratamiento para parejas del mismo sexo y personas que buscan maternidad o paternidad de forma independiente.",
+    items: [
+      "Parejas del mismo sexo",
+      "Maternidad independiente",
+      "Paternidad independiente",
+    ],
+  },
+] as const;
 
 export function TreatmentsCategories() {
   return (
@@ -12,77 +50,33 @@ export function TreatmentsCategories() {
         <div>
           <p className="eyebrow-label mb-4 text-[10px] text-brand-700">Portafolio clínico</p>
           <h2 className="display-balance font-display text-4xl leading-[0.96] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-6xl">
-            Opciones terapéuticas explicadas de forma simple
+            Opciones terapéuticas organizadas con criterio clínico
           </h2>
           <p className="mt-6 max-w-3xl pr-4 text-base leading-8 text-brand-950/74 sm:ml-4 sm:text-lg">
-            Incluye evaluación y diagnóstico, reproducción asistida, preservación de fertilidad, donación y opciones para distintos modelos de familia.
+            Tratamientos de baja y alta complejidad, opciones complementarias y acompañamiento para
+            distintos proyectos de familia.
           </p>
         </div>
       </div>
       <div className="mt-10 flex flex-wrap justify-center gap-5">
-        <TreatmentCard icon={<FaMicroscope aria-hidden="true" className="h-6 w-6" />}>
-          <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
-            Evaluación y diagnóstico
-          </h2>
-          <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
-            El proceso inicia con valoración clínica completa para entender el origen del factor que dificulta el embarazo.
-          </p>
-          <div className="mt-6 border-t border-brand-950/8 pt-5">
-            <p className="text-sm leading-7 text-brand-950/78">
-              Consulta de fertilidad · Estudios hormonales · Estudios de fertilidad femenina · Estudios de fertilidad masculina
-            </p>
-          </div>
-        </TreatmentCard>
-        <TreatmentCard icon={<FaDna aria-hidden="true" className="h-6 w-6" />}>
-          <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
-            Reproducción asistida
-          </h2>
-          <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
-            Opciones de baja y alta complejidad seleccionadas según diagnóstico, edad reproductiva y objetivos del tratamiento.
-          </p>
-          <div className="mt-6 border-t border-brand-950/8 pt-5">
-            <p className="text-sm leading-7 text-brand-950/78">
-              Inseminación intrauterina (IIU) · Fertilización in vitro (FIV) · ICSI
-            </p>
-          </div>
-        </TreatmentCard>
-        <TreatmentCard icon={<FaSnowflake aria-hidden="true" className="h-6 w-6" />}>
-          <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
-            Preservación de fertilidad
-          </h2>
-          <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
-            Protocolos para preservar óvulos, esperma o embriones cuando el tiempo reproductivo requiere planeación.
-          </p>
-          <div className="mt-6 border-t border-brand-950/8 pt-5">
-            <p className="text-sm leading-7 text-brand-950/78">
-              Preservación de fertilidad (óvulos, esperma y embriones)
-            </p>
-          </div>
-        </TreatmentCard>
-        <TreatmentCard icon={<FaHandshake aria-hidden="true" className="h-6 w-6" />}>
-          <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
-            Donación
-          </h2>
-          <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
-            Alternativas clínicas para casos que requieren apoyo reproductivo complementario bajo valoración médica.
-          </p>
-          <div className="mt-6 border-t border-brand-950/8 pt-5">
-            <p className="text-sm leading-7 text-brand-950/78">Donación de óvulos · Donación de esperma</p>
-          </div>
-        </TreatmentCard>
-        <TreatmentCard icon={<FaBaby aria-hidden="true" className="h-6 w-6" />}>
-          <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
-            Modelos de familia
-          </h2>
-          <p className="mt-4 flex-1 text-[0.98rem] leading-7 text-brand-950/68">
-            Acompañamiento respetuoso para pacientes y parejas que buscan construir familia desde distintos contextos.
-          </p>
-          <div className="mt-6 border-t border-brand-950/8 pt-5">
-            <p className="text-sm leading-7 text-brand-950/78">
-              Tratamientos para parejas del mismo sexo · Tratamientos para maternidad o paternidad independiente
-            </p>
-          </div>
-        </TreatmentCard>
+        {CATEGORIES.map((category) => (
+          <TreatmentCard icon={category.icon} key={category.title}>
+            <h2 className="font-display text-[1.65rem] font-medium leading-[1.02] tracking-[-0.035em] text-brand-950">
+              {category.title}
+            </h2>
+            <p className="mt-4 text-[0.98rem] leading-7 text-brand-950/68">{category.body}</p>
+            <div className="mt-6 border-t border-brand-950/8 pt-5">
+              <ul className="space-y-2">
+                {category.items.map((item) => (
+                  <li className="flex items-start gap-2.5" key={item}>
+                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-700/40" />
+                    <span className="text-[0.88rem] leading-6 text-brand-950/68">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </TreatmentCard>
+        ))}
       </div>
     </section>
   );

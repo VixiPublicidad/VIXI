@@ -23,7 +23,7 @@ const configuredSiteUrl =
 const siteUrl = configuredSiteUrl?.replace(/\/+$/, "") ?? "https://vixireproduccion.mx";
 const siteLanguage = "es-MX";
 const siteDescription =
-  "Clínica de fertilidad con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
+  "Centro de reproducción con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
 const organizationName = "VIXI Reproducción";
 const contactDetails = {
   phoneHref: "tel:+524776725136",

@@ -16,10 +16,11 @@ export function ExperiencePage() {
           <div className="max-w-3xl">
             <p className="eyebrow-label text-accent-200">Primera consulta</p>
             <h2 className="display-balance mt-4 font-display text-4xl leading-[0.96] tracking-[-0.045em] sm:text-5xl">
-              Un espacio moderno y sereno para tomar decisiones con claridad.
+              Tecnología disponible para tomar mejores decisiones clínicas desde la primera visita.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-white/78">
-              La experiencia empieza desde la primera conversación. Agenda una valoración para conocer el proceso completo en VIXI.
+              La experiencia empieza con una valoración apoyada por tecnología, criterio médico y
+              una explicación clara del siguiente paso para tu caso.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0">

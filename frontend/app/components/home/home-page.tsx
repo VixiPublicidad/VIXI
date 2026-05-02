@@ -6,6 +6,7 @@ import { HomeFaqContact } from "~/components/home/home-faq-contact";
 import { HomeHero } from "~/components/home/home-hero";
 import { SecondOpinionCTA } from "~/components/home/second-opinion-cta";
 import { HomePillars } from "~/components/home/home-pillars";
+import { HomeSciencePillars } from "~/components/home/home-science-pillars";
 import { HomeTreatmentsPreview } from "~/components/home/home-treatments-preview";
 import { HomeValueProposition } from "~/components/home/home-value-proposition";
 import {
@@ -23,6 +24,7 @@ export function HomePage() {
       <HomeHero />
       <HomeValueProposition />
       <HomePillars />
+      <HomeSciencePillars />
       <HomeTreatmentsPreview />
       <HomeExperience />
       <HomeAudiences />
@@ -69,8 +71,7 @@ function HomeFinalCta() {
             Tratamientos de alta y baja complejidad con acompañamiento real.
           </motion.h2>
           <motion.p className="mt-5 max-w-2xl text-base leading-8 text-white/78" variants={contentVariants}>
-            Agenda una valoración para revisar tu caso con un equipo que entiende la fertilidad desde la
-            medicina, la experiencia y la cercanía.
+            Agenda una valoración para revisar tu caso con nuestro equipo de expertos.
           </motion.p>
         </motion.div>
         <motion.div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0" variants={contentVariants}>

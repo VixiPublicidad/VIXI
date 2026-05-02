@@ -3,12 +3,12 @@ import { buildMeta } from "~/components/lib/meta";
 
 export function meta() {
   return buildMeta(
-    "Clínica de fertilidad en León, Guanajuato",
-    "VIXI es una clínica de fertilidad en León, Guanajuato, con enfoque cálido, personalizado y respaldado por tecnología avanzada.",
+    "Centro de reproducción en León, Guanajuato",
+    "VIXI es una Centro de reproducción en León, Guanajuato, con enfoque cálido, personalizado y respaldado por tecnología avanzada.",
     {
       path: "/",
       image: "/og/og-1.png",
-      keywords: ["clínica de fertilidad en León", "fertilidad en Guanajuato", "reproducción asistida", "fiv", "vixi"],
+      keywords: ["Centro de reproducción en León", "fertilidad en Guanajuato", "reproducción asistida", "fiv", "vixi"],
     },
   );
 }

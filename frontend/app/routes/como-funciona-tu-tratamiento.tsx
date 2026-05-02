@@ -1,5 +1,5 @@
 import { buildMeta } from "~/components/lib/meta";
-import { ProcessPage } from "~/components/services/process/page";
+import { ProcessPage } from "~/components/services/process/process-page";
 
 export function meta() {
   return buildMeta(

@@ -33,7 +33,7 @@ export function ProcessHero() {
       <div className="absolute inset-0 z-0">
         <motion.div className="h-full w-full overflow-hidden [transform:translateZ(0)]" style={{ y: imageY }}>
           <motion.img
-            alt="Paciente conversando con su especialista en una consulta privada y serena."
+            alt="Paciente conversando con su especialista en una consulta privada."
             className="h-full w-full object-cover will-change-transform [backface-visibility:hidden] [transform:translateZ(0)]"
             decoding="async"
             fetchPriority="high"
@@ -61,64 +61,47 @@ export function ProcessHero() {
         variants={contentVariants}
       >
         <div className="w-full max-w-4xl">
-        <motion.p className="eyebrow-label mb-4 text-accent-200/80" variants={itemVariants}>
-          Cómo funciona tu tratamiento
-        </motion.p>
-        <motion.h1
-          className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-6xl lg:text-[4.2rem]"
-          variants={itemVariants}
-        >
-          Un proceso explicado paso a paso para tomar decisiones con menos incertidumbre.
-        </motion.h1>
-        <motion.p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" variants={itemVariants}>
-          El proceso inicia con una primera consulta, avanza hacia un diagnóstico definitivo y permite
-          definir el tratamiento adecuado para cada caso.
-        </motion.p>
-
-        <motion.div className="mt-8 flex justify-center sm:justify-start" variants={actionVariants}>
-          <motion.div
-            className="flex w-full max-w-sm flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-stretch"
-            variants={actionVariants}
+          <motion.p className="eyebrow-label mb-4 text-accent-200/80" variants={itemVariants}>
+            Cómo funciona tu tratamiento
+          </motion.p>
+          <motion.h1
+            className="display-balance max-w-4xl font-display text-[2.7rem] leading-[0.98] tracking-[-0.05em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.4)] sm:text-6xl lg:text-[4.2rem]"
+            variants={itemVariants}
           >
-            <motion.div className="w-full sm:w-auto" variants={itemVariants}>
-              <ButtonLink className="flex w-full justify-center sm:w-auto" external to="https://wa.me/524776725136" variant="primary">
-                <span className="inline-flex items-center gap-2">
-                  <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
-                  Agendar valoración
-                </span>
-              </ButtonLink>
-            </motion.div>
-            <motion.div className="w-full sm:w-auto" variants={itemVariants}>
-              <ButtonLink className="flex w-full justify-center sm:w-auto" to="/tratamientos" variant="secondary">
-                <span className="inline-flex items-center gap-2">
-                  <FaArrowRight aria-hidden="true" className="h-4 w-4" />
-                  Ver tratamientos
-                </span>
-              </ButtonLink>
+            Acompañamiento y claridad durante todo el proceso
+          </motion.h1>
+          <motion.p className="mt-5 max-w-2xl text-[1.05rem] leading-8 text-white/68" variants={itemVariants}>
+            Cada decisión se toma de forma personalizada para maximizar tus probabilidades de éxito.
+            Nuestro equipo te acompaña con criterio clínico y claridad en cada decisión.
+          </motion.p>
+
+          <motion.div className="mt-8 flex justify-center sm:justify-start" variants={actionVariants}>
+            <motion.div
+              className="flex w-full max-w-sm flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-stretch"
+              variants={actionVariants}
+            >
+              <motion.div className="w-full sm:w-auto" variants={itemVariants}>
+                <ButtonLink className="flex w-full justify-center sm:w-auto" external to="https://wa.me/524776725136" variant="primary">
+                  <span className="inline-flex items-center gap-2">
+                    <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
+                    Agendar valoración
+                  </span>
+                </ButtonLink>
+              </motion.div>
+              <motion.div className="w-full sm:w-auto" variants={itemVariants}>
+                <ButtonLink className="flex w-full justify-center sm:w-auto" to="/tratamientos" variant="secondary">
+                  <span className="inline-flex items-center gap-2">
+                    <FaArrowRight aria-hidden="true" className="h-4 w-4" />
+                    Ver tratamientos
+                  </span>
+                </ButtonLink>
+              </motion.div>
             </motion.div>
           </motion.div>
-        </motion.div>
         </div>
 
-        <motion.div className="mt-12 flex flex-wrap gap-10 border-t border-white/10 pt-7" variants={contentVariants}>
-          <motion.div variants={itemVariants}>
-            <p className="font-display text-xl tracking-[-0.03em] text-white">1</p>
-            <p className="eyebrow-label text-white/40">primera consulta estructurada</p>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <p className="font-display text-xl tracking-[-0.03em] text-white">6</p>
-            <p className="eyebrow-label text-white/40">etapas explicadas con claridad</p>
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <p className="font-display text-xl tracking-[-0.03em] text-white">100%</p>
-            <p className="eyebrow-label text-white/40">preparación individualizada</p>
-          </motion.div>
-        </motion.div>
-
         <motion.p className="mt-8 max-w-sm text-xs leading-relaxed text-white/35" variants={itemVariants}>
-          <span className="eyebrow-label text-[10px] text-accent-200/60">Recorrido clínico</span>
-          {" - "}
-          Consulta, diagnóstico, definición del factor y propuesta de tratamiento en una ruta clara y acompañada.
+          Consulta, diagnóstico, definición del plan y tratamiento dentro de una ruta clara y flexible.
         </motion.p>
       </motion.div>
     </motion.section>

@@ -8,7 +8,7 @@ export function meta() {
     {
       path: "/nuestra-experiencia",
       image: "/og/og-3.png",
-      keywords: ["experiencia clínica fertilidad", "clínica de fertilidad moderna", "atención personalizada fertilidad"],
+      keywords: ["experiencia clínica fertilidad", "Centro de reproducción moderna", "atención personalizada fertilidad"],
     },
   );
 }

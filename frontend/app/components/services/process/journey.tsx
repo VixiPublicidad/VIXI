@@ -20,45 +20,42 @@ type Step = {
 
 const STEPS: Step[] = [
   {
-    body: "La valoración inicia con una revisión clínica completa junto a tu especialista tratante.",
+    body: "Revisión clínica inicial para entender tu caso y tus objetivos reproductivos.",
     phase: "valoracion",
-    title: "Punto de partida",
+    title: "Valoración inicial",
   },
   {
-    body: "Se integran antecedentes, estudios y hallazgos para entender con precisión el caso.",
+    body: "Integración de antecedentes, estudios y hallazgos relevantes.",
     phase: "valoracion",
-    title: "Diagnóstico definitivo",
+    title: "Diagnóstico",
   },
   {
-    body: "Identificamos qué elemento está interfiriendo con el embarazo para tomar decisiones con fundamento.",
+    body: "Definición del factor que guía la toma de decisiones clínicas.",
     phase: "valoracion",
-    title: "Definición del factor",
+    title: "Análisis del caso",
   },
   {
-    body: "El plan se individualiza según edad, diagnóstico, antecedentes y objetivos reproductivos.",
+    body: "Selección del tratamiento más adecuado según tu pronóstico.",
     phase: "valoracion",
-    title: "Propuesta de tratamiento",
+    title: "Plan terapéutico",
   },
   {
-    body: "El tratamiento se realiza dentro de las instalaciones de VIXI en la torre del hospital.",
+    body: "Coordinación del procedimiento dentro de la infraestructura de VIXI.",
     phase: "tratamiento",
-    title: "Procedimiento en VIXI",
+    title: "Tratamiento",
   },
   {
-    body: "Costos, tiempos y preparación se explican de forma personalizada según el procedimiento elegido.",
+    body: "Seguimiento y ajustes según la respuesta clínica de cada paciente.",
     phase: "tratamiento",
-    title: "Preparación y seguimiento",
+    title: "Seguimiento",
   },
 ];
 
-// Serpentine path (viewBox 100 x 600, preserveAspectRatio="none").
-// All nodes sit on the central axis (x=50); curves bulge alternately to x=20 / x=80.
 const VALORACION_PATH =
   "M 50 50 C 20 80 20 120 50 150 C 80 180 80 220 50 250 C 20 280 20 320 50 350";
 const TRATAMIENTO_PATH =
   "M 50 350 C 80 380 80 420 50 450 C 20 480 20 520 50 550";
 
-// Fraction of scroll progress where Valoración ends (4 of 6 nodes).
 const PHASE_SPLIT = 0.66;
 
 export function ProcessJourney() {
@@ -69,11 +66,7 @@ export function ProcessJourney() {
     target: pathRef,
   });
   const valoracionLength = useTransform(scrollYProgress, [0, PHASE_SPLIT], [0, 1]);
-  const tratamientoLength = useTransform(
-    scrollYProgress,
-    [PHASE_SPLIT, 0.95],
-    [0, 1],
-  );
+  const tratamientoLength = useTransform(scrollYProgress, [PHASE_SPLIT, 0.95], [0, 1]);
   const phaseSwitch = useTransform(scrollYProgress, [0, PHASE_SPLIT, 1], [0, 0, 1]);
 
   const cardVariants = createRevealUpVariants(reducedMotion, {
@@ -96,23 +89,22 @@ export function ProcessJourney() {
         <div>
           <p className="eyebrow-label mb-4 text-[10px] text-brand-700">Ruta clínica</p>
           <h2 className="display-balance font-display text-4xl leading-[0.96] tracking-[-0.05em] text-brand-950 sm:text-5xl lg:text-6xl">
-            Del diagnóstico al procedimiento, sin zonas grises
+            Te explicamos el proceso.
           </h2>
           <p className="mt-6 max-w-3xl pr-4 text-base leading-8 text-brand-950/74 sm:ml-4 sm:text-lg">
-            Dos fases guían todo el recorrido. La valoración puede resolverse en una o varias consultas; el tratamiento se coordina después, ya con el plan definido.
+            La valoración y el tratamiento se coordinan de forma flexible según el caso. Esta ruta
+            muestra cómo se toman las decisiones a lo largo del proceso.
           </p>
         </div>
       </div>
 
       <div ref={pathRef} className="relative mt-16">
-        {/* Serpentine SVG — desktop */}
         <svg
           aria-hidden
           className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
           preserveAspectRatio="none"
           viewBox="0 0 100 600"
         >
-          {/* Ghost track */}
           <path
             className="stroke-brand-950/10"
             d={`${VALORACION_PATH} ${TRATAMIENTO_PATH.replace(/^M/, "L")}`}
@@ -138,7 +130,6 @@ export function ProcessJourney() {
           />
         </svg>
 
-        {/* Mobile vertical rail */}
         <div
           aria-hidden
           className="pointer-events-none absolute left-[19px] top-0 h-full w-[2px] md:hidden"
@@ -155,11 +146,7 @@ export function ProcessJourney() {
           />
         </div>
 
-        {/* Floating phase badge (desktop) */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-4 right-0 hidden md:block"
-        >
+        <div aria-hidden className="pointer-events-none absolute -top-4 right-0 hidden md:block">
           <PhaseBadge split={phaseSwitch} />
         </div>
 
@@ -199,12 +186,9 @@ function JourneyStep({
 
   return (
     <motion.li
-      className={`relative pl-12 md:pl-0 ${
-        align === "left" ? "md:pr-[54%]" : "md:pl-[54%]"
-      }`}
+      className={`relative pl-12 md:pl-0 ${align === "left" ? "md:pr-[54%]" : "md:pl-[54%]"}`}
       variants={cardVariants}
     >
-      {/* Node dot */}
       <motion.span
         aria-hidden
         className={`absolute top-6 h-5 w-5 -translate-x-1/2 rounded-full ring-4 ring-white ${
@@ -223,12 +207,8 @@ function JourneyStep({
         >
           {isTratamiento ? "Tratamiento" : "Valoración"}
         </span>
-        <h3 className="mt-2 text-xl font-semibold text-brand-950 md:text-2xl">
-          {step.title}
-        </h3>
-        <p className="mt-2 max-w-xl text-sm leading-6 text-brand-950/72">
-          {step.body}
-        </p>
+        <h3 className="mt-2 text-xl font-semibold text-brand-950 md:text-2xl">{step.title}</h3>
+        <p className="mt-2 max-w-xl text-sm leading-6 text-brand-950/72">{step.body}</p>
       </article>
     </motion.li>
   );

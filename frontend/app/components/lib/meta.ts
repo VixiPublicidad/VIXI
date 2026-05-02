@@ -17,7 +17,7 @@ const defaultOgImage = "/og/og-1.png";
 const siteLocale = "es_MX";
 const siteLanguage = "es-MX";
 const siteDescription =
-  "Clínica de fertilidad con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
+  "Centro de reproducción con un enfoque cálido, personalizado y respaldado por tecnología avanzada dentro de un hospital de prestigio.";
 
 function toAbsoluteUrl(path = "/") {
   if (/^https?:\/\//.test(path)) return path;
@@ -36,7 +36,7 @@ export function buildMeta(
     { title: `${title} | ${siteName}` },
     { name: "description", content: description },
     { name: "language", content: siteLanguage },
-    { name: "keywords", content: options.keywords?.join(", ") ?? "clínica de fertilidad, reproducción asistida, fertilidad en León, FIV, inseminación intrauterina" },
+    { name: "keywords", content: options.keywords?.join(", ") ?? "Centro de reproducción, reproducción asistida, fertilidad en León, FIV, inseminación intrauterina" },
     { name: "robots", content: options.noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large" },
     { property: "og:type", content: options.type ?? "website" },
     { property: "og:site_name", content: siteName },
